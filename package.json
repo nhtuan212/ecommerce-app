@@ -1,44 +1,44 @@
 {
-  "name": "ecommerce-app",
-  "version": "14.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prettier": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
-    "eslint": "eslint --quiet \"src/**/*.{ts,tsx,json}\"",
-    "lint-staged": "lint-staged",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,json,scss}": [
-      "yarn prettier",
-      "yarn eslint",
-      "git add ."
-    ]
-  },
-  "dependencies": {
-    "next": "14.0.1",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1",
-    "eslint-plugin-json": "^3.1.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "postcss": "^8",
-    "prettier": "^3.0.3",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5"
-  }
+    "name": "ecommerce-app",
+    "version": "14.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prettier": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
+        "eslint": "eslint --quiet \"src/**/*.{ts,tsx,json}\"",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "src/**/*.{ts,tsx,json,scss}": [
+            "yarn prettier",
+            "yarn eslint",
+            "git add ."
+        ]
+    },
+    "dependencies": {
+        "next": "14.0.1",
+        "react": "^18",
+        "react-dom": "^18"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@typescript-eslint/eslint-plugin": "^6.9.1",
+        "@typescript-eslint/parser": "^6.9.1",
+        "autoprefixer": "^10.0.1",
+        "eslint": "^8",
+        "eslint-config-next": "14.0.1",
+        "eslint-plugin-json": "^3.1.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.0.2",
+        "postcss": "^8",
+        "prettier": "^3.0.3",
+        "tailwindcss": "^3.3.0",
+        "typescript": "^5"
+    }
 }
