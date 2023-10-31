@@ -1,8 +1,5 @@
 {
-    "cSpell.words": [
-        "clsx",
-        "ecommerce",
-        "tailwindcss"
-    ],
+    "cSpell.words": ["clsx", "ecommerce", "linebreak", "Parens", "tailwindcss"],
+    "css.customData": [".vscode/css_custom_data.json"],
     "editor.fontSize": 16
 }

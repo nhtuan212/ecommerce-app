@@ -19,6 +19,8 @@
             }
         ],
         "paths": {
+            "@commonComponents/*": ["./src/components/common/*"],
+            "@moduleComponents/*": ["./src/components/modules/*"],
             "@/*": ["./src/*"]
         }
     },
