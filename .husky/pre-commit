@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing and building your project before committing'
+
+yarn lint-staged --allow-empty ||
+(
+    echo '🆘🚫 Eslint founded problem. Please resolved them and commit again.';
+    false;
+)
+
+echo '✅✅ Successfully!! Already to commit!! 🐶🐶'
