@@ -34,3 +34,25 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Rules
+Use Import React. Restricted (such as React.useState ...) except typeProps (such as React.FC)
+
+Import sort arrange (notes those comments):
+- //** React import */
+- //** Redux */
+- //** Components */
+- //** Constants */
+- //** Fake Apis */
+
+Inside Function Component sort arrange (notes those comments):
+- //** Custom Hooks */
+- //** Variables *
+- //** States */ => useStates
+- //** Functions */
+- //** Hooks */ => useEffect
+	
+Commit
+- #add: new features
+- #update: update feature
+- #fix: bugs
