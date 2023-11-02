@@ -1,6 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
 
+//** Components */
+import HeaderComponent from "@commonComponents/Header";
+import FooterComponent from "@commonComponents/Footer";
+
 //** Styles */
 import "./globals.scss";
 
@@ -16,7 +20,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="font-roboto">{children}</body>
+            <body className="font-roboto">
+                <HeaderComponent />
+                {children}
+                <FooterComponent />
+            </body>
         </html>
     );
 }

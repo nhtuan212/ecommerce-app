@@ -32,45 +32,52 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     startIcon?: React.ReactNode;
     endIcon?: React.ReactNode;
     url?: string;
-    onClick?: () => {} | void;
 }
 
 const ButtonComponent = ({
+    children,
     color = ButtonColors.PRIMARY,
     size = ButtonSizes.MEDIUM,
     variant = ButtonVariants.CONTAINED,
+    title = TEXT.BUTTON.TITLE,
+    className,
+    value,
+    disabled,
     startIcon,
     endIcon,
-    title = TEXT.BUTTON.TITLE,
     url,
-    ...restProps
+    onClick,
 }: ButtonProps) => {
-    //** Variables */
+    //** Custom Hooks */
     const router = useRouterCustomHook();
 
+    //** Variables */
     const buttonClassName = twMerge(
         styles.Button,
-        restProps?.className,
         BUTTON_COLORS[color],
         BUTTON_SIZES[size],
         BUTTON_VARIANTS[variant][color],
+        className,
     );
 
     //** Functions */
-    const handleClick = () => {
-        typeof restProps?.onClick === "function" && restProps?.onClick();
+    const handleClick = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    ) => {
+        typeof onClick === "function" && onClick(event);
         url && router.push(url);
     };
 
     return (
         <button
             className={buttonClassName}
-            onClick={handleClick}
-            disabled={restProps?.disabled}
+            onClick={event => handleClick(event)}
+            disabled={disabled}
             title={title}
         >
             {startIcon && <span className="mr-2">{startIcon}</span>}
-            {restProps?.value && restProps?.value}
+            {children && children}
+            {value && value}
             {endIcon && <span className="ml-2">{endIcon}</span>}
         </button>
     );
