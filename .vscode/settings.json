@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Binayu",
         "clsx",
         "ecommerce",
         "fontawesome",
@@ -7,7 +8,9 @@
         "fortawesome",
         "linebreak",
         "Parens",
+        "placehold",
         "roboto",
+        "Swiper",
         "tailwindcss"
     ],
     "css.customData": [".vscode/tailwind.json"],

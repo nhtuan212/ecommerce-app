@@ -3,4 +3,8 @@ export const TEXT = {
         CLICK_ME: "Click Me",
         TITLE: "Button",
     },
+    INPUT: {
+        VALUE: "Input value",
+        PLACEHOLDER: "Input placeholder",
+    },
 };

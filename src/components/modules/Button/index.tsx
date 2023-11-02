@@ -23,7 +23,7 @@ export default function ButtonModules() {
     };
 
     return (
-        <section className="p-4">
+        <section className="py-4">
             <h1 className="mb-2">
                 <b>Button</b>
             </h1>
