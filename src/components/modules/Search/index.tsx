@@ -2,20 +2,28 @@
 
 import React, { useState } from "react";
 
+//** Custom Hooks */
+import { useRouterCustomHook } from "@/helpers/customHooks";
+
 //** Components */
 import IconComponent from "@commonComponents/Icon";
 import InputComponent from "@commonComponents/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
+import { PAGE } from "@/constants/router";
 
 export default function SearchModule() {
+    //** Custom Hooks */
+    const router = useRouterCustomHook();
+
     //** States */
-    const [value, setValue] = useState(TEXT.INPUT.VALUE);
+    const [value, setValue] = useState("");
 
     //** Functions */
     const handleSearch = () => {
-        alert(value);
+        if (!value) return alert(TEXT.EMPTY_SEARCH);
+        router.push(PAGE.EXAMPLE);
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +45,7 @@ export default function SearchModule() {
             <InputComponent
                 endIcon={
                     <IconComponent
+                        className="text-gray"
                         icon={"diamond-turn-right"}
                         onClick={handleSearch}
                     />

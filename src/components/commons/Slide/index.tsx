@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 
 //** Swiper */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,27 +8,29 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+//** Components */
+import ImageComponent from "@commonComponents/Image";
+
+//** Constants */
+import { PAGE } from "@/constants/router";
+
+//** Apis */
+import { slideApi } from "@/apis/slide";
+
 export default function SlideComponent() {
     return (
         <Swiper className="mySwiper" navigation={true} modules={[Navigation]}>
-            <Link href="#">
-                <SwiperSlide>
-                    <Image
-                        src="https://placehold.jp/1920x500.png"
+            {slideApi.map(item => (
+                <SwiperSlide key={item.id}>
+                    <ImageComponent
                         width={1920}
                         height={500}
-                        alt="Picture of the author"
+                        src={item?.url}
+                        alt={item?.alt}
+                        slug={PAGE.HOME_PAGE}
                     />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <Image
-                        src="https://placehold.jp/1920x500.png"
-                        width={1920}
-                        height={500}
-                        alt="Picture of the author"
-                    />
-                </SwiperSlide>
-            </Link>
+            ))}
         </Swiper>
     );
 }
