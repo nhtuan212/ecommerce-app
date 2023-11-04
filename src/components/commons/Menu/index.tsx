@@ -23,14 +23,16 @@ export default function MenuComponent() {
         !isEmpty(MenuConfig) && (
             <menu className={styles.Menu}>
                 {MenuConfig.map(item => (
-                    <li
-                        className={twMerge(
-                            styles.MenuItem,
-                            item.slug === pathname && styles.MenuItemActive,
-                        )}
-                        key={item.name}
-                    >
-                        <Link href={item.slug}>{item.name}</Link>
+                    <li key={item.name}>
+                        <Link
+                            href={item.slug}
+                            className={twMerge(
+                                styles.MenuItem,
+                                item.slug === pathname && styles.MenuItemActive,
+                            )}
+                        >
+                            {item.name}
+                        </Link>
                     </li>
                 ))}
             </menu>
