@@ -1,4 +1,10 @@
 export const TEXT = {
+    MENU: {
+        HOME: "Trang chủ",
+        PRODUCT: "Sản phẩm",
+        NEWS: "Tin tức",
+        CONTACT: "Liên hệ",
+    },
     IMAGE: {
         ALT: "Image",
     },

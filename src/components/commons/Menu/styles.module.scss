@@ -1,0 +1,15 @@
+.Menu {
+    @apply bg-primary flex justify-center items-center text-white;
+
+    &Item {
+        @apply py-3 px-4;
+
+        &Active {
+            @apply bg-primary-700;
+        }
+
+        &:hover {
+            @apply bg-primary-700;
+        }
+    }
+}

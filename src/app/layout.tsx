@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 //** Components */
 import HeaderComponent from "@commonComponents/Header";
 import FooterComponent from "@commonComponents/Footer";
+import MenuComponent from "@commonComponents/Menu";
 
 //** Styles */
 import "./globals.scss";
@@ -22,6 +23,7 @@ export default function RootLayout({
         <html lang="en">
             <body className="font-roboto">
                 <HeaderComponent />
+                <MenuComponent />
                 {children}
                 <FooterComponent />
             </body>

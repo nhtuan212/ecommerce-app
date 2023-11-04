@@ -6,13 +6,17 @@
         "fontawesome",
         "Fontawesomes",
         "fortawesome",
+        "Liên",
         "linebreak",
         "Parens",
+        "phẩm",
         "placehold",
         "roboto",
         "Swiper",
-        "tailwindcss"
+        "tailwindcss",
+        "Trang"
     ],
     "css.customData": [".vscode/tailwind.json"],
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "workbench.tree.indent": 16
 }
