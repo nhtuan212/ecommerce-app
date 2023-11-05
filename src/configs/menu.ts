@@ -1,6 +1,8 @@
+//** Configs */
+import { PAGE } from "@/configs/router";
+
 //** Constants */
-import { TEXT } from "../text";
-import { PAGE } from "../router";
+import { TEXT } from "@/constants/text";
 
 export const MenuConfig = [
     {
@@ -9,7 +11,7 @@ export const MenuConfig = [
     },
     {
         name: TEXT.MENU.PRODUCT,
-        slug: PAGE.EXAMPLE,
+        slug: PAGE.PRODUCT,
     },
     {
         name: TEXT.MENU.NEWS,

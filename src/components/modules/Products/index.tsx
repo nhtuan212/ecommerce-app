@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import fetchApi from "@/helpers/fetchApi";
 import { isEmpty } from "lodash";
 import ImageComponent from "@commonComponents/Image";
-import { PAGE } from "@/constants/router";
+import { PAGE } from "@/configs/router";
 
 export default function ProductModules() {
     const [data, setData] = React.useState<any>([]);

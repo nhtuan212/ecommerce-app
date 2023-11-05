@@ -8,7 +8,7 @@ import SearchModule from "@moduleComponents/Search";
 import IconComponent from "@commonComponents/Icon";
 
 //** Constants */
-import { PAGE } from "@/constants/router";
+import { PAGE } from "@/configs/router";
 
 //** Styles */
 import styles from "./styles.module.scss";

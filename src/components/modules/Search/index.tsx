@@ -11,7 +11,7 @@ import InputComponent from "@commonComponents/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-import { PAGE } from "@/constants/router";
+import { PAGE } from "@/configs/router";
 
 export default function SearchModule() {
     //** Custom Hooks */

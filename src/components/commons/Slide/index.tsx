@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import ImageComponent from "@commonComponents/Image";
 
 //** Constants */
-import { PAGE } from "@/constants/router";
+import { PAGE } from "@/configs/router";
 
 //** Apis */
 import { slideApi } from "@/apis/slide";

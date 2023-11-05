@@ -4,34 +4,35 @@ import React from "react";
 import Link from "next/link";
 
 //** Custom Hooks */
-import { usePathnameCustomHook } from "@/helpers/customHooks";
+import { useRouterCustomHook } from "@/helpers/customHooks";
 
-//** Constants */
-import { MenuConfig } from "@/constants/menu";
+//** Configs */
+import { MenuConfig } from "@/configs/menu";
+
+//** Lodash */
+import { isEmpty } from "lodash";
 
 //** Styles */
 import { twMerge } from "tailwind-merge";
 import styles from "./styles.module.scss";
 
-//** Lodash */
-import { isEmpty } from "lodash";
-
 export default function MenuComponent() {
-    const { pathname } = usePathnameCustomHook();
+    const { pathname } = useRouterCustomHook();
 
     return (
         !isEmpty(MenuConfig) && (
             <menu className={styles.Menu}>
                 {MenuConfig.map(item => (
-                    <li key={item.name}>
+                    <li key={item?.name}>
                         <Link
-                            href={item.slug}
+                            href={item?.slug}
                             className={twMerge(
                                 styles.MenuItem,
-                                item.slug === pathname && styles.MenuItemActive,
+                                item?.slug === pathname &&
+                                    styles.MenuItemActive,
                             )}
                         >
-                            {item.name}
+                            {item?.name}
                         </Link>
                     </li>
                 ))}
