@@ -1,9 +1,25 @@
 "use client";
 import React, { useEffect } from "react";
-import fetchApi from "@/helpers/fetchApi";
-import { isEmpty } from "lodash";
+
+//** Components */
 import ImageComponent from "@commonComponents/Image";
+
+//** Configs */
 import { PAGE } from "@/configs/router";
+
+//** Lodash */
+import { isEmpty } from "lodash";
+
+//** Apis */
+import fetchApi from "@/helpers/fetchApi";
+
+//** Interfaces */
+interface ProductItemProps {
+    id: string;
+    title: string;
+    price: number;
+    thumbnail: string;
+}
 
 export default function ProductModules() {
     const [data, setData] = React.useState<any>([]);
@@ -18,7 +34,7 @@ export default function ProductModules() {
 
             {!isEmpty(data) && (
                 <div className="flex flex-wrap">
-                    {data?.products.map(item => (
+                    {data?.products.map((item: ProductItemProps) => (
                         <div
                             className="basis-1/4 px-2 py-4 text-center"
                             key={item.id}

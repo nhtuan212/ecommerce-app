@@ -5,5 +5,5 @@ export default function layoutExamples({
 }: {
     children: React.ReactNode;
 }) {
-    return <main className="p-4">{children}</main>;
+    return children;
 }

@@ -7,10 +7,10 @@ import SearchModule from "@moduleComponents/Search";
 
 export default function Examples() {
     return (
-        <>
+        <div className="p-4">
             <ButtonModules />
             <InputModules />
             <SearchModule />
-        </>
+        </div>
     );
 }
