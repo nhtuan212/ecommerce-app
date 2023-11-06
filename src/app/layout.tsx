@@ -21,10 +21,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="font-roboto">
+            <body>
                 <HeaderComponent />
                 <MenuComponent />
-                {children}
+                <main className="min-h-screen">{children}</main>
                 <FooterComponent />
             </body>
         </html>

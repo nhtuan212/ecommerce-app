@@ -6,10 +6,10 @@ import styles from "./styles.module.scss";
 export default function FooterComponent() {
     return (
         <footer className={styles.Footer}>
-            <div>
+            <article>
                 <p>Something here to give the footer a purpose!</p>
                 <p>Copyright © Binayu 2023.</p>
-            </div>
+            </article>
         </footer>
     );
 }
