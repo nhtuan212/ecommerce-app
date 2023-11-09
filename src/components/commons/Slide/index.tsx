@@ -27,7 +27,7 @@ export default function SlideComponent() {
                         height={500}
                         src={item?.url}
                         alt={item?.alt}
-                        slug={PAGE.HOME_PAGE}
+                        link={PAGE.HOME_PAGE}
                     />
                 </SwiperSlide>
             ))}
