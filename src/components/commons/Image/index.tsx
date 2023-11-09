@@ -5,8 +5,8 @@ import Link from "next/link";
 //** Constants */
 import { TEXT } from "@/constants/text";
 
-//** Styles */
-import styles from "./styles.module.scss";
+//** TypeProps */
+import { ImageTypeProps } from "@typeProps/ImageTypeProps";
 
 //** Interfaces */
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -14,33 +14,39 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     height?: number | `${number}` | undefined;
     src: string;
     slug?: string;
+    priority?: boolean;
+    objectFit?: ImageTypeProps;
 }
 
 export default function ImageComponent({
+    className,
     width,
     height,
     src,
     alt = TEXT.IMAGE.ALT,
     slug,
+    priority = true,
+    objectFit = ImageTypeProps.CONTAIN,
 }: ImageProps) {
     //** Functions */
     const renderImage = () => {
         const children = (
             <Image
-                className={styles.Image}
+                className={className}
                 src={src}
                 width={width}
                 height={height}
                 alt={alt}
+                priority={priority}
                 style={{
-                    objectFit: "contain", // cover, contain, none
+                    objectFit,
                 }}
             />
         );
 
         if (slug) {
             return (
-                <Link className={styles.Image} href={slug}>
+                <Link className={className} href={slug}>
                     {children}
                 </Link>
             );

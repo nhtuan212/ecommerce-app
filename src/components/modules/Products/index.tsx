@@ -42,8 +42,8 @@ export default function ProductModules() {
                             <div className="flex items-center h-[250px]">
                                 <ImageComponent
                                     src={item?.thumbnail}
-                                    width={250}
-                                    height={200}
+                                    width={350}
+                                    height={250}
                                     slug={PAGE.EXAMPLE}
                                 />
                             </div>

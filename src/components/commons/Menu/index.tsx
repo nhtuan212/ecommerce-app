@@ -14,22 +14,22 @@ import { isEmpty } from "lodash";
 
 //** Styles */
 import { twMerge } from "tailwind-merge";
-import styles from "./styles.module.scss";
+import { MenuStyles } from "./styles";
 
 export default function MenuComponent() {
     const { pathname } = useRouterCustomHook();
 
     return (
         !isEmpty(MenuConfig) && (
-            <menu className={styles.Menu}>
+            <menu className={MenuStyles.Menu}>
                 {MenuConfig.map(item => (
                     <li key={item?.name}>
                         <Link
                             href={item?.slug}
                             className={twMerge(
-                                styles.MenuItem,
+                                MenuStyles.Item,
                                 item?.slug === pathname &&
-                                    styles.MenuItemActive,
+                                    MenuStyles.ItemActive,
                             )}
                         >
                             {item?.name}

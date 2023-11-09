@@ -11,11 +11,11 @@ import IconComponent from "@commonComponents/Icon";
 import { PAGE } from "@/configs/router";
 
 //** Styles */
-import styles from "./styles.module.scss";
+import { HeaderStyles } from "./styles";
 
 export default function HeaderComponent() {
     return (
-        <header className={styles.Header}>
+        <header className={HeaderStyles.Header}>
             <Link href={PAGE.HOME_PAGE}>
                 <Image
                     src="/next.svg"
