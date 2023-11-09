@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,13 +8,14 @@ import { TEXT } from "@/constants/text";
 
 //** TypeProps */
 import { ImageTypeProps } from "@typeProps/ImageTypeProps";
+import { twMerge } from "tailwind-merge";
 
 //** Interfaces */
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    width?: number | `${number}` | undefined;
-    height?: number | `${number}` | undefined;
+    width: number;
+    height: number;
     src: string;
-    slug?: string;
+    link?: string;
     priority?: boolean;
     objectFit?: ImageTypeProps;
 }
@@ -24,35 +26,41 @@ export default function ImageComponent({
     height,
     src,
     alt = TEXT.IMAGE.ALT,
-    slug,
+    link,
     priority = true,
-    objectFit = ImageTypeProps.CONTAIN,
 }: ImageProps) {
+    //** Variables */
+    const imageContainer = "relative block w-full h-auto";
+    const imageClassName = twMerge("object-contain", className);
+    //ratio Calculation width - height props
+    const style = { paddingBottom: `min(350px, ${100 / (width / height)}%)` };
+
     //** Functions */
     const renderImage = () => {
         const children = (
             <Image
-                className={className}
+                className={imageClassName}
                 src={src}
-                width={width}
-                height={height}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt={alt}
                 priority={priority}
-                style={{
-                    objectFit,
-                }}
             />
         );
 
-        if (slug) {
+        if (link) {
             return (
-                <Link className={className} href={slug}>
+                <Link className={imageContainer} style={style} href={link}>
                     {children}
                 </Link>
             );
         }
 
-        return children;
+        return (
+            <div className={imageContainer} style={style}>
+                {children}
+            </div>
+        );
     };
 
     return renderImage();

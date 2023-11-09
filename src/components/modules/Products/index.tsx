@@ -39,12 +39,12 @@ export default function ProductModules() {
                             className="basis-1/4 px-2 py-4 text-center"
                             key={item.id}
                         >
-                            <div className="flex items-center h-[250px]">
+                            <div className="flex items-center">
                                 <ImageComponent
                                     src={item?.thumbnail}
                                     width={350}
                                     height={250}
-                                    slug={PAGE.EXAMPLE}
+                                    link={PAGE.EXAMPLE}
                                 />
                             </div>
                             <div className="mt-4">
