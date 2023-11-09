@@ -2,12 +2,16 @@
 
 import React from "react";
 
+//** CustomHooks */
+import { useRouterCustomHook } from "@/helpers/customHooks";
+
 //** Constants */
 import {
     BUTTON_COLORS,
     BUTTON_SIZES,
     BUTTON_VARIANTS,
 } from "@/constants/themes/button";
+import { TEXT } from "@/constants/text";
 
 //** Type Props */
 import {
@@ -16,13 +20,9 @@ import {
     ButtonVariants,
 } from "@typeProps/ButtonTypeProps";
 
-//** CustomHooks */
-import { useRouterCustomHook } from "@/helpers/customHooks";
-
 //** Styles */
 import { twMerge } from "tailwind-merge";
-import styles from "./styles.module.scss";
-import { TEXT } from "@/constants/text";
+import { ButtonStyles } from "./styles";
 
 //** Interfaces */
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -53,7 +53,7 @@ const ButtonComponent = ({
 
     //** Variables */
     const buttonClassName = twMerge(
-        styles.Button,
+        ButtonStyles.Button,
         BUTTON_COLORS[color],
         BUTTON_SIZES[size],
         BUTTON_VARIANTS[variant][color],

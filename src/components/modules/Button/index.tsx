@@ -39,6 +39,7 @@ export default function ButtonModules() {
             <ButtonComponent
                 className="mx-2"
                 color={ButtonColors.ERROR}
+                // variant={ButtonVariants.OUTLINED}
                 value={TEXT.BUTTON.CLICK_ME}
                 startIcon={<IconComponent icon={"trash"} />}
             />

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 //** Styles */
 import { twMerge } from "tailwind-merge";
-import styles from "./styles.module.scss";
+import { InputStyles } from "./styles";
 
 //** Interfaces */
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -26,10 +26,14 @@ export default function InputComponent({
 }: InputProps) {
     //** Variables */
     const formInputClassName = twMerge(
-        styles.InputContainer,
-        disabled && styles.InputDisabled,
+        InputStyles.Container,
+        disabled && InputStyles.Disabled,
     );
-    const inputClassName = twMerge(styles.Input, className);
+    const inputClassName = twMerge(
+        className,
+        InputStyles.Input,
+        disabled && InputStyles.Disabled,
+    );
 
     //** States */
     const [valueInput, setValueInput] = useState(value);
