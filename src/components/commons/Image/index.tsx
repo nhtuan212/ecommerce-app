@@ -32,7 +32,7 @@ export default function ImageComponent({
     //** Variables */
     const imageContainer = "relative block w-full h-auto";
     const imageClassName = twMerge("object-contain", className);
-    //ratio Calculation width - height props
+    // Calculation ratio width - height props
     const style = { paddingBottom: `min(350px, ${100 / (width / height)}%)` };
 
     //** Functions */
