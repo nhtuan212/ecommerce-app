@@ -1,13 +1,13 @@
 import React from "react";
 
 //** Components */
-import SlideComponent from "@commonComponents/Slide";
-import ProductModules from "@moduleComponents/Products";
+import Slide from "@/components/Slide";
+import ProductModules from "@/components/Modules/Products";
 
 export default function Home() {
     return (
         <>
-            <SlideComponent />
+            <Slide />
             <ProductModules />
         </>
     );

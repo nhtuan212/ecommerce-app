@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 //** Components */
-import ImageComponent from "@commonComponents/Image";
+import ImageComponent from "@/components/Image";
 
 //** Constants */
 import { PAGE } from "@/configs/router";
@@ -17,7 +17,7 @@ import { PAGE } from "@/configs/router";
 //** Apis */
 import { slideApi } from "@/apis/slide";
 
-export default function SlideComponent() {
+export default function Slide() {
     return (
         <Swiper className="mySwiper" navigation={true} modules={[Navigation]}>
             {slideApi.map(item => (

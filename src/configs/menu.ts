@@ -5,10 +5,10 @@ import { PAGE } from "@/configs/router";
 import { TEXT } from "@/constants/text";
 
 export const MenuConfig = [
-    {
-        name: TEXT.MENU.HOME,
-        slug: PAGE.HOME_PAGE,
-    },
+    // {
+    //     name: TEXT.MENU.HOME,
+    //     slug: PAGE.HOME_PAGE,
+    // },
     {
         name: TEXT.MENU.PRODUCT,
         slug: PAGE.PRODUCT,

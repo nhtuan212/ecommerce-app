@@ -5,10 +5,10 @@ import Link from "next/link";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
+import { ImageTypeProps } from "@/constants/enums/eImage";
 
-//** TypeProps */
-import { ImageTypeProps } from "@typeProps/ImageTypeProps";
-import { twMerge } from "tailwind-merge";
+//** Styles */
+import clsx from "clsx";
 
 //** Interfaces */
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -31,7 +31,7 @@ export default function ImageComponent({
 }: ImageProps) {
     //** Variables */
     const imageContainer = "relative block w-full h-auto";
-    const imageClassName = twMerge("object-contain", className);
+    const imageClassName = clsx("object-contain", className);
     // Calculation ratio width - height props
     const style = { paddingBottom: `min(350px, ${100 / (width / height)}%)` };
 

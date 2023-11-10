@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 
 //** Components */
-import ImageComponent from "@commonComponents/Image";
+import ImageComponent from "@/components/Image";
 
 //** Configs */
 import { PAGE } from "@/configs/router";

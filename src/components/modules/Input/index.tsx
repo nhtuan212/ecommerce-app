@@ -2,11 +2,11 @@
 import React from "react";
 
 //** Components */
-import InputComponent from "@commonComponents/Input";
+import InputComponent from "@/components/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-import IconComponent from "@commonComponents/Icon";
+import IconComponent from "@/components/Icons";
 
 export default function InputModules() {
     return (
