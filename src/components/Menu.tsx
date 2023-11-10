@@ -13,23 +13,21 @@ import { MenuConfig } from "@/configs/menu";
 import { isEmpty } from "lodash";
 
 //** Styles */
-import { twMerge } from "tailwind-merge";
-import { MenuStyles } from "./styles";
+import clsx from "clsx";
 
-export default function MenuComponent() {
+export default function Menu() {
     const { pathname } = useRouterCustomHook();
 
     return (
         !isEmpty(MenuConfig) && (
-            <menu className={MenuStyles.Menu}>
+            <menu className="bg-primary flex justify-center items-center text-white">
                 {MenuConfig.map(item => (
                     <li key={item?.name}>
                         <Link
                             href={item?.slug}
-                            className={twMerge(
-                                MenuStyles.Item,
-                                item?.slug === pathname &&
-                                    MenuStyles.ItemActive,
+                            className={clsx(
+                                "block py-3 px-4",
+                                item?.slug === pathname && "bg-primary-700",
                             )}
                         >
                             {item?.name}

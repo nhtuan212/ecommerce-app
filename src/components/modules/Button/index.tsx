@@ -3,18 +3,12 @@
 import React from "react";
 
 //** Components */
-import ButtonComponent from "@commonComponents/Button";
-import IconComponent from "@commonComponents/Icon";
+import ButtonComponent from "@/components/Button";
+import IconComponent from "@/components/Icons";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-
-//** Type Props */
-import {
-    ButtonColors,
-    ButtonSizes,
-    ButtonVariants,
-} from "@typeProps/ButtonTypeProps";
+import { ButtonColors } from "@/constants/enums/eButton";
 
 export default function ButtonModules() {
     //** Functions */
@@ -30,35 +24,35 @@ export default function ButtonModules() {
 
             <ButtonComponent
                 className="mx-2"
-                color={ButtonColors.ERROR}
-                variant={ButtonVariants.OUTLINED}
-                size={ButtonSizes.LARGE}
-                value={TEXT.BUTTON.CLICK_ME}
+                color={ButtonColors.Primary}
                 onClick={handleClick}
-            />
+            >
+                {TEXT.BUTTON.CLICK_ME}
+            </ButtonComponent>
+
+            <ButtonComponent className="mx-2" color={ButtonColors.Error}>
+                <IconComponent className="mr-2" icon={"trash"} />
+                {TEXT.BUTTON.CLICK_ME}
+            </ButtonComponent>
+
             <ButtonComponent
                 className="mx-2"
-                color={ButtonColors.ERROR}
-                // variant={ButtonVariants.OUTLINED}
-                value={TEXT.BUTTON.CLICK_ME}
-                startIcon={<IconComponent icon={"trash"} />}
-            />
-            <ButtonComponent
-                className="mx-2"
-                size={ButtonSizes.SMALL}
-                color={ButtonColors.SUCCESS}
-                value={TEXT.BUTTON.CLICK_ME}
-                endIcon={<IconComponent icon={"share-from-square"} />}
+                color={ButtonColors.Success}
                 disabled
-            />
+            >
+                {TEXT.BUTTON.CLICK_ME}
+                <IconComponent className="ml-2" icon={"share-from-square"} />
+            </ButtonComponent>
+
             <ButtonComponent
                 className="mx-2"
                 url={"/"}
-                size={ButtonSizes.SMALL}
-                color={ButtonColors.SUCCESS}
+                color={ButtonColors.Success}
                 value={TEXT.BUTTON.CLICK_ME}
-                endIcon={<IconComponent icon={"share-from-square"} />}
-            />
+            >
+                {TEXT.BUTTON.CLICK_ME}
+                <IconComponent className="ml-2" icon={"share-from-square"} />
+            </ButtonComponent>
         </section>
     );
 }

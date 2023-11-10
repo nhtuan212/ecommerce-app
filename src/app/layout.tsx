@@ -2,9 +2,9 @@ import React from "react";
 import type { Metadata } from "next";
 
 //** Components */
-import HeaderComponent from "@commonComponents/Header";
-import FooterComponent from "@commonComponents/Footer";
-import MenuComponent from "@commonComponents/Menu";
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
+// import Menu from "@/components/Menu";
 
 //** Styles */
 import "./globals.scss";
@@ -22,10 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <HeaderComponent />
-                <MenuComponent />
+                <Header />
+                {/* <Menu /> */}
                 <main className="min-h-screen">{children}</main>
-                <FooterComponent />
+                <Footer />
             </body>
         </html>
     );

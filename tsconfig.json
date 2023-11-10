@@ -20,10 +20,7 @@
         ],
         "paths": {
             //** Components **//
-            "@commonComponents/*": ["./src/components/commons/*"],
-            "@moduleComponents/*": ["./src/components/modules/*"],
-            //** TypeProps **//
-            "@typeProps/*": ["./src/constants/typeProps/*"],
+            "@moduleComponents/*": ["src/components/Modules/*"],
             "@/*": ["./src/*"]
         }
     },

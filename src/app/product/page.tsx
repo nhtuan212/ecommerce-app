@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonModules from "@moduleComponents/Button";
+import ButtonModules from "@/components/Modules/Button";
 
 export default function ProductPage() {
     return (

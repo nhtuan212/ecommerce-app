@@ -6,14 +6,15 @@ import React, { useState } from "react";
 import { useRouterCustomHook } from "@/helpers/customHooks";
 
 //** Components */
-import IconComponent from "@commonComponents/Icon";
-import InputComponent from "@commonComponents/Input";
+import IconComponent from "@/components/Icons";
+import InputComponent from "@/components/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
 import { PAGE } from "@/configs/router";
+import ButtonComponent from "@/components/Button";
 
-export default function SearchModule() {
+export default function CollectionSearch() {
     //** Custom Hooks */
     const router = useRouterCustomHook();
 
@@ -41,14 +42,15 @@ export default function SearchModule() {
     };
 
     return (
-        <div className="basis-1/2">
+        <div className="w-full">
             <InputComponent
                 endIcon={
-                    <IconComponent
-                        className="text-gray"
-                        icon={"diamond-turn-right"}
-                        onClick={handleSearch}
-                    />
+                    <ButtonComponent className="p-0" onClick={handleSearch}>
+                        <IconComponent
+                            className="text-gray"
+                            icon={"magnifying-glass"}
+                        />
+                    </ButtonComponent>
                 }
                 placeholder={TEXT.INPUT.PLACEHOLDER}
                 onChange={event => handleChange(event)}

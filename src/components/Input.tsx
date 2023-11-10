@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 
 //** Styles */
-import { twMerge } from "tailwind-merge";
-import { InputStyles } from "./styles";
+import clsx from "clsx";
 
 //** Interfaces */
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -25,14 +24,15 @@ export default function InputComponent({
     onKeyDown,
 }: InputProps) {
     //** Variables */
-    const formInputClassName = twMerge(
-        InputStyles.Container,
-        disabled && InputStyles.Disabled,
+    const disabledClassName = "bg-transparent text-black/50 opacity-50";
+    const formInputClassName = clsx(
+        "flex items-center px-2 py-1.5 border border-gray-light rounded-md shadow-sm shadow-gray-light",
+        disabled && disabledClassName,
     );
-    const inputClassName = twMerge(
+    const inputClassName = clsx(
+        "flex-1 focus:outline-none",
+        disabled && disabledClassName,
         className,
-        InputStyles.Input,
-        disabled && InputStyles.Disabled,
     );
 
     //** States */
