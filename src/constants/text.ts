@@ -17,4 +17,5 @@ export const TEXT = {
         PLACEHOLDER: "Input placeholder",
     },
     EMPTY_SEARCH: "Please enter a search term",
+    SLOGAN: "Hãy ghé thăm những mẫu mới về mỗi ngày cho các nàng nhé!",
 };

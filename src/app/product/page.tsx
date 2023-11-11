@@ -1,10 +1,17 @@
 import React from "react";
-import ButtonModules from "@/components/Modules/Button";
+
+//** Components */
+import CategoryGroup from "@/components/Layout/Product/CategoryGroup";
+
+//** Constants */
+import { TEXT } from "@/constants/text";
 
 export default function ProductPage() {
     return (
-        <div className="p-4">
-            <ButtonModules />
-        </div>
+        <article className="container">
+            <h3 className="title">{TEXT.MENU.PRODUCT}</h3>
+            <div>{TEXT.SLOGAN}</div>
+            <CategoryGroup />
+        </article>
     );
 }

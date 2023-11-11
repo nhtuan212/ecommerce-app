@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 //** Components */
 import ImageComponent from "@/components/Image";
@@ -20,23 +20,26 @@ interface ProductItemProps {
     price: number;
     thumbnail: string;
 }
+interface ProductApiProps {
+    products: ProductItemProps[];
+}
 
-export default function ProductModules() {
-    const [data, setData] = React.useState<any>([]);
+export default function HotProduct() {
+    const [data, setData] = useState<ProductApiProps>();
 
     useEffect(() => {
         fetchApi("https://dummyjson.com/products").then(res => setData(res));
     }, []);
 
     return (
-        <section className="p-4">
-            <h1 className="mb-4 text-center">Hot Products</h1>
+        <section className="container">
+            <h3 className="title">Hot Products</h3>
 
-            {!isEmpty(data) && (
-                <div className="flex flex-wrap">
+            {!isEmpty(data?.products) && (
+                <div className="flex flex-wrap -mx-2">
                     {data?.products.map((item: ProductItemProps) => (
                         <div
-                            className="basis-1/4 px-2 py-4 text-center"
+                            className="md:basis-1/4 sm:basis-1/3 basis-1/2 px-2 py-4 text-center"
                             key={item.id}
                         >
                             <div className="flex items-center">
