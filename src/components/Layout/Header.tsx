@@ -12,7 +12,7 @@ import { PAGE } from "@/configs/router";
 
 export default function Header() {
     return (
-        <header className="flex justify-between items-center flex-wrap px-4 py-8">
+        <header className="flex justify-between items-center flex-wrap px-4 py-8 shadow-md">
             <div className="basis-3/5 flex items-center">
                 <Logo />
                 <Menu />
