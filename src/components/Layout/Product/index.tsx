@@ -1,63 +1,45 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Link from "next/link";
 
 //** Components */
 import ImageComponent from "@/components/Image";
+import Price from "@/components/Price";
+import Grid from "@/components/Grid";
 
-//** Configs */
-import { PAGE } from "@/configs/router";
-
-//** Lodash */
-import { isEmpty } from "lodash";
-
-//** Apis */
-import fetchApi from "@/helpers/fetchApi";
+//** Types */
+import { Product } from "@/lib/types";
 
 //** Interfaces */
-interface ProductItemProps {
-    id: string;
-    title: string;
-    price: number;
-    thumbnail: string;
-}
 interface ProductApiProps {
-    products: ProductItemProps[];
+    products: Product[];
 }
 
-export default function HotProduct() {
-    const [data, setData] = useState<ProductApiProps>();
-
-    useEffect(() => {
-        fetchApi("https://dummyjson.com/products").then(res => setData(res));
-    }, []);
-
+export default function Product({ products }: ProductApiProps) {
     return (
         <section className="container">
             <h3 className="title">Hot Products</h3>
 
-            {!isEmpty(data?.products) && (
-                <div className="flex flex-wrap -mx-2">
-                    {data?.products.map((item: ProductItemProps) => (
-                        <div
-                            className="md:basis-1/4 sm:basis-1/3 basis-1/2 px-2 py-4 text-center"
-                            key={item.id}
+            <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                {products.map(item => (
+                    <Grid.Item className="p-2 text-center" key={item.id}>
+                        <Link
+                            className="relative inline-block h-full w-full"
+                            href={item.slug}
                         >
-                            <div className="flex items-center">
-                                <ImageComponent
-                                    src={item?.thumbnail}
-                                    width={350}
-                                    height={250}
-                                    link={PAGE.EXAMPLE}
-                                />
-                            </div>
+                            <ImageComponent
+                                src={item?.thumbnail}
+                                alt={item?.name}
+                                isInteractive
+                            />
                             <div className="mt-4">
-                                <p>{item?.title}</p>
-                                <p>${item?.price}</p>
+                                <p>{item?.name}</p>
+                                <Price price={item?.price} />
                             </div>
-                        </div>
-                    ))}
-                </div>
-            )}
+                        </Link>
+                    </Grid.Item>
+                ))}
+            </Grid>
         </section>
     );
 }

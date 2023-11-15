@@ -10,7 +10,8 @@
         "prettier": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
         "eslint": "eslint --quiet \"src/**/*.{ts,tsx,json}\"",
         "lint-staged": "lint-staged",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "codegen": "graphql-codegen --config .graphqlrc.ts"
     },
     "lint-staged": {
         "src/**/*.{ts,tsx,json,scss}": [
@@ -25,6 +26,7 @@
         "@fortawesome/free-solid-svg-icons": "^6.4.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "clsx": "^2.0.0",
+        "graphql": "^16.8.1",
         "next": "14.0.1",
         "react": "^18",
         "react-dom": "^18",
@@ -32,6 +34,8 @@
         "swiper": "^11.0.3"
     },
     "devDependencies": {
+        "@graphql-codegen/cli": "5.0.0",
+        "@graphql-codegen/client-preset": "^4.1.0",
         "@types/lodash": "^4.14.200",
         "@types/node": "^20",
         "@types/react": "^18",

@@ -1,14 +1,18 @@
 import React from "react";
 
 //** Components */
-import Slide from "@/components/Slide";
-import HotProduct from "@/components/Layout/Product";
+// import Slide from "@/components/Slide";
+import Product from "@/components/Layout/Product";
 
-export default function Home() {
+import { getProduct } from "@/lib/saleor";
+
+export default async function Home() {
+    const products = await getProduct();
+
     return (
         <>
-            <Slide />
-            <HotProduct />
+            {/* <Slide /> */}
+            <Product products={products} />
         </>
     );
 }

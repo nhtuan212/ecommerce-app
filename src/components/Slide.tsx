@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 //** Swiper */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,13 +23,16 @@ export default function Slide() {
         <Swiper className="mySwiper" navigation={true} modules={[Navigation]}>
             {slideApi.map(item => (
                 <SwiperSlide key={item.id}>
-                    <ImageComponent
-                        width={1920}
-                        height={500}
-                        src={item?.url}
-                        alt={item?.alt}
-                        link={PAGE.HOME_PAGE}
-                    />
+                    <Link
+                        className="inline-block w-full h-[250px] sm:h-[350px] md:h-[450px]"
+                        href={PAGE.HOME_PAGE}
+                    >
+                        <ImageComponent
+                            className="object-cover"
+                            src={item?.url}
+                            alt={item?.alt}
+                        />
+                    </Link>
                 </SwiperSlide>
             ))}
         </Swiper>
