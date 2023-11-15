@@ -1,12 +1,5 @@
-import { GetProductsDocument, TypedDocumentString } from "./generated/graphql";
-import { invariant } from "./utils";
-import { TAGS } from "../constants";
-
-//** Model */
-import { productModel } from "../model/productModel";
-
-//** Types */
-import { Product, VercelCommerceProduct } from "../types";
+import { TypedDocumentString } from "../generated/graphql";
+import { invariant } from "../utils";
 
 type GraphQlError = {
     message: string;
@@ -56,21 +49,4 @@ export async function saleorFetch<Result, Variables>({
     }
 
     return body.data;
-}
-
-export async function getProduct(): Promise<Product[]> {
-    const saleorProduct = await saleorFetch({
-        query: GetProductsDocument,
-        tags: [TAGS.products],
-    });
-
-    if (!saleorProduct.products) {
-        throw new Error("Product not found");
-    }
-
-    return (
-        saleorProduct.products?.edges.map(product =>
-            productModel(product.node as VercelCommerceProduct),
-        ) || []
-    );
 }

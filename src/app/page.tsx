@@ -4,7 +4,8 @@ import React from "react";
 // import Slide from "@/components/Slide";
 import Product from "@/components/Layout/Product";
 
-import { getProduct } from "@/lib/saleor";
+//** Fetch Apis */
+import { getProduct } from "@/lib/saleor/fetch/getProduct";
 
 export default async function Home() {
     const products = await getProduct();
