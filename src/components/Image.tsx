@@ -1,67 +1,42 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-import { ImageTypeProps } from "@/constants/enums/eImage";
 
 //** Styles */
 import clsx from "clsx";
 
 //** Interfaces */
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    width: number;
-    height: number;
-    src: string;
-    link?: string;
-    priority?: boolean;
-    objectFit?: ImageTypeProps;
+interface ImageProps extends React.ComponentProps<typeof Image> {
+    isInteractive?: boolean;
 }
 
 export default function ImageComponent({
     className,
-    width,
-    height,
-    src,
     alt = TEXT.IMAGE.ALT,
-    link,
-    priority = true,
+    isInteractive = false,
+    ...props
 }: ImageProps) {
     //** Variables */
-    const imageContainer = "relative block w-full h-auto";
-    const imageClassName = clsx("object-contain", className);
-    // Calculation ratio width - height props
-    const style = { paddingBottom: `min(350px, ${100 / (width / height)}%)` };
+    const imageClassName = clsx(
+        "relative h-full w-full object-contain",
+        className,
+        isInteractive &&
+            "transition duration-300 ease-in-out hover:scale-105 hover:opacity-80",
+    );
 
-    //** Functions */
-    const renderImage = () => {
-        const children = (
+    return (
+        <div className="relative flex justify-center items-center w-full h-full overflow-hidden">
             <Image
                 className={imageClassName}
-                src={src}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                 alt={alt}
-                priority={priority}
+                priority={true}
+                {...props}
             />
-        );
-
-        if (link) {
-            return (
-                <Link className={imageContainer} style={style} href={link}>
-                    {children}
-                </Link>
-            );
-        }
-
-        return (
-            <div className={imageContainer} style={style}>
-                {children}
-            </div>
-        );
-    };
-
-    return renderImage();
+        </div>
+    );
 }

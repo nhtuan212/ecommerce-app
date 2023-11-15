@@ -19,8 +19,6 @@
             }
         ],
         "paths": {
-            //** Components **//
-            "@moduleComponents/*": ["src/components/Modules/*"],
             "@/*": ["./src/*"]
         }
     },

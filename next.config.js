@@ -8,7 +8,7 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "i.dummyjson.com",
+                hostname: "ecommerce.saleor.cloud",
             },
         ],
     },
