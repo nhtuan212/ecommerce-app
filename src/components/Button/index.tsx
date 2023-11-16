@@ -1,12 +1,10 @@
 "use client";
-
 import React from "react";
 
 //** CustomHooks */
 import { useRouterCustomHook } from "@/helpers/customHooks";
 
 //** Constants */
-import { TEXT } from "@/constants/text";
 import { ButtonColors } from "@/constants/enums/eButton";
 
 //** Styles */
@@ -24,11 +22,10 @@ const ButtonComponent = ({
     children,
     color,
     outline,
-    title = TEXT.BUTTON.TITLE,
     className,
-    disabled,
     url,
     onClick,
+    ...props
 }: ButtonProps) => {
     //** Custom Hooks */
     const router = useRouterCustomHook();
@@ -53,8 +50,7 @@ const ButtonComponent = ({
         <button
             className={buttonClassName}
             onClick={event => handleClick(event)}
-            disabled={disabled}
-            title={title}
+            {...props}
         >
             {children && children}
         </button>

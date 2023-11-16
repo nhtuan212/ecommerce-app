@@ -11,30 +11,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 library.add(fas);
 
-export default function IconComponent({
-    className,
-    icon,
-    rotation,
-
-    //** Animations */
-    spin,
-    beat,
-    fade,
-    bounce,
-    shake,
-}: FontAwesomeIconProps) {
+export default function IconComponent({ ...props }: FontAwesomeIconProps) {
     return (
-        <i className={className}>
-            <FontAwesomeIcon
-                icon={icon}
-                rotation={rotation}
-                //** Animations */
-                spin={spin}
-                beat={beat}
-                fade={fade}
-                bounce={bounce}
-                shake={shake}
-            />
+        <i className={props.className}>
+            <FontAwesomeIcon {...props} />
         </i>
     );
 }
