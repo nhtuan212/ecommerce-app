@@ -3,12 +3,12 @@
 import React from "react";
 
 //** Components */
-import ButtonComponent from "@/components/Button";
+import Button from "@/components/Button";
 import IconComponent from "@/components/Icons";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-import { ButtonColors } from "@/constants/enums/eButton";
+import { ButtonColors } from "@/constants/enums/button";
 
 export default function ButtonModules() {
     //** Functions */
@@ -22,29 +22,25 @@ export default function ButtonModules() {
                 <b>Button</b>
             </h1>
 
-            <ButtonComponent
+            <Button
                 className="mx-2"
                 color={ButtonColors.Primary}
                 onClick={handleClick}
             >
                 {TEXT.BUTTON.CLICK_ME}
-            </ButtonComponent>
+            </Button>
 
-            <ButtonComponent className="mx-2" color={ButtonColors.Error}>
+            <Button className="mx-2" color={ButtonColors.Error}>
                 <IconComponent className="mr-2" icon={"trash"} />
                 {TEXT.BUTTON.CLICK_ME}
-            </ButtonComponent>
+            </Button>
 
-            <ButtonComponent
-                className="mx-2"
-                color={ButtonColors.Success}
-                disabled
-            >
+            <Button className="mx-2" color={ButtonColors.Success} disabled>
                 {TEXT.BUTTON.CLICK_ME}
                 <IconComponent className="ml-2" icon={"share-from-square"} />
-            </ButtonComponent>
+            </Button>
 
-            <ButtonComponent
+            <Button
                 className="mx-2"
                 url={"/"}
                 color={ButtonColors.Success}
@@ -52,7 +48,7 @@ export default function ButtonModules() {
             >
                 {TEXT.BUTTON.CLICK_ME}
                 <IconComponent className="ml-2" icon={"share-from-square"} />
-            </ButtonComponent>
+            </Button>
         </section>
     );
 }

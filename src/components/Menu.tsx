@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 //** Custom Hooks */
-import { useRouterCustomHook } from "@/helpers/customHooks";
+import { useRouterCustomHook } from "@/lib/customHooks";
 
 //** Configs */
 import { MenuConfig } from "@/configs/menu";

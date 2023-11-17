@@ -2,7 +2,7 @@
 import React from "react";
 
 //** Custom Hooks */
-import { useRouterCustomHook } from "@/helpers/customHooks";
+import { useRouterCustomHook } from "@/lib/customHooks";
 
 export default function Category() {
     //** Custom Hooks */

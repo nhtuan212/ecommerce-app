@@ -3,16 +3,16 @@
 import React, { useState } from "react";
 
 //** Custom Hooks */
-import { useRouterCustomHook } from "@/helpers/customHooks";
+import { useRouterCustomHook } from "@/lib/customHooks";
 
 //** Components */
 import IconComponent from "@/components/Icons";
-import InputComponent from "@/components/Input";
+import Input from "@/components/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
 import { PAGE } from "@/configs/router";
-import ButtonComponent from "@/components/Button";
+import Button from "@/components/Button";
 
 export default function CollectionSearch() {
     //** Custom Hooks */
@@ -43,14 +43,14 @@ export default function CollectionSearch() {
 
     return (
         <div className="w-full">
-            <InputComponent
+            <Input
                 endIcon={
-                    <ButtonComponent className="p-0" onClick={handleSearch}>
+                    <Button className="p-0" onClick={handleSearch}>
                         <IconComponent
                             className="text-gray"
                             icon={"magnifying-glass"}
                         />
-                    </ButtonComponent>
+                    </Button>
                 }
                 placeholder={TEXT.INPUT.PLACEHOLDER}
                 onChange={event => handleChange(event)}

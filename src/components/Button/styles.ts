@@ -1,5 +1,5 @@
 //** Constants */
-import { ButtonColors } from "@/constants/enums/eButton";
+import { ButtonColors } from "@/constants/enums/button";
 
 export const ButtonStyles = {
     Button: "inline-flex items-center py-1.5 px-2.5 rounded-md active:animate-press disabled:opacity-50 disabled:pointer-events-none",

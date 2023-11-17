@@ -2,7 +2,7 @@
 import React from "react";
 
 //** Components */
-import InputComponent from "@/components/Input";
+import Input from "@/components/Input";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
@@ -16,7 +16,7 @@ export default function InputModules() {
             </h1>
 
             <div className="py-2">
-                <InputComponent
+                <Input
                     startIcon={<IconComponent icon={"dollar-sign"} />}
                     value={TEXT.INPUT.VALUE}
                     placeholder={TEXT.INPUT.PLACEHOLDER}
@@ -24,14 +24,14 @@ export default function InputModules() {
             </div>
 
             <div className="py-2">
-                <InputComponent
+                <Input
                     value={TEXT.INPUT.VALUE}
                     placeholder={TEXT.INPUT.PLACEHOLDER}
                 />
             </div>
 
             <div className="py-2">
-                <InputComponent
+                <Input
                     disabled
                     value={TEXT.INPUT.VALUE}
                     startIcon={<IconComponent icon={"dollar-sign"} />}
