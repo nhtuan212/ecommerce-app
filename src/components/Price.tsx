@@ -7,7 +7,7 @@ import { isEmpty } from "lodash";
 import clsx from "clsx";
 
 //** Types */
-import { Product } from "@/lib/types";
+import { Product } from "@/lib/saleor/types";
 
 //** Interface */
 interface PriceProps {

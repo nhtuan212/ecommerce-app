@@ -10,28 +10,27 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     endIcon?: React.ReactNode;
 }
 
-export default function InputComponent({
+export default function Input({
     className,
-    type,
     value,
     startIcon,
     endIcon,
-    placeholder,
-    disabled,
 
     //** Functions */
     onChange,
     onKeyDown,
+
+    ...props
 }: InputProps) {
     //** Variables */
     const disabledClassName = "bg-transparent text-black/50 opacity-50";
     const formInputClassName = clsx(
         "flex items-center px-2 py-1.5 border border-gray-light rounded-md shadow-sm shadow-gray-light",
-        disabled && disabledClassName,
+        props.disabled && disabledClassName,
     );
     const inputClassName = clsx(
         "flex-1 focus:outline-none",
-        disabled && disabledClassName,
+        props.disabled && disabledClassName,
         className,
     );
 
@@ -49,12 +48,10 @@ export default function InputComponent({
             {startIcon && <span className="mr-2">{startIcon}</span>}
             <input
                 className={inputClassName}
-                type={type}
-                disabled={disabled}
                 value={valueInput}
-                placeholder={placeholder}
                 onChange={event => handleChange(event)}
                 onKeyDown={onKeyDown}
+                {...props}
             />
             {endIcon && <span className="mr-2">{endIcon}</span>}
         </div>

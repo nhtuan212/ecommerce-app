@@ -9,7 +9,7 @@ import { PAGE } from "@/configs/router";
 import { isEmpty } from "lodash";
 
 //** Fetch Api */
-import fetchApi from "@/helpers/fetchApi";
+import fetchApi from "@/lib/fetchApi";
 
 //** Interfaces */
 

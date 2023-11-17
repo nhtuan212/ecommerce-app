@@ -1,27 +1,3 @@
-export type PricingProduct = {
-    priceRange: {
-        start: {
-            gross: {
-                amount: number;
-                currency: string;
-            };
-        };
-        stop: {
-            gross: {
-                amount: number;
-                currency: string;
-            };
-        };
-    };
-
-    discount: {
-        gross: {
-            amount: number;
-            currency: string;
-        };
-    };
-};
-
 export type VercelCommerceProduct = {
     id: string;
     slug: string;
@@ -43,5 +19,29 @@ export type Product = Omit<VercelCommerceProduct, "pricing" | "thumbnail"> & {
     discount: {
         amount: number;
         percent: string;
+    };
+};
+
+export type PricingProduct = {
+    priceRange: {
+        start: {
+            gross: {
+                amount: number;
+                currency: string;
+            };
+        };
+        stop: {
+            gross: {
+                amount: number;
+                currency: string;
+            };
+        };
+    };
+
+    discount: {
+        gross: {
+            amount: number;
+            currency: string;
+        };
     };
 };

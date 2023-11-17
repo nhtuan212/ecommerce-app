@@ -8,7 +8,7 @@ import Price from "@/components/Price";
 import Grid from "@/components/Grid";
 
 //** Types */
-import { Product } from "@/lib/types";
+import { Product } from "@/lib/saleor/types";
 
 //** Interfaces */
 interface ProductApiProps {

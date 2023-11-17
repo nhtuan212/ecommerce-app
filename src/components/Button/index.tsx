@@ -2,10 +2,10 @@
 import React from "react";
 
 //** CustomHooks */
-import { useRouterCustomHook } from "@/helpers/customHooks";
+import { useRouterCustomHook } from "@/lib/customHooks";
 
 //** Constants */
-import { ButtonColors } from "@/constants/enums/eButton";
+import { ButtonColors } from "@/constants/enums/button";
 
 //** Styles */
 import { twMerge } from "tailwind-merge";
@@ -18,11 +18,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     url?: string;
 }
 
-const ButtonComponent = ({
-    children,
+const Button = ({
+    className,
     color,
     outline,
-    className,
     url,
     onClick,
     ...props
@@ -34,7 +33,7 @@ const ButtonComponent = ({
     const buttonClassName = twMerge(
         ButtonStyles.Button,
         color && ButtonStyles.Color[color],
-        outline && color && ButtonStyles.Outline[color],
+        color && outline && ButtonStyles.Outline[color],
         className,
     );
 
@@ -52,9 +51,9 @@ const ButtonComponent = ({
             onClick={event => handleClick(event)}
             {...props}
         >
-            {children && children}
+            {props?.children && props?.children}
         </button>
     );
 };
 
-export default ButtonComponent;
+export default Button;

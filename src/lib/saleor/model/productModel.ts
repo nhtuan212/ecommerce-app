@@ -1,4 +1,4 @@
-import { parseEditorJsToHtml } from "../saleor/editor";
+import { parseEditorJsToHtml } from "../editor";
 import { Product, VercelCommerceProduct } from "../types";
 import { discountFormat, priceFormat } from "./priceFormat";
 
