@@ -33,8 +33,8 @@ export default function ImageComponent({
                 className={imageClassName}
                 fill
                 sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                priority
                 alt={alt}
-                priority={true}
                 {...props}
             />
         </div>

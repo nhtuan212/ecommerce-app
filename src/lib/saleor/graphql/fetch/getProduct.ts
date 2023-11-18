@@ -1,4 +1,4 @@
-import { GetProductsDocument } from "../generated/graphql";
+import { GetProductsDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 
 //** Model */

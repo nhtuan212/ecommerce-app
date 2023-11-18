@@ -20975,6 +20975,7 @@ export enum ProductVariantBulkErrorCode {
     NotProductsVariant = "NOT_PRODUCTS_VARIANT",
     ProductNotAssignedToChannel = "PRODUCT_NOT_ASSIGNED_TO_CHANNEL",
     Required = "REQUIRED",
+    StockAlreadyExists = "STOCK_ALREADY_EXISTS",
     Unique = "UNIQUE",
 }
 
@@ -30881,6 +30882,67 @@ export type _Service = {
     sdl?: Maybe<Scalars["String"]["output"]>;
 };
 
+export type ProductFragmentFragment = {
+    id: string;
+    slug: string;
+    name: string;
+    description?: string | null;
+    pricing?: {
+        priceRange?: {
+            start?: { gross: { currency: string; amount: number } } | null;
+            stop?: { gross: { currency: string; amount: number } } | null;
+        } | null;
+        discount?: { gross: { currency: string; amount: number } } | null;
+    } | null;
+    thumbnail?: { url: string } | null;
+};
+
+export type GetIndexCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetIndexCategoriesQuery = {
+    categories?: {
+        edges: Array<{
+            node: {
+                id: string;
+                level: number;
+                slug: string;
+                name: string;
+                description?: string | null;
+                products?: {
+                    edges: Array<{
+                        node: {
+                            id: string;
+                            slug: string;
+                            name: string;
+                            description?: string | null;
+                            pricing?: {
+                                priceRange?: {
+                                    start?: {
+                                        gross: {
+                                            currency: string;
+                                            amount: number;
+                                        };
+                                    } | null;
+                                    stop?: {
+                                        gross: {
+                                            currency: string;
+                                            amount: number;
+                                        };
+                                    } | null;
+                                } | null;
+                                discount?: {
+                                    gross: { currency: string; amount: number };
+                                } | null;
+                            } | null;
+                            thumbnail?: { url: string } | null;
+                        };
+                    }>;
+                } | null;
+            };
+        }>;
+    } | null;
+};
+
 export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
@@ -30927,46 +30989,138 @@ export class TypedDocumentString<TResult, TVariables>
         return this.value;
     }
 }
-
-export const GetProductsDocument = new TypedDocumentString(`
-    query getProducts {
-  products(first: 10, channel: "default-channel") {
+export const ProductFragmentFragmentDoc = new TypedDocumentString(
+    `
+    fragment ProductFragment on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+}
+    `,
+    { fragmentName: "ProductFragment" },
+) as unknown as TypedDocumentString<ProductFragmentFragment, unknown>;
+export const GetIndexCategoriesDocument = new TypedDocumentString(`
+    query GetIndexCategories {
+  categories(first: 50) {
     edges {
       node {
         id
+        level
         slug
         name
-        pricing {
-          priceRange {
-            start {
-              gross {
-                currency
-                amount
-              }
-            }
-            stop {
-              gross {
-                currency
-                amount
-              }
-            }
-          }
-          discount {
-            gross {
-              currency
-              amount
-            }
-          }
-        }
         description
-        thumbnail(size: 300) {
-          url
+        products(channel: "default-channel", first: 10) {
+          edges {
+            node {
+              ...ProductFragment
+            }
+          }
         }
       }
     }
   }
 }
-    `) as unknown as TypedDocumentString<
+    fragment ProductFragment on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+}`) as unknown as TypedDocumentString<
+    GetIndexCategoriesQuery,
+    GetIndexCategoriesQueryVariables
+>;
+export const GetProductsDocument = new TypedDocumentString(`
+    query GetProducts {
+  products(first: 10, channel: "default-channel") {
+    edges {
+      node {
+        ...ProductFragment
+      }
+    }
+  }
+}
+    fragment ProductFragment on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+}`) as unknown as TypedDocumentString<
     GetProductsQuery,
     GetProductsQueryVariables
 >;

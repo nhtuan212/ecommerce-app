@@ -1,5 +1,5 @@
-import { TypedDocumentString } from "../generated/graphql";
-import { invariant } from "../utils";
+import { TypedDocumentString } from "../../generated/graphql";
+import { invariant } from "../../utils";
 
 type GraphQlError = {
     message: string;

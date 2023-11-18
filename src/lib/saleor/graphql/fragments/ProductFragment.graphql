@@ -1,0 +1,31 @@
+fragment ProductFragment on Product {
+    id
+    slug
+    name
+    pricing {
+        priceRange {
+            start {
+                gross {
+                    currency
+                    amount
+                }
+            }
+            stop {
+                gross {
+                    currency
+                    amount
+                }
+            }
+        }
+        discount {
+            gross {
+                currency
+                amount
+            }
+        }
+    }
+    description
+    thumbnail(size: 300) {
+        url
+    }
+}
