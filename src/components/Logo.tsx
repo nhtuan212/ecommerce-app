@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import LogoIcon from "./Icons/Logo";
-import { PAGE } from "@/configs/router";
+import { ROUTER } from "@/configs/router";
 
 export default function Logo() {
     return (
         <Link
-            href={PAGE.HOME_PAGE}
+            href={ROUTER.HOME_PAGE}
             className="flex justify-center items-center"
         >
             <div className="flex justify-center items-center p-2 border rounded-md">

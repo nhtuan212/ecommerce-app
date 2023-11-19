@@ -51,12 +51,14 @@ const config: Config = {
         },
     },
     plugins: [
-        plugin(function ({ addBase, theme }) {
+        plugin(function ({ addBase, theme, addVariant }) {
             addBase({
                 h1: { fontSize: theme("fontSize.2xl") },
                 h2: { fontSize: theme("fontSize.xl") },
                 h3: { fontSize: theme("fontSize.lg") },
             });
+            // Alias children element
+            addVariant("img", "& > img");
         }),
     ],
 };

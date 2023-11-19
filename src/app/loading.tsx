@@ -1,0 +1,10 @@
+import React from "react";
+import LoadingIcon from "@/components/Icons/Loading";
+
+export default function loading() {
+    return (
+        <div className="fixed w-screen h-screen top-0 left-0 flex justify-center items-center bg-white">
+            <LoadingIcon className="w-20 h-20" />
+        </div>
+    );
+}

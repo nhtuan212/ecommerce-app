@@ -1,12 +1,12 @@
-import { GetIndexCategoriesDocument } from "../../generated/graphql";
+import { getCategoriesDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { categoryModel } from "../../model/categoryModel";
 import { TAGS } from "@/lib/saleor/constants";
 import { CategoryProps, VercelCommerceCategory } from "@/lib/saleor/types";
 
-export async function getIndexCategories(): Promise<CategoryProps[]> {
+export async function getCategories(): Promise<CategoryProps[]> {
     const saleorCategory = await saleorFetch({
-        query: GetIndexCategoriesDocument,
+        query: getCategoriesDocument,
         tags: [TAGS.categories],
     });
 

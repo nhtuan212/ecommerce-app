@@ -1,4 +1,4 @@
-query GetIndexCategories {
+query getCategories {
     categories(first: 50) {
         edges {
             node {

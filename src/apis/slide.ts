@@ -1,7 +1,4 @@
 export const slideApi = [
-    { id: 1, url: "https://placehold.jp/1920x500.png", alt: "Image 1" },
-    { id: 2, url: "https://placehold.jp/1920x500.png", alt: "Image 2" },
-    { id: 3, url: "https://placehold.jp/1920x500.png", alt: "Image 3" },
-    { id: 4, url: "https://placehold.jp/1920x500.png", alt: "Image 4" },
-    { id: 5, url: "https://placehold.jp/1920x500.png", alt: "Image 5" },
+    { id: 1, url: "/assets/slide/slide-1.webp", alt: "Slide 1" },
+    { id: 2, url: "/assets/slide/slide-2.webp", alt: "Slide 2" },
 ];

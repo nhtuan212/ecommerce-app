@@ -4,7 +4,7 @@ import IconComponent from "@/components/Icons";
 import Menu from "./Menu";
 import Logo from "../Logo";
 import CollectionSearch from "./Search";
-import { PAGE } from "@/configs/router";
+import { ROUTER } from "@/configs/router";
 
 export default function Header() {
     return (
@@ -15,7 +15,7 @@ export default function Header() {
             </div>
             <div className="basis-2/5 flex items-center">
                 <CollectionSearch />
-                <Link className="ml-2" href={PAGE.EXAMPLE}>
+                <Link className="ml-2" href={ROUTER.EXAMPLE}>
                     <IconComponent icon="cart-shopping" />
                 </Link>
             </div>

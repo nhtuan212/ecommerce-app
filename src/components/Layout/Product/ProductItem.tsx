@@ -16,7 +16,12 @@ export default function ProductItem({ data }: ProductItemProps) {
     return (
         <Grid.Item className="p-2 text-center">
             <Link className="relative inline-block h-full w-full" href={slug}>
-                <ImageComponent src={thumbnail} alt={name} isInteractive />
+                <ImageComponent
+                    className="border border-primary-100 rounded-md"
+                    src={thumbnail}
+                    alt={name}
+                    isInteractive
+                />
                 <div className="mt-4">
                     <p>{name}</p>
                     <Price price={price} />

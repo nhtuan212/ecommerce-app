@@ -10,7 +10,7 @@ import { TAGS } from "@/lib/saleor/constants";
 //** Types */
 import { ProductProps, VercelCommerceProduct } from "@/lib/saleor/types";
 
-export async function getProduct(): Promise<ProductProps[]> {
+export async function getProducts(): Promise<ProductProps[]> {
     const saleorProduct = await saleorFetch({
         query: GetProductsDocument,
         tags: [TAGS.products],

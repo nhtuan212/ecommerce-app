@@ -30897,9 +30897,9 @@ export type ProductFragmentFragment = {
     thumbnail?: { url: string } | null;
 };
 
-export type GetIndexCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+export type getCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetIndexCategoriesQuery = {
+export type getCategoriesQuery = {
     categories?: {
         edges: Array<{
             node: {
@@ -31025,8 +31025,8 @@ export const ProductFragmentFragmentDoc = new TypedDocumentString(
     `,
     { fragmentName: "ProductFragment" },
 ) as unknown as TypedDocumentString<ProductFragmentFragment, unknown>;
-export const GetIndexCategoriesDocument = new TypedDocumentString(`
-    query GetIndexCategories {
+export const getCategoriesDocument = new TypedDocumentString(`
+    query getCategories {
   categories(first: 50) {
     edges {
       node {
@@ -31077,8 +31077,8 @@ export const GetIndexCategoriesDocument = new TypedDocumentString(`
     url
   }
 }`) as unknown as TypedDocumentString<
-    GetIndexCategoriesQuery,
-    GetIndexCategoriesQueryVariables
+    getCategoriesQuery,
+    getCategoriesQueryVariables
 >;
 export const GetProductsDocument = new TypedDocumentString(`
     query GetProducts {

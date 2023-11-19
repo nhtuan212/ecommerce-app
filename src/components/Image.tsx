@@ -17,22 +17,17 @@ export default function ImageComponent({
 }: ImageProps) {
     //** Variables */
     const imageClassName = clsx(
-        "relative h-full w-full object-contain",
-        className,
+        "relative flex justify-center items-center w-full h-full overflow-hidden",
+        // img element
+        "img:relative img:h-full img:w-full img:object-contain",
         isInteractive &&
-            "transition duration-300 ease-in-out hover:scale-105 hover:opacity-80",
+            "img:transition img:duration-300 img:ease-in-out img:hover:scale-105 img:hover:opacity-80",
+        className,
     );
 
     return (
-        <div className="relative flex justify-center items-center w-full h-full overflow-hidden">
-            <Image
-                className={imageClassName}
-                fill
-                sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                priority
-                alt={alt}
-                {...props}
-            />
+        <div className={imageClassName}>
+            <Image fill sizes="100vw" priority alt={alt} {...props} />
         </div>
     );
 }

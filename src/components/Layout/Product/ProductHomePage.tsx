@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Grid from "@/components/Grid";
 import LoadMore from "@/components/LoadMore";
 import ProductItem from "./ProductItem";
@@ -9,20 +8,20 @@ import { ProductProps, CategoryProps } from "@/lib/saleor/types";
 
 //** Interface */
 interface ProductApiProps {
-    indexCategories: CategoryProps[];
+    categories: CategoryProps[];
 }
 
-export default function ProductHomePage({ indexCategories }: ProductApiProps) {
+export default function ProductHomePage({ categories }: ProductApiProps) {
     //** Variables */
     const limitProduct: number = 8;
 
     return (
         <section className="container">
-            {indexCategories.map(categoryItem => (
-                <div className="mb-2" key={categoryItem.id}>
-                    <Link className="text-2xl" href={categoryItem.slug}>
+            {categories.map(categoryItem => (
+                <div className="py-2" key={categoryItem.id}>
+                    <h3 className="block mb-2 font-bold text-center text-2xl">
                         {categoryItem?.name}
-                    </Link>
+                    </h3>
 
                     <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
                         {categoryItem.products

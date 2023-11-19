@@ -1,17 +1,10 @@
 "use client";
-
 import React, { useState } from "react";
-
-//** Custom Hooks */
 import { useRouterCustomHook } from "@/lib/customHooks";
-
-//** Components */
 import IconComponent from "@/components/Icons";
 import Input from "@/components/Input";
-
-//** Constants */
 import { TEXT } from "@/constants/text";
-import { PAGE } from "@/configs/router";
+import { ROUTER } from "@/configs/router";
 import Button from "@/components/Button";
 
 export default function CollectionSearch() {
@@ -24,7 +17,7 @@ export default function CollectionSearch() {
     //** Functions */
     const handleSearch = () => {
         if (!value) return alert(TEXT.EMPTY_SEARCH);
-        router.push(PAGE.EXAMPLE);
+        router.push(ROUTER.EXAMPLE);
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
