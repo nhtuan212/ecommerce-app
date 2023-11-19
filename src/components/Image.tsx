@@ -1,12 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-
-//** Constants */
-import { TEXT } from "@/constants/text";
-
-//** Styles */
 import clsx from "clsx";
+import { TEXT } from "@/constants/text";
 
 //** Interfaces */
 interface ImageProps extends React.ComponentProps<typeof Image> {

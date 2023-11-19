@@ -9,7 +9,25 @@ export type VercelCommerceProduct = {
     pricing: PricingProduct;
 };
 
-export type Product = Omit<VercelCommerceProduct, "pricing" | "thumbnail"> & {
+export type VercelCommerceCategory = {
+    id: string;
+    level: number;
+    slug: string;
+    name: string;
+    description?: string | null;
+    products: {
+        edges: [{ node: VercelCommerceProduct }];
+    };
+};
+
+export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {
+    products: ProductProps[];
+};
+
+export type ProductProps = Omit<
+    VercelCommerceProduct,
+    "pricing" | "thumbnail"
+> & {
     price: {
         amount: number;
         prevAmount: number;

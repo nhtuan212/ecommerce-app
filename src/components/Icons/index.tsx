@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-
-//** Fontawesomes */
 import {
     FontAwesomeIcon,
     FontAwesomeIconProps,

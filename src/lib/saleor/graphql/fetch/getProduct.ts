@@ -8,9 +8,9 @@ import { productModel } from "@/lib/saleor/model/productModel";
 import { TAGS } from "@/lib/saleor/constants";
 
 //** Types */
-import { Product, VercelCommerceProduct } from "@/lib/saleor/types";
+import { ProductProps, VercelCommerceProduct } from "@/lib/saleor/types";
 
-export async function getProduct(): Promise<Product[]> {
+export async function getProduct(): Promise<ProductProps[]> {
     const saleorProduct = await saleorFetch({
         query: GetProductsDocument,
         tags: [TAGS.products],
@@ -21,8 +21,8 @@ export async function getProduct(): Promise<Product[]> {
     }
 
     return (
-        saleorProduct.products?.edges.map(product =>
-            productModel(product.node as VercelCommerceProduct),
+        saleorProduct.products?.edges.map(item =>
+            productModel(item.node as VercelCommerceProduct),
         ) || []
     );
 }

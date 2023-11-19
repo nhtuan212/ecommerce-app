@@ -1,22 +1,13 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-
-//** Swiper */
+import ImageComponent from "@/components/Image";
+import { PAGE } from "@/configs/router";
+import { slideApi } from "@/apis/slide";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-
-//** Components */
-import ImageComponent from "@/components/Image";
-
-//** Constants */
-import { PAGE } from "@/configs/router";
-
-//** Apis */
-import { slideApi } from "@/apis/slide";
 
 export default function Slide() {
     return (

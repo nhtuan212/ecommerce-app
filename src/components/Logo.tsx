@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-
-//** Components */
 import LogoIcon from "./Icons/Logo";
 import { PAGE } from "@/configs/router";
 

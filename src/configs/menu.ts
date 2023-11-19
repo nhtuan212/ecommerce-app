@@ -1,24 +1,21 @@
-//** Configs */
 import { PAGE } from "@/configs/router";
-
-//** Constants */
 import { TEXT } from "@/constants/text";
 
 export const MenuConfig = [
     // {
-    //     name: TEXT.MENU.HOME,
+    //     name: TEXT.HOME,
     //     slug: PAGE.HOME_PAGE,
     // },
     {
-        name: TEXT.MENU.PRODUCT,
+        name: TEXT.PRODUCT,
         slug: PAGE.PRODUCT,
     },
     {
-        name: TEXT.MENU.NEWS,
+        name: TEXT.NEWS,
         slug: PAGE.EXAMPLE,
     },
     {
-        name: TEXT.MENU.CONTACT,
+        name: TEXT.CONTACT,
         slug: PAGE.EXAMPLE,
     },
 ];

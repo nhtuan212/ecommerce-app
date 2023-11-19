@@ -1,17 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
-//** Configs */
-import { PAGE } from "@/configs/router";
-
-//** Lodash */
-import { isEmpty } from "lodash";
-
-//** Fetch Api */
 import fetchApi from "@/lib/fetchApi";
-
-//** Interfaces */
+import { PAGE } from "@/configs/router";
+import { isEmpty } from "lodash";
 
 export default function CategoryGroup() {
     //** States */

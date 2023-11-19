@@ -1,9 +1,5 @@
 import React from "react";
-
-//** Components */
 import CategoryGroup from "@/components/Layout/Product/CategoryGroup";
-
-//** Constants */
 import { TEXT } from "@/constants/text";
 
 export default function ProductPage() {

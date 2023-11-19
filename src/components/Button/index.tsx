@@ -1,13 +1,7 @@
 "use client";
 import React from "react";
-
-//** CustomHooks */
 import { useRouterCustomHook } from "@/lib/customHooks";
-
-//** Constants */
 import { ButtonColors } from "@/constants/enums/button";
-
-//** Styles */
 import { twMerge } from "tailwind-merge";
 import { ButtonStyles } from "./styles";
 

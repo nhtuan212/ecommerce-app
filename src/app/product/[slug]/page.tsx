@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-
-//** Custom Hooks */
 import { useRouterCustomHook } from "@/lib/customHooks";
 
 export default function Category() {

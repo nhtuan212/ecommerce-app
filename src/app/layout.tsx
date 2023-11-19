@@ -1,12 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-
-//** Components */
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 // import Menu from "@/components/Menu";
-
-//** Styles */
 import "./globals.scss";
 
 export const metadata: Metadata = {

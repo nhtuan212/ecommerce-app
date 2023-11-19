@@ -1,18 +1,13 @@
 "use client";
 import React from "react";
-
-//** Lodash */
-import { isEmpty } from "lodash";
-
 import clsx from "clsx";
-
-//** Types */
-import { Product } from "@/lib/saleor/types";
+import { isEmpty } from "lodash";
+import { ProductProps } from "@/lib/saleor/types";
 
 //** Interface */
 interface PriceProps {
     className?: string;
-    price: Product["price"];
+    price: ProductProps["price"];
 }
 interface AmountProps extends PriceProps {
     value: number;
