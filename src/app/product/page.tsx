@@ -23,7 +23,7 @@ export default async function ProductPage() {
                             <Link
                                 key={categoriesItem.id}
                                 className="block py-1 text-sm hover:underline"
-                                href={`${ROUTER.CATEGORY}/${categoriesItem.slug}`}
+                                href={`${ROUTER.PRODUCT}/${categoriesItem.slug}`}
                             >
                                 {categoriesItem.name}
                             </Link>
