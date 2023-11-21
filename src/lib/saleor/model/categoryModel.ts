@@ -17,7 +17,7 @@ export const categoryModel = (item: VercelCommerceCategory): CategoryProps => {
             : "",
         products: item?.products?.edges?.map(
             (item: { node: VercelCommerceProduct }) =>
-                productModel(item.node) || {},
+                productModel(item.node) || [],
         ),
     };
 };
