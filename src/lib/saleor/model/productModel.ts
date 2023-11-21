@@ -1,11 +1,9 @@
 import { parseEditorJsToHtml } from "../editor";
-import { GetProductBySlugQuery, VariantFragment } from "../generated/graphql";
-import { ProductProps } from "../types";
+import { VariantFragment } from "../generated/graphql";
+import { ProductProps, VercelCommerceProduct } from "../types";
 import { discountFormat, priceFormat } from "./priceFormat";
 
-export const productModel = (
-    item: Exclude<GetProductBySlugQuery["product"], null | undefined>,
-): ProductProps => {
+export const productModel = (item: VercelCommerceProduct): ProductProps => {
     return {
         id: item.id,
         slug: item.slug,
