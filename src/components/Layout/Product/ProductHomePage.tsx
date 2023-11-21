@@ -4,8 +4,8 @@ import Grid from "@/components/Grid";
 import LoadMore from "@/components/LoadMore";
 import ProductItem from "./ProductItem";
 import { TEXT } from "@/constants/text";
-import { ProductProps, CategoryProps } from "@/lib/saleor/types";
 import { ROUTER } from "@/configs/router";
+import { ProductProps, CategoryProps } from "@/lib/saleor/types";
 
 //** Interface */
 interface ProductApiProps {
