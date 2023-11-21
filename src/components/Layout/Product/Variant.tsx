@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { ProductProps } from "@/lib/saleor/types";
 import Link from "next/link";
+import { ProductProps } from "@/lib/saleor/types";
 
 export default function Variant({
     variants,

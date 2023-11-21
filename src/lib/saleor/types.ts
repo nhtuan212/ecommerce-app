@@ -1,6 +1,11 @@
 import { GetProductBySlugQuery } from "./generated/graphql";
 
-export type VercelCommerceProduct = {
+export type VercelCommerceProduct = Exclude<
+    GetProductBySlugQuery["product"],
+    null | undefined
+>;
+
+export type VercelCommerceProduct2 = {
     id: string;
     slug: string;
     name: string;
@@ -88,7 +93,7 @@ export type ProductProps = Omit<
         percent: string;
     };
     thumbnail: string;
-    variants: {
+    variants?: {
         name?: string | null;
         values: string[];
     }[];
