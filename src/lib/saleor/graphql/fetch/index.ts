@@ -13,13 +13,13 @@ const endpoint = process.env.SALEOR_INSTANCE_URL;
 
 export async function saleorFetch<Result, Variables>({
     query,
-    // variables,
+    variables,
     headers,
     cache,
     tags,
 }: {
     query: TypedDocumentString<Result, Variables>;
-    // variables: Variables;
+    variables?: Variables;
     headers?: HeadersInit;
     cache?: RequestCache;
     tags?: NextFetchRequestConfig["tags"];
@@ -38,7 +38,7 @@ export async function saleorFetch<Result, Variables>({
         },
         body: JSON.stringify({
             query: query.toString(),
-            // ...(variables && { variables }),
+            ...(variables && { variables }),
         }),
         ...options,
     });

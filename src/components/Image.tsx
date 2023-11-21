@@ -18,7 +18,7 @@ export default function ImageComponent({
     //** Variables */
     const imageClassName = clsx(
         "relative flex justify-center items-center w-full h-full overflow-hidden",
-        // img element
+        // access to img element
         "img:relative img:h-full img:w-full img:object-contain",
         isInteractive &&
             "img:transition img:duration-300 img:ease-in-out img:hover:scale-105 img:hover:opacity-80",
@@ -27,7 +27,13 @@ export default function ImageComponent({
 
     return (
         <div className={imageClassName}>
-            <Image fill sizes="100vw" priority alt={alt} {...props} />
+            <Image
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                alt={alt}
+                priority={true}
+                {...props}
+            />
         </div>
     );
 }

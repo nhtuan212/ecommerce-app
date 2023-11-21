@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import clsx from "clsx";
-import { isEmpty } from "lodash";
 import { ProductProps } from "@/lib/saleor/types";
+import { twMerge } from "tailwind-merge";
+import { isEmpty } from "lodash";
 
 //** Interface */
 interface PriceProps {
@@ -28,7 +28,7 @@ export default function Price({ className, price }: PriceProps) {
     return (
         !isEmpty(price) && (
             <div
-                className={clsx(
+                className={twMerge(
                     "flex justify-center items-center gap-2",
                     className,
                 )}

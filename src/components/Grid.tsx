@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 //** Interfaces */
 interface GridsProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
 }
 

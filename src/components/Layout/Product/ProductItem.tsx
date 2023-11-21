@@ -15,7 +15,10 @@ export default function ProductItem({ data }: ProductItemProps) {
 
     return (
         <Grid.Item className="p-2 text-center">
-            <Link className="relative inline-block h-full w-full" href={slug}>
+            <Link
+                className="relative inline-block h-full w-full"
+                href={`/${slug}`}
+            >
                 <ImageComponent
                     className="border border-primary-100 rounded-md"
                     src={thumbnail}

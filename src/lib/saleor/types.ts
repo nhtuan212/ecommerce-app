@@ -3,25 +3,52 @@ export type VercelCommerceProduct = {
     slug: string;
     name: string;
     description?: string | null;
+    pricing?: PricingProduct | null;
     thumbnail?: {
         url: string;
     } | null;
-    pricing: PricingProduct;
+    media?: Array<{
+        url: string;
+    }> | null;
 };
 
 export type VercelCommerceCategory = {
     id: string;
-    level: number;
-    slug: string;
-    name: string;
+    level?: number;
+    slug?: string;
+    name?: string;
     description?: string | null;
-    products: {
-        edges: [{ node: VercelCommerceProduct }];
-    };
+    products?: {
+        edges: Array<{
+            node: VercelCommerceProduct;
+        }>;
+    } | null;
 };
 
-export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {
-    products: ProductProps[];
+export type VercelCommerceCollection = {
+    id: string;
+    slug: string;
+    name?: string;
+    products?: {
+        edges: Array<{
+            node: VercelCommerceProduct;
+        }>;
+    } | null;
+};
+
+export type PricingProduct = {
+    priceRange?: {
+        start?: {
+            gross: { amount: number; currency: string };
+        } | null;
+        stop?: {
+            gross: { amount: number; currency: string };
+        } | null;
+    } | null;
+
+    discount?: {
+        gross: { amount: number; currency: string };
+    } | null;
 };
 
 export type ProductProps = Omit<
@@ -33,33 +60,17 @@ export type ProductProps = Omit<
         prevAmount: number;
         currency: string;
     };
-    thumbnail: string;
     discount: {
         amount: number;
         percent: string;
     };
+    thumbnail: string;
 };
 
-export type PricingProduct = {
-    priceRange: {
-        start: {
-            gross: {
-                amount: number;
-                currency: string;
-            };
-        };
-        stop: {
-            gross: {
-                amount: number;
-                currency: string;
-            };
-        };
-    };
+export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {
+    products?: ProductProps[];
+};
 
-    discount: {
-        gross: {
-            amount: number;
-            currency: string;
-        };
-    };
+export type CollectionProps = Omit<VercelCommerceCollection, "products"> & {
+    products?: ProductProps[];
 };

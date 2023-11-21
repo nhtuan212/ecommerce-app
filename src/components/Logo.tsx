@@ -8,6 +8,7 @@ export default function Logo() {
         <Link
             href={ROUTER.HOME_PAGE}
             className="flex justify-center items-center"
+            scroll={false}
         >
             <div className="flex justify-center items-center p-2 border rounded-md">
                 <LogoIcon

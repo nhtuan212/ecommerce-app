@@ -3,7 +3,7 @@ import React from "react";
 import clsx from "clsx";
 
 interface ProseProps {
-    html: string;
+    html?: string | null;
     className?: string;
 }
 

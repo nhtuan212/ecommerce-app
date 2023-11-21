@@ -1,0 +1,17 @@
+query GetProductByCategory($slug: String!) {
+    category(slug: $slug) {
+        id
+        name
+        slug
+        description
+        seoTitle
+        seoDescription
+        products(first: 100, channel: "default-channel") {
+            edges {
+                node {
+                    ...ProductFragment
+                }
+            }
+        }
+    }
+}
