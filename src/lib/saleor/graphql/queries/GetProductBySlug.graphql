@@ -1,5 +1,8 @@
 query GetProductBySlug($slug: String!) {
     product(channel: "default-channel", slug: $slug) {
-        ...ProductFragment
+        ...Product
+        variants {
+            ...Variant
+        }
     }
 }

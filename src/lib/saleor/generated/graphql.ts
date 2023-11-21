@@ -30882,7 +30882,7 @@ export type _Service = {
     sdl?: Maybe<Scalars["String"]["output"]>;
 };
 
-export type ProductFragmentFragment = {
+export type ProductFragment = {
     id: string;
     slug: string;
     name: string;
@@ -30895,7 +30895,23 @@ export type ProductFragmentFragment = {
         discount?: { gross: { currency: string; amount: number } } | null;
     } | null;
     thumbnail?: { url: string } | null;
-    media?: Array<{ url: string; type: ProductMediaType; alt: string }> | null;
+    media?: Array<{ url: string }> | null;
+};
+
+export type VariantFragment = {
+    name: string;
+    attributes: Array<{
+        attribute: {
+            name?: string | null;
+            choices?: {
+                edges: Array<{ node: { name?: string | null } }>;
+            } | null;
+        };
+        values: Array<{ name?: string | null }>;
+    }>;
+    pricing?: {
+        price?: { gross: { currency: string; amount: number } } | null;
+    } | null;
 };
 
 export type GetCollectionBySlugQueryVariables = Exact<{
@@ -30985,11 +31001,7 @@ export type GetCategoriesQuery = {
                                 } | null;
                             } | null;
                             thumbnail?: { url: string } | null;
-                            media?: Array<{
-                                url: string;
-                                type: ProductMediaType;
-                                alt: string;
-                            }> | null;
+                            media?: Array<{ url: string }> | null;
                         };
                     }>;
                 } | null;
@@ -31031,11 +31043,7 @@ export type GetProductByCategoryQuery = {
                         } | null;
                     } | null;
                     thumbnail?: { url: string } | null;
-                    media?: Array<{
-                        url: string;
-                        type: ProductMediaType;
-                        alt: string;
-                    }> | null;
+                    media?: Array<{ url: string }> | null;
                 };
             }>;
         } | null;
@@ -31052,6 +31060,21 @@ export type GetProductBySlugQuery = {
         slug: string;
         name: string;
         description?: string | null;
+        variants?: Array<{
+            name: string;
+            attributes: Array<{
+                attribute: {
+                    name?: string | null;
+                    choices?: {
+                        edges: Array<{ node: { name?: string | null } }>;
+                    } | null;
+                };
+                values: Array<{ name?: string | null }>;
+            }>;
+            pricing?: {
+                price?: { gross: { currency: string; amount: number } } | null;
+            } | null;
+        }> | null;
         pricing?: {
             priceRange?: {
                 start?: { gross: { currency: string; amount: number } } | null;
@@ -31060,11 +31083,7 @@ export type GetProductBySlugQuery = {
             discount?: { gross: { currency: string; amount: number } } | null;
         } | null;
         thumbnail?: { url: string } | null;
-        media?: Array<{
-            url: string;
-            type: ProductMediaType;
-            alt: string;
-        }> | null;
+        media?: Array<{ url: string }> | null;
     } | null;
 };
 
@@ -31094,11 +31113,7 @@ export type GetProductsQuery = {
                     } | null;
                 } | null;
                 thumbnail?: { url: string } | null;
-                media?: Array<{
-                    url: string;
-                    type: ProductMediaType;
-                    alt: string;
-                }> | null;
+                media?: Array<{ url: string }> | null;
             };
         }>;
     } | null;
@@ -31121,9 +31136,9 @@ export class TypedDocumentString<TResult, TVariables>
         return this.value;
     }
 }
-export const ProductFragmentFragmentDoc = new TypedDocumentString(
+export const ProductFragmentDoc = new TypedDocumentString(
     `
-    fragment ProductFragment on Product {
+    fragment Product on Product {
   id
   slug
   name
@@ -31155,13 +31170,42 @@ export const ProductFragmentFragmentDoc = new TypedDocumentString(
   }
   media {
     url(size: 1080)
-    type
-    alt
   }
 }
     `,
-    { fragmentName: "ProductFragment" },
-) as unknown as TypedDocumentString<ProductFragmentFragment, unknown>;
+    { fragmentName: "Product" },
+) as unknown as TypedDocumentString<ProductFragment, unknown>;
+export const VariantFragmentDoc = new TypedDocumentString(
+    `
+    fragment Variant on ProductVariant {
+  name
+  attributes {
+    attribute {
+      name
+      choices(first: 100) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    values {
+      name
+    }
+  }
+  pricing {
+    price {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+}
+    `,
+    { fragmentName: "Variant" },
+) as unknown as TypedDocumentString<VariantFragment, unknown>;
 export const GetCollectionBySlugDocument = new TypedDocumentString(`
     query GetCollectionBySlug($slug: String!) {
   collection(channel: "default-channel", slug: $slug) {
@@ -31243,7 +31287,7 @@ export const GetCategoriesDocument = new TypedDocumentString(`
         products(first: 10, channel: "default-channel") {
           edges {
             node {
-              ...ProductFragment
+              ...Product
             }
           }
         }
@@ -31251,7 +31295,7 @@ export const GetCategoriesDocument = new TypedDocumentString(`
     }
   }
 }
-    fragment ProductFragment on Product {
+    fragment Product on Product {
   id
   slug
   name
@@ -31283,8 +31327,6 @@ export const GetCategoriesDocument = new TypedDocumentString(`
   }
   media {
     url(size: 1080)
-    type
-    alt
   }
 }`) as unknown as TypedDocumentString<
     GetCategoriesQuery,
@@ -31302,13 +31344,13 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
     products(first: 100, channel: "default-channel") {
       edges {
         node {
-          ...ProductFragment
+          ...Product
         }
       }
     }
   }
 }
-    fragment ProductFragment on Product {
+    fragment Product on Product {
   id
   slug
   name
@@ -31340,8 +31382,6 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
   }
   media {
     url(size: 1080)
-    type
-    alt
   }
 }`) as unknown as TypedDocumentString<
     GetProductByCategoryQuery,
@@ -31350,10 +31390,13 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
 export const GetProductBySlugDocument = new TypedDocumentString(`
     query GetProductBySlug($slug: String!) {
   product(channel: "default-channel", slug: $slug) {
-    ...ProductFragment
+    ...Product
+    variants {
+      ...Variant
+    }
   }
 }
-    fragment ProductFragment on Product {
+    fragment Product on Product {
   id
   slug
   name
@@ -31385,8 +31428,32 @@ export const GetProductBySlugDocument = new TypedDocumentString(`
   }
   media {
     url(size: 1080)
-    type
-    alt
+  }
+}
+fragment Variant on ProductVariant {
+  name
+  attributes {
+    attribute {
+      name
+      choices(first: 100) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    values {
+      name
+    }
+  }
+  pricing {
+    price {
+      gross {
+        currency
+        amount
+      }
+    }
   }
 }`) as unknown as TypedDocumentString<
     GetProductBySlugQuery,
@@ -31397,12 +31464,12 @@ export const GetProductsDocument = new TypedDocumentString(`
   products(first: 50, channel: "default-channel", filter: {search: $search}) {
     edges {
       node {
-        ...ProductFragment
+        ...Product
       }
     }
   }
 }
-    fragment ProductFragment on Product {
+    fragment Product on Product {
   id
   slug
   name
@@ -31434,8 +31501,6 @@ export const GetProductsDocument = new TypedDocumentString(`
   }
   media {
     url(size: 1080)
-    type
-    alt
   }
 }`) as unknown as TypedDocumentString<
     GetProductsQuery,

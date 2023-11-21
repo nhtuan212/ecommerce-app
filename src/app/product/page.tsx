@@ -14,6 +14,7 @@ export default async function ProductPage({
     const products = await getProducts({
         query: searchParams?.search,
     });
+
     return (
         <>
             <h3 className="title">{TEXT.PRODUCT}</h3>

@@ -1,3 +1,5 @@
+import { GetProductBySlugQuery } from "./generated/graphql";
+
 export type VercelCommerceProduct = {
     id: string;
     slug: string;
@@ -10,6 +12,7 @@ export type VercelCommerceProduct = {
     media?: Array<{
         url: string;
     }> | null;
+    variants?: VariantProduct;
 };
 
 export type VercelCommerceCategory = {
@@ -51,9 +54,29 @@ export type PricingProduct = {
     } | null;
 };
 
+export type VariantProduct = {
+    name?: string;
+    attributes?: {
+        attribute?: {
+            name?: string;
+            choices: {
+                edges: {
+                    node: {
+                        name?: string;
+                    };
+                };
+            };
+        };
+        values: {
+            name?: string;
+        };
+    };
+    pricing?: PricingProduct;
+};
+
 export type ProductProps = Omit<
-    VercelCommerceProduct,
-    "pricing" | "thumbnail"
+    Exclude<GetProductBySlugQuery["product"], null | undefined>,
+    "pricing" | "thumbnail" | "variants"
 > & {
     price: {
         amount: number;
@@ -65,6 +88,10 @@ export type ProductProps = Omit<
         percent: string;
     };
     thumbnail: string;
+    variants: {
+        name?: string | null;
+        values: string[];
+    }[];
 };
 
 export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {
