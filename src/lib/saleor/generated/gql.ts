@@ -24,7 +24,7 @@ const documents = {
         types.GetProductByCategoryDocument,
     'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductFragment\n  }\n}':
         types.GetProductBySlugDocument,
-    'query GetProducts {\n  products(first: 10, channel: "default-channel") {\n    edges {\n      node {\n        ...ProductFragment\n      }\n    }\n  }\n}':
+    'query GetProducts($search: String!) {\n  products(first: 50, channel: "default-channel", filter: {search: $search}) {\n    edges {\n      node {\n        ...ProductFragment\n      }\n    }\n  }\n}':
         types.GetProductsDocument,
 };
 
@@ -68,7 +68,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-    source: 'query GetProducts {\n  products(first: 10, channel: "default-channel") {\n    edges {\n      node {\n        ...ProductFragment\n      }\n    }\n  }\n}',
+    source: 'query GetProducts($search: String!) {\n  products(first: 50, channel: "default-channel", filter: {search: $search}) {\n    edges {\n      node {\n        ...ProductFragment\n      }\n    }\n  }\n}',
 ): typeof import("./graphql").GetProductsDocument;
 
 export function graphql(source: string) {

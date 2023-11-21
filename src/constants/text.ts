@@ -15,8 +15,7 @@ export const TEXT = {
         PLACEHOLDER: "Input placeholder",
     },
     EMPTY_FETCH: "Data not found",
-    EMPTY_SEARCH: "Please enter a search term",
     SLOGAN: "Hãy ghé thăm những mẫu mới về mỗi ngày cho các nàng nhé!",
-    LOAD_MORE: "Xem thêm",
+    SEE_ALL: "Xem tất cả",
     EMPTY_PAGE: "!! Content is being update...",
 };

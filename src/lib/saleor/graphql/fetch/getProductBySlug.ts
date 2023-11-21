@@ -9,15 +9,17 @@ import { TEXT } from "@/constants/text";
 export async function getProductBySlug({
     slug,
 }: {
-    slug: string;
+    slug?: string;
 }): Promise<ProductProps> {
     const saleorProductBySlug = await saleorFetch({
         query: GetProductBySlugDocument,
         variables: {
-            slug,
+            slug: slug || "",
         },
         tags: [TAGS.categories],
     });
+
+    console.log({ saleorProductBySlug });
 
     if (!saleorProductBySlug?.product) {
         console.error(TEXT.EMPTY_FETCH);

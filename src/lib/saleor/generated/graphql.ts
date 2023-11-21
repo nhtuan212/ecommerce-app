@@ -31068,7 +31068,9 @@ export type GetProductBySlugQuery = {
     } | null;
 };
 
-export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetProductsQueryVariables = Exact<{
+    search: Scalars["String"]["input"];
+}>;
 
 export type GetProductsQuery = {
     products?: {
@@ -31391,8 +31393,8 @@ export const GetProductBySlugDocument = new TypedDocumentString(`
     GetProductBySlugQueryVariables
 >;
 export const GetProductsDocument = new TypedDocumentString(`
-    query GetProducts {
-  products(first: 10, channel: "default-channel") {
+    query GetProducts($search: String!) {
+  products(first: 50, channel: "default-channel", filter: {search: $search}) {
     edges {
       node {
         ...ProductFragment

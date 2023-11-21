@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useRouterCustomHook } from "@/lib/customHooks";
 
 //** Interfaces */
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -10,7 +11,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({
     className,
-    value,
     startIcon,
     endIcon,
 
@@ -20,6 +20,9 @@ export default function Input({
 
     ...props
 }: InputProps) {
+    //** Custom Hooks */
+    const { searchParams } = useRouterCustomHook();
+
     //** Variables */
     const disabledClassName = "bg-transparent text-black/50 opacity-50";
     const formInputClassName = clsx(
@@ -33,20 +36,25 @@ export default function Input({
     );
 
     //** States */
-    const [valueInput, setValueInput] = useState(value);
+    const [searchValue, setSearchValue] = useState("");
 
     //** Functions */
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         typeof onChange === "function" && onChange(event);
-        setValueInput(event?.target?.value);
+        setSearchValue(event?.target?.value);
     };
+
+    //** Hooks */
+    useEffect(() => {
+        setSearchValue(searchParams.get("search") || "");
+    }, [searchParams, setSearchValue]);
 
     return (
         <div className={formInputClassName}>
             {startIcon && <span className="mr-2">{startIcon}</span>}
             <input
                 className={inputClassName}
-                value={valueInput}
+                value={searchValue}
                 onChange={event => handleChange(event)}
                 onKeyDown={onKeyDown}
                 {...props}

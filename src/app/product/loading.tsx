@@ -3,7 +3,7 @@ import Grid from "@/components/Grid";
 
 export default function Loading() {
     return (
-        <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+        <Grid className="grid-product">
             {Array(12)
                 .fill(0)
                 .map((_, index) => {

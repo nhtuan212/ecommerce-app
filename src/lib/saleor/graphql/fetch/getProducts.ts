@@ -6,9 +6,16 @@ import { TAGS } from "@/lib/saleor/constants";
 import { ProductProps } from "@/lib/saleor/types";
 import { TEXT } from "@/constants/text";
 
-export async function getProducts(): Promise<ProductProps[]> {
+export async function getProducts({
+    query,
+}: {
+    query?: string;
+}): Promise<ProductProps[]> {
     const saleorProduct = await saleorFetch({
         query: GetProductsDocument,
+        variables: {
+            search: query || "",
+        },
         tags: [TAGS.products],
     });
 

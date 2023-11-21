@@ -14,7 +14,7 @@ export default function ProductItem({ data }: ProductItemProps) {
     const { slug, thumbnail, name, price } = data;
 
     return (
-        <Grid.Item className="p-2 text-center">
+        <Grid.Item className="text-center">
             <Link
                 className="relative inline-block h-full w-full"
                 href={`/${slug}`}

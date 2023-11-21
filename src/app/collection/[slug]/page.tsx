@@ -14,7 +14,7 @@ export default async function CollectionSlugPage({
         <article className="container">
             <h3 className="title">{collection.name}</h3>
             <Suspense>
-                <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                <Grid className="grid-product">
                     {collection?.products?.map(productItem => (
                         <ProductItem key={productItem.id} data={productItem} />
                     ))}
