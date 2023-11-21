@@ -24,7 +24,7 @@ export default function ProductHomePage({ categories }: ProductApiProps) {
                         {categoryItem?.name}
                     </h3>
 
-                    <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                    <Grid className="grid-product">
                         {Array.isArray(categoryItem.products) &&
                             categoryItem.products
                                 .slice(0, limitProduct)
