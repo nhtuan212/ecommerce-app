@@ -5,6 +5,7 @@ import LoadMore from "@/components/LoadMore";
 import ProductItem from "./ProductItem";
 import { TEXT } from "@/constants/text";
 import { ProductProps, CategoryProps } from "@/lib/saleor/types";
+import { ROUTER } from "@/configs/router";
 
 //** Interface */
 interface ProductApiProps {
@@ -23,7 +24,7 @@ export default function ProductHomePage({ categories }: ProductApiProps) {
                         {categoryItem?.name}
                     </h3>
 
-                    <Grid className="grid-product">
+                    <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
                         {Array.isArray(categoryItem.products) &&
                             categoryItem.products
                                 .slice(0, limitProduct)
@@ -37,7 +38,10 @@ export default function ProductHomePage({ categories }: ProductApiProps) {
 
                     {Array.isArray(categoryItem.products) &&
                         categoryItem.products.length > limitProduct && (
-                            <LoadMore text={TEXT.SEE_ALL} />
+                            <LoadMore
+                                text={TEXT.SEE_ALL}
+                                url={`${ROUTER.PRODUCT}/${categoryItem.slug}`}
+                            />
                         )}
                 </div>
             ))}
