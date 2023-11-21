@@ -18,7 +18,7 @@ export default async function CategorySlugPage({
     return !isEmpty(category?.products) ? (
         <>
             <h1>{category.name}</h1>
-            <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+            <Grid className="grid-product">
                 {category?.products?.map(productItem => (
                     <ProductItem key={productItem.id} data={productItem} />
                 ))}

@@ -9,19 +9,20 @@ import { useRouterCustomHook } from "@/lib/customHooks";
 
 export default function CollectionSearch() {
     //** Custom Hooks */
-    const router = useRouterCustomHook();
+    const { ...router } = useRouterCustomHook();
 
     //** States */
-    const [value, setValue] = useState("");
+    const [searchValue, setSearchValue] = useState("");
 
     //** Functions */
     const handleSearch = () => {
-        if (!value) return alert(TEXT.EMPTY_SEARCH);
-        router.push(ROUTER.EXAMPLE);
+        if (!searchValue) return router.push(ROUTER.PRODUCT);
+
+        router.push(`${ROUTER.PRODUCT}?search=${searchValue}`);
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event?.target?.value);
+        setSearchValue(event?.target?.value);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {

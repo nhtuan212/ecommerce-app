@@ -1,5 +1,9 @@
-query GetProducts {
-    products(first: 10, channel: "default-channel") {
+query GetProducts($search: String!) {
+    products(
+        first: 50
+        channel: "default-channel"
+        filter: { search: $search }
+    ) {
         edges {
             node {
                 ...ProductFragment

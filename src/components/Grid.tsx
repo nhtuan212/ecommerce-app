@@ -9,7 +9,7 @@ interface GridsProps {
 
 const Grid = ({ children, className }: GridsProps) => {
     return (
-        <div className={clsx("grid grid-flow-row gap-2", className)}>
+        <div className={clsx("grid grid-flow-row gap-2 md:gap-4", className)}>
             {children}
         </div>
     );
