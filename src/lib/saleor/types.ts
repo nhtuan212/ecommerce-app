@@ -5,21 +5,6 @@ export type VercelCommerceProduct = Exclude<
     null | undefined
 >;
 
-export type VercelCommerceProduct2 = {
-    id: string;
-    slug: string;
-    name: string;
-    description?: string | null;
-    pricing?: PricingProduct | null;
-    thumbnail?: {
-        url: string;
-    } | null;
-    media?: Array<{
-        url: string;
-    }> | null;
-    variants?: VariantProduct;
-};
-
 export type VercelCommerceCategory = {
     id: string;
     level?: number;
