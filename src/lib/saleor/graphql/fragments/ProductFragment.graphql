@@ -1,4 +1,4 @@
-fragment ProductFragment on Product {
+fragment Product on Product {
     id
     slug
     name
@@ -30,7 +30,5 @@ fragment ProductFragment on Product {
     }
     media {
         url(size: 1080)
-        type
-        alt
     }
 }

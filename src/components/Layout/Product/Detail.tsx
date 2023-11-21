@@ -4,6 +4,7 @@ import Link from "next/link";
 import Prose from "@/components/Prose";
 import Price from "@/components/Price";
 import ImageComponent from "@/components/Image";
+import Variant from "./Variant";
 import { ProductProps } from "@/lib/saleor/types";
 import { isEmpty } from "lodash";
 
@@ -13,7 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function Detail({ data }: { data: ProductProps }) {
-    const { name, description, price, media } = data;
+    const { name, description, price, media, variants } = data;
 
     return (
         <article className="container">
@@ -46,8 +47,16 @@ export default function Detail({ data }: { data: ProductProps }) {
                 </div>
                 <div className="w-full sm:w-2/5 md:w-1/2 px-0 sm:px-2">
                     <h1>{name}</h1>
-                    <Price className="justify-start my-2" price={price} />
-                    <Prose html={description} />
+                    <Price
+                        className="justify-start py-3 text-2xl"
+                        price={price}
+                    />
+                    <div className="py-3">
+                        <Variant variants={variants} />
+                    </div>
+                    <div className="py-3">
+                        <Prose html={description} />
+                    </div>
                 </div>
             </div>
         </article>

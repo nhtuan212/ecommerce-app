@@ -1,0 +1,26 @@
+fragment Variant on ProductVariant {
+    name
+    attributes {
+        attribute {
+            name
+            choices(first: 100) {
+                edges {
+                    node {
+                        name
+                    }
+                }
+            }
+        }
+        values {
+            name
+        }
+    }
+    pricing {
+        price {
+            gross {
+                currency
+                amount
+            }
+        }
+    }
+}

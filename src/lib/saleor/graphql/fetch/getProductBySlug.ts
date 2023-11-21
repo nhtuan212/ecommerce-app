@@ -19,8 +19,6 @@ export async function getProductBySlug({
         tags: [TAGS.categories],
     });
 
-    console.log({ saleorProductBySlug });
-
     if (!saleorProductBySlug?.product) {
         console.error(TEXT.EMPTY_FETCH);
         return notFound();
