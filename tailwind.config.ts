@@ -23,11 +23,13 @@ const config: Config = {
                 600: "#db2777",
                 700: "#be185d",
             },
+            gray: {
+                DEFAULT: "#8492a6",
+                light: "#f9fafb",
+                dark: "#273444",
+            },
             error: "#C41C1C",
             success: "#1F7A1F",
-            gray: "#8492a6",
-            "gray-dark": "#273444",
-            "gray-light": "#d3dce6",
         },
         extend: {
             fontFamily: {

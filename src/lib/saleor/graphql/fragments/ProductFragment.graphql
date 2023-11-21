@@ -28,4 +28,9 @@ fragment ProductFragment on Product {
     thumbnail(size: 300) {
         url
     }
+    media {
+        url(size: 1080)
+        type
+        alt
+    }
 }

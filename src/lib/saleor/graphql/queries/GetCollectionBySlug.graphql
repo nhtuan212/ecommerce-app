@@ -1,0 +1,47 @@
+query GetCollectionBySlug($slug: String!) {
+    collection(channel: "default-channel", slug: $slug) {
+        id
+        slug
+        name
+        products(first: 10) {
+            edges {
+                node {
+                    id
+                    slug
+                    name
+                    pricing {
+                        priceRange {
+                            start {
+                                gross {
+                                    currency
+                                    amount
+                                }
+                            }
+                            stop {
+                                gross {
+                                    currency
+                                    amount
+                                }
+                            }
+                        }
+                        discount {
+                            gross {
+                                currency
+                                amount
+                            }
+                        }
+                    }
+                    description
+                    thumbnail(size: 500) {
+                        url
+                    }
+                    media {
+                        url(size: 1080)
+                        type
+                        alt
+                    }
+                }
+            }
+        }
+    }
+}

@@ -30895,11 +30895,61 @@ export type ProductFragmentFragment = {
         discount?: { gross: { currency: string; amount: number } } | null;
     } | null;
     thumbnail?: { url: string } | null;
+    media?: Array<{ url: string; type: ProductMediaType; alt: string }> | null;
 };
 
-export type getCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+export type GetCollectionBySlugQueryVariables = Exact<{
+    slug: Scalars["String"]["input"];
+}>;
 
-export type getCategoriesQuery = {
+export type GetCollectionBySlugQuery = {
+    collection?: {
+        id: string;
+        slug: string;
+        name: string;
+        products?: {
+            edges: Array<{
+                node: {
+                    id: string;
+                    slug: string;
+                    name: string;
+                    description?: string | null;
+                    pricing?: {
+                        priceRange?: {
+                            start?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                            stop?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                        } | null;
+                        discount?: {
+                            gross: { currency: string; amount: number };
+                        } | null;
+                    } | null;
+                    thumbnail?: { url: string } | null;
+                    media?: Array<{
+                        url: string;
+                        type: ProductMediaType;
+                        alt: string;
+                    }> | null;
+                };
+            }>;
+        } | null;
+    } | null;
+};
+
+export type GetCollectionsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCollectionsQuery = {
+    collections?: {
+        edges: Array<{ node: { id: string; slug: string; name: string } }>;
+    } | null;
+};
+
+export type GetCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCategoriesQuery = {
     categories?: {
         edges: Array<{
             node: {
@@ -30935,11 +30985,86 @@ export type getCategoriesQuery = {
                                 } | null;
                             } | null;
                             thumbnail?: { url: string } | null;
+                            media?: Array<{
+                                url: string;
+                                type: ProductMediaType;
+                                alt: string;
+                            }> | null;
                         };
                     }>;
                 } | null;
             };
         }>;
+    } | null;
+};
+
+export type GetProductByCategoryQueryVariables = Exact<{
+    slug: Scalars["String"]["input"];
+}>;
+
+export type GetProductByCategoryQuery = {
+    category?: {
+        id: string;
+        name: string;
+        slug: string;
+        description?: string | null;
+        seoTitle?: string | null;
+        seoDescription?: string | null;
+        products?: {
+            edges: Array<{
+                node: {
+                    id: string;
+                    slug: string;
+                    name: string;
+                    description?: string | null;
+                    pricing?: {
+                        priceRange?: {
+                            start?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                            stop?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                        } | null;
+                        discount?: {
+                            gross: { currency: string; amount: number };
+                        } | null;
+                    } | null;
+                    thumbnail?: { url: string } | null;
+                    media?: Array<{
+                        url: string;
+                        type: ProductMediaType;
+                        alt: string;
+                    }> | null;
+                };
+            }>;
+        } | null;
+    } | null;
+};
+
+export type GetProductBySlugQueryVariables = Exact<{
+    slug: Scalars["String"]["input"];
+}>;
+
+export type GetProductBySlugQuery = {
+    product?: {
+        id: string;
+        slug: string;
+        name: string;
+        description?: string | null;
+        pricing?: {
+            priceRange?: {
+                start?: { gross: { currency: string; amount: number } } | null;
+                stop?: { gross: { currency: string; amount: number } } | null;
+            } | null;
+            discount?: { gross: { currency: string; amount: number } } | null;
+        } | null;
+        thumbnail?: { url: string } | null;
+        media?: Array<{
+            url: string;
+            type: ProductMediaType;
+            alt: string;
+        }> | null;
     } | null;
 };
 
@@ -30967,6 +31092,11 @@ export type GetProductsQuery = {
                     } | null;
                 } | null;
                 thumbnail?: { url: string } | null;
+                media?: Array<{
+                    url: string;
+                    type: ProductMediaType;
+                    alt: string;
+                }> | null;
             };
         }>;
     } | null;
@@ -31021,11 +31151,84 @@ export const ProductFragmentFragmentDoc = new TypedDocumentString(
   thumbnail(size: 300) {
     url
   }
+  media {
+    url(size: 1080)
+    type
+    alt
+  }
 }
     `,
     { fragmentName: "ProductFragment" },
 ) as unknown as TypedDocumentString<ProductFragmentFragment, unknown>;
-export const getCategoriesDocument = new TypedDocumentString(`
+export const GetCollectionBySlugDocument = new TypedDocumentString(`
+    query GetCollectionBySlug($slug: String!) {
+  collection(channel: "default-channel", slug: $slug) {
+    id
+    slug
+    name
+    products(first: 10) {
+      edges {
+        node {
+          id
+          slug
+          name
+          pricing {
+            priceRange {
+              start {
+                gross {
+                  currency
+                  amount
+                }
+              }
+              stop {
+                gross {
+                  currency
+                  amount
+                }
+              }
+            }
+            discount {
+              gross {
+                currency
+                amount
+              }
+            }
+          }
+          description
+          thumbnail(size: 500) {
+            url
+          }
+          media {
+            url(size: 1080)
+            type
+            alt
+          }
+        }
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<
+    GetCollectionBySlugQuery,
+    GetCollectionBySlugQueryVariables
+>;
+export const GetCollectionsDocument = new TypedDocumentString(`
+    query GetCollections {
+  collections(channel: "default-channel", first: 10) {
+    edges {
+      node {
+        id
+        slug
+        name
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<
+    GetCollectionsQuery,
+    GetCollectionsQueryVariables
+>;
+export const GetCategoriesDocument = new TypedDocumentString(`
     query getCategories {
   categories(first: 50) {
     edges {
@@ -31035,7 +31238,7 @@ export const getCategoriesDocument = new TypedDocumentString(`
         slug
         name
         description
-        products(channel: "default-channel", first: 10) {
+        products(first: 10, channel: "default-channel") {
           edges {
             node {
               ...ProductFragment
@@ -31076,9 +31279,116 @@ export const getCategoriesDocument = new TypedDocumentString(`
   thumbnail(size: 300) {
     url
   }
+  media {
+    url(size: 1080)
+    type
+    alt
+  }
 }`) as unknown as TypedDocumentString<
-    getCategoriesQuery,
-    getCategoriesQueryVariables
+    GetCategoriesQuery,
+    GetCategoriesQueryVariables
+>;
+export const GetProductByCategoryDocument = new TypedDocumentString(`
+    query GetProductByCategory($slug: String!) {
+  category(slug: $slug) {
+    id
+    name
+    slug
+    description
+    seoTitle
+    seoDescription
+    products(first: 100, channel: "default-channel") {
+      edges {
+        node {
+          ...ProductFragment
+        }
+      }
+    }
+  }
+}
+    fragment ProductFragment on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+  media {
+    url(size: 1080)
+    type
+    alt
+  }
+}`) as unknown as TypedDocumentString<
+    GetProductByCategoryQuery,
+    GetProductByCategoryQueryVariables
+>;
+export const GetProductBySlugDocument = new TypedDocumentString(`
+    query GetProductBySlug($slug: String!) {
+  product(channel: "default-channel", slug: $slug) {
+    ...ProductFragment
+  }
+}
+    fragment ProductFragment on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+  media {
+    url(size: 1080)
+    type
+    alt
+  }
+}`) as unknown as TypedDocumentString<
+    GetProductBySlugQuery,
+    GetProductBySlugQueryVariables
 >;
 export const GetProductsDocument = new TypedDocumentString(`
     query GetProducts {
@@ -31119,6 +31429,11 @@ export const GetProductsDocument = new TypedDocumentString(`
   description
   thumbnail(size: 300) {
     url
+  }
+  media {
+    url(size: 1080)
+    type
+    alt
   }
 }`) as unknown as TypedDocumentString<
     GetProductsQuery,

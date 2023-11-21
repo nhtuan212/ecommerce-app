@@ -1,10 +1,30 @@
-"use client";
 import React from "react";
-import { useRouterCustomHook } from "@/lib/customHooks";
+import Grid from "@/components/Grid";
+import ProductItem from "@/components/Layout/Product/ProductItem";
+import Empty from "@/components/Empty";
+import { getProductByCategory } from "@/lib/saleor/graphql/fetch/getProductByCategory";
+import { isEmpty } from "lodash";
 
-export default function Category() {
-    //** Custom Hooks */
-    const { pathname } = useRouterCustomHook();
+//** Interface */
+interface CategorySlugPageProps {
+    params: { slug: string };
+}
 
-    return <article className="sm:p-4 p-2">{pathname}</article>;
+export default async function CategorySlugPage({
+    params,
+}: CategorySlugPageProps) {
+    const category = await getProductByCategory({ slug: params?.slug });
+
+    return !isEmpty(category?.products) ? (
+        <>
+            <h1>{category.name}</h1>
+            <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+                {category?.products?.map(productItem => (
+                    <ProductItem key={productItem.id} data={productItem} />
+                ))}
+            </Grid>
+        </>
+    ) : (
+        <Empty />
+    );
 }

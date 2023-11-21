@@ -1,18 +1,20 @@
 import { PricingProduct } from "../types";
 
-export const priceFormat = (price: PricingProduct) => {
+export const priceFormat = (price?: PricingProduct | null) => {
+    const amount = price?.priceRange?.start?.gross.amount || 0;
+    const discount = price?.discount?.gross.amount || 0;
+    const currency = price?.priceRange?.start?.gross.currency || "";
+
     return {
-        amount: price?.priceRange?.start?.gross.amount || 0,
-        prevAmount:
-            price?.priceRange?.start?.gross.amount +
-                price?.discount?.gross.amount || 0,
-        currency: price?.priceRange?.start?.gross.currency || "",
+        amount,
+        prevAmount: amount + discount,
+        currency,
     };
 };
 
-export const discountFormat = (price: PricingProduct) => {
-    const amount = price?.priceRange?.start?.gross.amount;
-    const discount = price?.discount?.gross.amount;
+export const discountFormat = (price?: PricingProduct | null) => {
+    const amount = price?.priceRange?.start?.gross.amount || 0;
+    const discount = price?.discount?.gross.amount || 0;
     const initPrice = amount + discount;
 
     let percent = "";

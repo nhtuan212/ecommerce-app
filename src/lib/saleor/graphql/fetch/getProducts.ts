@@ -1,14 +1,10 @@
+import { notFound } from "next/navigation";
 import { GetProductsDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
-
-//** Model */
 import { productModel } from "@/lib/saleor/model/productModel";
-
-//** Constants */
 import { TAGS } from "@/lib/saleor/constants";
-
-//** Types */
-import { ProductProps, VercelCommerceProduct } from "@/lib/saleor/types";
+import { ProductProps } from "@/lib/saleor/types";
+import { TEXT } from "@/constants/text";
 
 export async function getProducts(): Promise<ProductProps[]> {
     const saleorProduct = await saleorFetch({
@@ -17,12 +13,11 @@ export async function getProducts(): Promise<ProductProps[]> {
     });
 
     if (!saleorProduct.products) {
-        throw new Error("Product not found");
+        console.error(TEXT.EMPTY_FETCH);
+        return notFound();
     }
 
     return (
-        saleorProduct.products?.edges.map(item =>
-            productModel(item.node as VercelCommerceProduct),
-        ) || []
+        saleorProduct.products?.edges.map(item => productModel(item.node)) || []
     );
 }

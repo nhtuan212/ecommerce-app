@@ -5,6 +5,7 @@ import LoadMore from "@/components/LoadMore";
 import ProductItem from "./ProductItem";
 import { TEXT } from "@/constants/text";
 import { ProductProps, CategoryProps } from "@/lib/saleor/types";
+import { ROUTER } from "@/configs/router";
 
 //** Interface */
 interface ProductApiProps {
@@ -39,7 +40,7 @@ export default function ProductHomePage({ categories }: ProductApiProps) {
                             text={`${TEXT.LOAD_MORE} (${
                                 categoryItem.products.length - limitProduct
                             }) ${TEXT.PRODUCT}`}
-                            url={categoryItem.slug}
+                            url={`${ROUTER.PRODUCT}/${categoryItem.slug}`}
                         />
                     )}
                 </div>
