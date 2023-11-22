@@ -20,10 +20,9 @@ export default function Detail({ data }: { data: ProductProps }) {
 
     //** Variables */
     const { name, description, price, media, variants } = data;
-    const priceSize =
-        variants?.availableValues.find(
-            item => item.name === searchParams.get(variants.name.toLowerCase()),
-        ) || 0;
+    const priceSize = variants?.availableValues.find(
+        item => item.name === searchParams.get(variants.name.toLowerCase()),
+    );
 
     return (
         <article className="container">
