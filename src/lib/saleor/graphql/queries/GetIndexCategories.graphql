@@ -3,6 +3,7 @@ query getCategories {
         edges {
             node {
                 id
+                level
                 slug
                 name
                 description

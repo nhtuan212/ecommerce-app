@@ -13,6 +13,7 @@ export const productByCategoryModel = (
         id: item.id,
         slug: item.slug,
         name: item.name,
+        level: item.level,
         description: item?.description
             ? parseEditorJsToHtml(item.description)
             : "",

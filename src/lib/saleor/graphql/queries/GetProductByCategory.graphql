@@ -2,6 +2,7 @@ query GetProductByCategory($slug: String!) {
     category(slug: $slug) {
         id
         name
+        level
         slug
         description
         seoTitle

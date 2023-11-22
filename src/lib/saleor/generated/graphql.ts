@@ -30970,6 +30970,7 @@ export type GetCategoriesQuery = {
         edges: Array<{
             node: {
                 id: string;
+                level: number;
                 slug: string;
                 name: string;
                 description?: string | null;
@@ -31017,6 +31018,7 @@ export type GetProductByCategoryQuery = {
     category?: {
         id: string;
         name: string;
+        level: number;
         slug: string;
         description?: string | null;
         seoTitle?: string | null;
@@ -31279,6 +31281,7 @@ export const GetCategoriesDocument = new TypedDocumentString(`
     edges {
       node {
         id
+        level
         slug
         name
         description
@@ -31335,6 +31338,7 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
   category(slug: $slug) {
     id
     name
+    level
     slug
     description
     seoTitle
