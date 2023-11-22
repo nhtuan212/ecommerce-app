@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonModules from "@/components/Module/Button";
 import InputModules from "@/components/Module/Input";
-import CollectionSearch from "@/components/Layout/Search";
+import CollectionSearch from "@/components/Search";
 
 export default function Examples() {
     return (
