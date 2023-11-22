@@ -3,7 +3,7 @@ import Link from "next/link";
 import IconComponent from "@/components/Icons";
 import Menu from "./Menu";
 import Logo from "../Logo";
-import CollectionSearch from "./Search";
+import CollectionSearch from "../Search";
 import { ROUTER } from "@/configs/router";
 import { getCollections } from "@/lib/saleor/graphql/fetch/getCollections";
 
