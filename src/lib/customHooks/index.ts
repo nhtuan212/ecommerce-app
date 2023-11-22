@@ -12,5 +12,18 @@ export const useRouterCustomHook = () => {
     const params = useParams();
     const searchParams = useSearchParams();
 
-    return { ...router, pathname, params, searchParams };
+    const createQueryString = ({
+        key,
+        value,
+    }: {
+        key: string;
+        value: string;
+    }) => {
+        const queryString = new URLSearchParams(searchParams.toString());
+        queryString.set(key, value);
+
+        return `${pathname}?${queryString}`;
+    };
+
+    return { ...router, pathname, params, searchParams, createQueryString };
 };

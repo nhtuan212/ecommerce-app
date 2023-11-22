@@ -25,9 +25,10 @@ const config: Config = {
             },
             gray: {
                 DEFAULT: "#8492a6",
-                200: "#e5e7eb",
                 light: "#f9fafb",
-                dark: "#273444",
+                100: "#f3f4f6",
+                200: "#e5e7eb",
+                dark: "#6b7280",
             },
             error: "#C41C1C",
             success: "#1F7A1F",
