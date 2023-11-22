@@ -1,9 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-export default function LogoIcon({
-    ...restProps
-}: React.SVGAttributes<SVGElement>) {
+export default function LogoIcon(restProps: React.SVGAttributes<SVGElement>) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
