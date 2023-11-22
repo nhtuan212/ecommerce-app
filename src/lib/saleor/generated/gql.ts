@@ -20,9 +20,9 @@ const documents = {
         types.GetCollectionBySlugDocument,
     'query GetCollections {\n  collections(channel: "default-channel", first: 10) {\n    edges {\n      node {\n        id\n        slug\n        name\n      }\n    }\n  }\n}':
         types.GetCollectionsDocument,
-    'query getCategories {\n  categories(first: 50) {\n    edges {\n      node {\n        id\n        slug\n        name\n        description\n        products(first: 10, channel: "default-channel") {\n          edges {\n            node {\n              ...ProductDetail\n            }\n          }\n        }\n      }\n    }\n  }\n}':
+    'query getCategories {\n  categories(first: 50) {\n    edges {\n      node {\n        id\n        level\n        slug\n        name\n        description\n        products(first: 10, channel: "default-channel") {\n          edges {\n            node {\n              ...ProductDetail\n            }\n          }\n        }\n      }\n    }\n  }\n}':
         types.GetCategoriesDocument,
-    'query GetProductByCategory($slug: String!) {\n  category(slug: $slug) {\n    id\n    name\n    slug\n    description\n    seoTitle\n    seoDescription\n    products(first: 100, channel: "default-channel") {\n      edges {\n        node {\n          ...ProductDetail\n        }\n      }\n    }\n  }\n}':
+    'query GetProductByCategory($slug: String!) {\n  category(slug: $slug) {\n    id\n    name\n    level\n    slug\n    description\n    seoTitle\n    seoDescription\n    products(first: 100, channel: "default-channel") {\n      edges {\n        node {\n          ...ProductDetail\n        }\n      }\n    }\n  }\n}':
         types.GetProductByCategoryDocument,
     'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductDetail\n    variants {\n      ...Variant\n    }\n  }\n}':
         types.GetProductBySlugDocument,
@@ -58,13 +58,13 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-    source: 'query getCategories {\n  categories(first: 50) {\n    edges {\n      node {\n        id\n        slug\n        name\n        description\n        products(first: 10, channel: "default-channel") {\n          edges {\n            node {\n              ...ProductDetail\n            }\n          }\n        }\n      }\n    }\n  }\n}',
+    source: 'query getCategories {\n  categories(first: 50) {\n    edges {\n      node {\n        id\n        level\n        slug\n        name\n        description\n        products(first: 10, channel: "default-channel") {\n          edges {\n            node {\n              ...ProductDetail\n            }\n          }\n        }\n      }\n    }\n  }\n}',
 ): typeof import("./graphql").GetCategoriesDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-    source: 'query GetProductByCategory($slug: String!) {\n  category(slug: $slug) {\n    id\n    name\n    slug\n    description\n    seoTitle\n    seoDescription\n    products(first: 100, channel: "default-channel") {\n      edges {\n        node {\n          ...ProductDetail\n        }\n      }\n    }\n  }\n}',
+    source: 'query GetProductByCategory($slug: String!) {\n  category(slug: $slug) {\n    id\n    name\n    level\n    slug\n    description\n    seoTitle\n    seoDescription\n    products(first: 100, channel: "default-channel") {\n      edges {\n        node {\n          ...ProductDetail\n        }\n      }\n    }\n  }\n}',
 ): typeof import("./graphql").GetProductByCategoryDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
