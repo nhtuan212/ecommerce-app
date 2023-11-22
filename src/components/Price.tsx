@@ -34,7 +34,7 @@ export default function Price({ className, price }: PriceProps) {
                 )}
                 suppressHydrationWarning={true}
             >
-                {price?.prevAmount > 0 && (
+                {price?.prevAmount && (
                     <p className="text-sm text-gray line-through">
                         {renderAmount({ price, value: price.prevAmount })}
                     </p>

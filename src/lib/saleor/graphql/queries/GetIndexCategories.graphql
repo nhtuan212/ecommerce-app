@@ -3,14 +3,13 @@ query getCategories {
         edges {
             node {
                 id
-                level
                 slug
                 name
                 description
                 products(first: 10, channel: "default-channel") {
                     edges {
                         node {
-                            ...Product
+                            ...ProductDetail
                         }
                     }
                 }

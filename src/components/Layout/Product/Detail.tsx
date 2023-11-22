@@ -5,6 +5,7 @@ import Prose from "@/components/Prose";
 import Price from "@/components/Price";
 import ImageComponent from "@/components/Image";
 import Variant from "./Variant";
+import { useRouterCustomHook } from "@/lib/customHooks";
 import { ProductProps } from "@/lib/saleor/types";
 import { isEmpty } from "lodash";
 
@@ -14,7 +15,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function Detail({ data }: { data: ProductProps }) {
+    //** Custom hooks */
+    const { searchParams } = useRouterCustomHook();
+
+    //** Variables */
     const { name, description, price, media, variants } = data;
+    const priceSize =
+        variants?.availableValues.find(
+            item => item.name === searchParams.get(variants.name.toLowerCase()),
+        ) || 0;
 
     return (
         <article className="container">
@@ -49,7 +58,7 @@ export default function Detail({ data }: { data: ProductProps }) {
                     <h1>{name}</h1>
                     <Price
                         className="justify-start py-3 text-2xl"
-                        price={price}
+                        price={priceSize?.pricing || price}
                     />
                     <div className="py-3">
                         <Variant variants={variants} />

@@ -19,26 +19,30 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
     };
 };
 
-const variantModel = (variants: VariantFragment[] | null | undefined) => {
-    return (
-        variants
-            ?.flatMap(
-                variant =>
-                    variant?.attributes.flatMap(attributes => {
-                        return {
-                            name: attributes.attribute.name,
-                            values:
-                                attributes.attribute.choices?.edges.map(
-                                    choice => choice.node.name || "",
-                                ) || [],
-                        };
-                    }),
-            )
-            .filter(
-                (value1, idx, arr) =>
-                    // filter unique
-                    arr.findIndex(value2 => value1.name === value2.name) ===
-                    idx,
-            ) || []
-    );
+const variantModel = (
+    variants: VariantFragment[] | null | undefined,
+): ProductProps["variants"] => {
+    return variants?.flatMap(
+        variant =>
+            variant?.attributes.flatMap(attributes => {
+                return {
+                    name: attributes.attribute.name as string,
+                    values:
+                        attributes.attribute.choices?.edges.map(
+                            choice => choice.node.name || "",
+                        ) || [],
+
+                    availableValues: variants?.map(variant => ({
+                        name: variant.name,
+                        pricing: variant.pricing?.price?.gross,
+                    })),
+                };
+            }),
+    )[0];
+    // .filter(
+    //     (value1, idx, arr) =>
+    //         // filter unique
+    //         arr.findIndex(value2 => value1.name === value2.name) ===
+    //         idx,
+    // ) || []
 };

@@ -1,33 +1,28 @@
-import { GetProductBySlugQuery } from "./generated/graphql";
+import {
+    GetCategoriesQuery,
+    GetCollectionBySlugQuery,
+    GetProductBySlugQuery,
+} from "./generated/graphql";
 
 export type VercelCommerceProduct = Exclude<
     GetProductBySlugQuery["product"],
     null | undefined
 >;
 
-export type VercelCommerceCategory = {
-    id: string;
-    level?: number;
-    slug?: string;
-    name?: string;
-    description?: string | null;
-    products?: {
-        edges: Array<{
-            node: VercelCommerceProduct;
-        }>;
-    } | null;
-};
+export type VercelCommerceCategory = Exclude<
+    Exclude<
+        Exclude<GetCategoriesQuery["categories"], null | undefined>["edges"][0],
+        null | undefined
+    >["node"],
+    null | undefined
+>;
 
-export type VercelCommerceCollection = {
-    id: string;
-    slug: string;
-    name?: string;
-    products?: {
-        edges: Array<{
-            node: VercelCommerceProduct;
-        }>;
-    } | null;
-};
+export type VercelCommerceCollection = Exclude<
+    GetCollectionBySlugQuery["collection"],
+    null | undefined
+>;
+
+//** Type output */
 
 export type PricingProduct = {
     priceRange?: {
@@ -65,12 +60,12 @@ export type VariantProduct = {
 };
 
 export type ProductProps = Omit<
-    Exclude<GetProductBySlugQuery["product"], null | undefined>,
+    VercelCommerceProduct,
     "pricing" | "thumbnail" | "variants"
 > & {
     price: {
         amount: number;
-        prevAmount: number;
+        prevAmount?: number;
         currency: string;
     };
     discount: {
@@ -79,9 +74,13 @@ export type ProductProps = Omit<
     };
     thumbnail: string;
     variants?: {
-        name?: string | null;
+        name: string;
         values: string[];
-    }[];
+        availableValues: {
+            name: string;
+            pricing?: ProductProps["price"];
+        }[];
+    };
 };
 
 export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {

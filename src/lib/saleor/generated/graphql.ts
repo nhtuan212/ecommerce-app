@@ -30882,7 +30882,7 @@ export type _Service = {
     sdl?: Maybe<Scalars["String"]["output"]>;
 };
 
-export type ProductFragment = {
+export type ProductDetailFragment = {
     id: string;
     slug: string;
     name: string;
@@ -30970,7 +30970,6 @@ export type GetCategoriesQuery = {
         edges: Array<{
             node: {
                 id: string;
-                level: number;
                 slug: string;
                 name: string;
                 description?: string | null;
@@ -31136,9 +31135,9 @@ export class TypedDocumentString<TResult, TVariables>
         return this.value;
     }
 }
-export const ProductFragmentDoc = new TypedDocumentString(
+export const ProductDetailFragmentDoc = new TypedDocumentString(
     `
-    fragment Product on Product {
+    fragment ProductDetail on Product {
   id
   slug
   name
@@ -31173,8 +31172,8 @@ export const ProductFragmentDoc = new TypedDocumentString(
   }
 }
     `,
-    { fragmentName: "Product" },
-) as unknown as TypedDocumentString<ProductFragment, unknown>;
+    { fragmentName: "ProductDetail" },
+) as unknown as TypedDocumentString<ProductDetailFragment, unknown>;
 export const VariantFragmentDoc = new TypedDocumentString(
     `
     fragment Variant on ProductVariant {
@@ -31280,14 +31279,13 @@ export const GetCategoriesDocument = new TypedDocumentString(`
     edges {
       node {
         id
-        level
         slug
         name
         description
         products(first: 10, channel: "default-channel") {
           edges {
             node {
-              ...Product
+              ...ProductDetail
             }
           }
         }
@@ -31295,7 +31293,7 @@ export const GetCategoriesDocument = new TypedDocumentString(`
     }
   }
 }
-    fragment Product on Product {
+    fragment ProductDetail on Product {
   id
   slug
   name
@@ -31344,13 +31342,13 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
     products(first: 100, channel: "default-channel") {
       edges {
         node {
-          ...Product
+          ...ProductDetail
         }
       }
     }
   }
 }
-    fragment Product on Product {
+    fragment ProductDetail on Product {
   id
   slug
   name
@@ -31390,13 +31388,13 @@ export const GetProductByCategoryDocument = new TypedDocumentString(`
 export const GetProductBySlugDocument = new TypedDocumentString(`
     query GetProductBySlug($slug: String!) {
   product(channel: "default-channel", slug: $slug) {
-    ...Product
+    ...ProductDetail
     variants {
       ...Variant
     }
   }
 }
-    fragment Product on Product {
+    fragment ProductDetail on Product {
   id
   slug
   name
@@ -31464,12 +31462,12 @@ export const GetProductsDocument = new TypedDocumentString(`
   products(first: 50, channel: "default-channel", filter: {search: $search}) {
     edges {
       node {
-        ...Product
+        ...ProductDetail
       }
     }
   }
 }
-    fragment Product on Product {
+    fragment ProductDetail on Product {
   id
   slug
   name
