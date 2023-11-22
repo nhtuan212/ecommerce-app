@@ -39,11 +39,12 @@ export default function Variant({
                             }
                             className={clsx(
                                 "flex justify-center items-center min-w-[3.5rem] bg-gray-100 px-2 py-1 border rounded-md",
-                                isActive &&
-                                    "bg-primary text-white border-primary",
                                 isAvailableValues
                                     ? "hover:border-primary"
                                     : "relative text-gray z-10 cursor-not-allowed overflow-hidden before:absolute before:bg-gray before:inset-x-0 before:-z-10 before:h-px before:-rotate-[30deg] before:transition-transform",
+                                isActive &&
+                                    isAvailableValues &&
+                                    "bg-primary text-white border-primary",
                             )}
                         >
                             {value}

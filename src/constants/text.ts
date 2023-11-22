@@ -17,5 +17,6 @@ export const TEXT = {
     EMPTY_FETCH: "Data not found",
     SLOGAN: "Hãy ghé thăm những mẫu mới về mỗi ngày cho các nàng nhé!",
     SEE_ALL: "Xem tất cả",
+    ADD_TO_CART: "Add to cart",
     EMPTY_PAGE: "!! Content is being update...",
 };
