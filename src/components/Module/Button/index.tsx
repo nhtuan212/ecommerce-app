@@ -8,7 +8,7 @@ import IconComponent from "@/components/Icons";
 
 //** Constants */
 import { TEXT } from "@/constants/text";
-import { ButtonColors } from "@/constants/enums/button";
+import { ButtonColors } from "@/components/Button/enum";
 
 export default function ButtonModules() {
     //** Functions */

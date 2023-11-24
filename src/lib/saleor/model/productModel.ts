@@ -16,6 +16,14 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
         thumbnail: item.thumbnail?.url || "",
         media: item.media || [],
         variants: variantModel(item?.variants),
+        // Related products
+        related:
+            item?.category?.products?.edges?.map(relatedItem => ({
+                id: relatedItem.node.id,
+                slug: relatedItem.node?.slug,
+                name: relatedItem.node?.name,
+                thumbnail: item.thumbnail?.url || "",
+            })) || [],
     };
 };
 

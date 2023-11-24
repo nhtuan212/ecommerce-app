@@ -18,7 +18,6 @@ export default async function ProductPage({
     return (
         <>
             <h3 className="title">{TEXT.PRODUCT}</h3>
-            <div className="mb-4">{TEXT.SLOGAN}</div>
             {!isEmpty(products) ? (
                 <Suspense>
                     <Grid className="grid-product">

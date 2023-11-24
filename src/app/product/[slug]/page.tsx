@@ -15,16 +15,18 @@ export default async function CategorySlugPage({
 }: CategorySlugPageProps) {
     const category = await getProductByCategory({ slug: params?.slug });
 
-    return !isEmpty(category?.products) ? (
+    return (
         <>
-            <h1>{category.name}</h1>
-            <Grid className="grid-product">
-                {category?.products?.map(productItem => (
-                    <ProductItem key={productItem.id} data={productItem} />
-                ))}
-            </Grid>
+            <h3 className="title">{category.name}</h3>
+            {!isEmpty(category?.products) ? (
+                <Grid className="grid-product">
+                    {category?.products?.map(productItem => (
+                        <ProductItem key={productItem.id} data={productItem} />
+                    ))}
+                </Grid>
+            ) : (
+                <Empty />
+            )}
         </>
-    ) : (
-        <Empty />
     );
 }

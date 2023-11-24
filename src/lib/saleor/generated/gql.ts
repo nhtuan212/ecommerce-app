@@ -24,7 +24,7 @@ const documents = {
         types.GetCategoriesDocument,
     'query GetProductByCategory($slug: String!) {\n  category(slug: $slug) {\n    id\n    name\n    level\n    slug\n    description\n    seoTitle\n    seoDescription\n    products(first: 100, channel: "default-channel") {\n      edges {\n        node {\n          ...ProductDetail\n        }\n      }\n    }\n  }\n}':
         types.GetProductByCategoryDocument,
-    'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductDetail\n    variants {\n      ...Variant\n    }\n  }\n}':
+    'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductDetail\n    variants {\n      ...Variant\n    }\n    category {\n      id\n      name\n      products(first: 100, channel: "default-channel") {\n        edges {\n          node {\n            ...ProductDetail\n          }\n        }\n      }\n    }\n  }\n}':
         types.GetProductBySlugDocument,
     'query GetProducts($search: String!) {\n  products(first: 50, channel: "default-channel", filter: {search: $search}) {\n    edges {\n      node {\n        ...ProductDetail\n      }\n    }\n  }\n}':
         types.GetProductsDocument,
@@ -70,7 +70,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-    source: 'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductDetail\n    variants {\n      ...Variant\n    }\n  }\n}',
+    source: 'query GetProductBySlug($slug: String!) {\n  product(channel: "default-channel", slug: $slug) {\n    ...ProductDetail\n    variants {\n      ...Variant\n    }\n    category {\n      id\n      name\n      products(first: 100, channel: "default-channel") {\n        edges {\n          node {\n            ...ProductDetail\n          }\n        }\n      }\n    }\n  }\n}',
 ): typeof import("./graphql").GetProductBySlugDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.

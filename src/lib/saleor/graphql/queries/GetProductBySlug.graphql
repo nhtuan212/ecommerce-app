@@ -4,5 +4,16 @@ query GetProductBySlug($slug: String!) {
         variants {
             ...Variant
         }
+        category {
+            id
+            name
+            products(first: 100, channel: "default-channel") {
+                edges {
+                    node {
+                        ...ProductDetail
+                    }
+                }
+            }
+        }
     }
 }
