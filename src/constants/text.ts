@@ -15,8 +15,12 @@ export const TEXT = {
         PLACEHOLDER: "Input placeholder",
     },
     EMPTY_FETCH: "Data not found",
-    SLOGAN: "Hãy ghé thăm những mẫu mới về mỗi ngày cho các nàng nhé!",
     SEE_ALL: "Xem tất cả",
+
+    RELATED_PRODUCT: "Related product",
+
+    MY_CART: "My cart",
+    CART_EMPTY: "Your cart is empty !!",
     ADD_TO_CART: "Add to cart",
     EMPTY_PAGE: "!! Content is being update...",
 };

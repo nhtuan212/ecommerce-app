@@ -61,7 +61,7 @@ export type VariantProduct = {
 
 export type ProductProps = Omit<
     VercelCommerceProduct,
-    "pricing" | "thumbnail" | "variants"
+    "pricing" | "thumbnail" | "variants" | "category"
 > & {
     price: {
         amount: number;
@@ -81,6 +81,13 @@ export type ProductProps = Omit<
             pricing?: ProductProps["price"];
         }[];
     };
+    // Related products
+    related: {
+        id: string;
+        slug?: string;
+        name?: string;
+        thumbnail: string;
+    }[];
 };
 
 export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {

@@ -1,22 +1,17 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Prose from "@/components/Prose";
 import Price from "@/components/Price";
 import Button from "@/components/Button";
-import ImageComponent from "@/components/Image";
+import { ButtonColors } from "@/components/Button/enum";
+import IconComponent from "@/components/Icons";
+import SwiperComponent, { SwiperType } from "@/components/Swiper";
+import Related from "./Related";
 import Variant from "./Variant";
 import { TEXT } from "@/constants/text";
-import { ButtonColors } from "@/constants/enums/button";
 import { useRouterCustomHook } from "@/lib/customHooks";
 import { ProductProps } from "@/lib/saleor/types";
 import { isEmpty } from "lodash";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import IconComponent from "@/components/Icons";
 
 export default function Detail({ data }: { data: ProductProps }) {
     //** Custom hooks */
@@ -38,28 +33,10 @@ export default function Detail({ data }: { data: ProductProps }) {
             <div className="flex flex-wrap">
                 <div className="w-full sm:w-1/2 md:w-3/5 px-0 sm:px-2">
                     {!isEmpty(media) && (
-                        <Swiper
-                            className="mySwiper"
-                            navigation={true}
-                            modules={[Navigation]}
-                        >
-                            {media?.map(mediaItem => (
-                                <SwiperSlide key={mediaItem.url}>
-                                    <Link
-                                        key={mediaItem.url}
-                                        className="inline-block w-full h-[300px] sm:h-[500px] rounded-md"
-                                        href={""}
-                                        scroll={false}
-                                    >
-                                        <ImageComponent
-                                            className="img:object-cover"
-                                            src={mediaItem.url}
-                                            alt={name}
-                                        />
-                                    </Link>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <SwiperComponent
+                            data={media}
+                            type={SwiperType.PRODUCT_DETAIL}
+                        />
                     )}
                 </div>
                 <div className="w-full sm:w-1/2 md:w-2/5 px-0 sm:px-2">
@@ -84,6 +61,8 @@ export default function Detail({ data }: { data: ProductProps }) {
                     </Button>
                 </div>
             </div>
+
+            {data?.related && <Related relatedData={data?.related} />}
         </article>
     );
 }

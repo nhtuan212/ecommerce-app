@@ -20,7 +20,7 @@ export default function ProductHomePage({ categories }: ProductApiProps) {
         <section className="container">
             {categories.map(categoryItem => (
                 <div className="py-2" key={categoryItem.id}>
-                    <h3 className="block mb-2 font-bold text-center text-2xl">
+                    <h3 className="block mb-4 font-bold text-center text-2xl">
                         {categoryItem?.name}
                     </h3>
 
