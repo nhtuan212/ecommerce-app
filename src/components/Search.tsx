@@ -7,7 +7,7 @@ import { ROUTER } from "@/configs/router";
 import { useRouterCustomHook } from "@/lib/customHooks";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
-export default function CollectionSearch() {
+export default function Search() {
     //** Custom Hooks */
     const { ...router } = useRouterCustomHook();
 
