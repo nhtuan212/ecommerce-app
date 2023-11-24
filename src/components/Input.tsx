@@ -26,7 +26,7 @@ export default function Input({
     //** Variables */
     const disabledClassName = "bg-transparent text-black/50 opacity-50";
     const formInputClassName = clsx(
-        "flex items-center px-2 py-1.5 border border-gray-light rounded-md shadow-sm shadow-gray-light",
+        "flex items-center px-2 py-1.5 border border-gray rounded-md shadow-sm shadow-gray-200",
         props.disabled && disabledClassName,
     );
     const inputClassName = clsx(
