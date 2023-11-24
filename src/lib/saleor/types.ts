@@ -86,7 +86,7 @@ export type ProductProps = Omit<
         id: string;
         slug?: string;
         name?: string;
-        price?: PricingProduct;
+        price?: ProductProps["price"];
         thumbnail: string;
     }[];
 };
