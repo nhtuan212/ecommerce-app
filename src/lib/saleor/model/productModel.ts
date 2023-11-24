@@ -22,6 +22,7 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
                 id: relatedItem.node.id,
                 slug: relatedItem.node?.slug,
                 name: relatedItem.node?.name,
+                price: priceFormat(relatedItem.node?.pricing),
                 thumbnail: item.thumbnail?.url || "",
             })) || [],
     };
