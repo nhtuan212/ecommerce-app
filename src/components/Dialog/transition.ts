@@ -1,5 +1,5 @@
 import { TransitionClasses } from "@headlessui/react";
-import { DialogTransition } from "./enum";
+import { DialogTransition } from ".";
 
 //** Closures */
 export const dialogTransition = (() => {

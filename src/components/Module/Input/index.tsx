@@ -1,12 +1,8 @@
 "use client";
 import React from "react";
-
-//** Components */
 import Input from "@/components/Input";
-
-//** Constants */
 import { TEXT } from "@/constants/text";
-import IconComponent from "@/components/Icons";
+import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 
 export default function InputModules() {
     return (
@@ -17,7 +13,7 @@ export default function InputModules() {
 
             <div className="py-2">
                 <Input
-                    startIcon={<IconComponent icon={"dollar-sign"} />}
+                    startIcon={<CurrencyDollarIcon className="w-5 h-5" />}
                     value={TEXT.INPUT.VALUE}
                     placeholder={TEXT.INPUT.PLACEHOLDER}
                 />
@@ -34,7 +30,7 @@ export default function InputModules() {
                 <Input
                     disabled
                     value={TEXT.INPUT.VALUE}
-                    startIcon={<IconComponent icon={"dollar-sign"} />}
+                    startIcon={<CurrencyDollarIcon className="w-5 h-5" />}
                     placeholder={TEXT.INPUT.PLACEHOLDER}
                 />
             </div>
