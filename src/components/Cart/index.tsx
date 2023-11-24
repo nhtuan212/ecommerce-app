@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import Button from "../Button";
-import IconComponent from "../Icons";
-import DialogComponent from "../Dialog";
+import DialogComponent, { DialogTransition } from "../Dialog";
 import { TEXT } from "@/constants/text";
-import { DialogTransition } from "../Dialog/enum";
+import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 export default function Cart() {
     //** State */
@@ -18,7 +17,7 @@ export default function Cart() {
     return (
         <>
             <Button className="ml-2 text-primary" onClick={openModal}>
-                <IconComponent icon="cart-shopping" />
+                <ShoppingCartIcon className="w-5 h-5" />
             </Button>
 
             <DialogComponent
@@ -31,10 +30,7 @@ export default function Cart() {
             >
                 <div className="flex justify-center items-center min-w-sm h-full mt-2">
                     <div className="text-center">
-                        <IconComponent
-                            icon="cart-shopping"
-                            className="w-20 h-20"
-                        />
+                        <ShoppingCartIcon className="w-20 h-20 m-auto" />
                         <p className="my-3 text-2xl">{TEXT.CART_EMPTY}</p>
                     </div>
                 </div>

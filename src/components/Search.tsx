@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import IconComponent from "@/components/Icons";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { TEXT } from "@/constants/text";
 import { ROUTER } from "@/configs/router";
 import { useRouterCustomHook } from "@/lib/customHooks";
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 export default function CollectionSearch() {
     //** Custom Hooks */
@@ -40,10 +40,7 @@ export default function CollectionSearch() {
             <Input
                 endIcon={
                     <Button className="p-0" onClick={handleSearch}>
-                        <IconComponent
-                            className="text-gray"
-                            icon={"magnifying-glass"}
-                        />
+                        <MagnifyingGlassIcon className="w-5 h-5 text-gray" />
                     </Button>
                 }
                 placeholder={TEXT.INPUT.PLACEHOLDER}

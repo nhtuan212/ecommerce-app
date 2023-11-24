@@ -11,12 +11,13 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-//** Interface */
+//** Enums */
 export enum SwiperType {
     SLIDE = "slide",
     PRODUCT_DETAIL = "product_detail",
 }
 
+//** Interfaces */
 interface SwiperProps {
     data: any;
     slidesPerView?: number[];

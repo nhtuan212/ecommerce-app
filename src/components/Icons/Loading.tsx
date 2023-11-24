@@ -3,7 +3,7 @@ import React from "react";
 
 //** Interface */
 interface LoadingIconProps {
-    className?: React.ReactNode;
+    className?: string;
 }
 
 export default function LoadingIcon({ ...props }: LoadingIconProps) {

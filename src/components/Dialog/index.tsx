@@ -1,12 +1,17 @@
 import React, { Fragment } from "react";
-import IconComponent from "../Icons";
 import Button from "../Button";
 import { Dialog, Transition } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 import { dialogTransition } from "./transition";
-import { DialogTransition } from "./enum";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 
-//** Interface */
+//** Enums */
+export enum DialogTransition {
+    LEFT_TO_RIGHT = "LeftToRight",
+    RIGHT_TO_LEFT = "RightToLeft",
+}
+
+//** Interfaces */
 interface DialogComponentProps {
     containerClassName?: string;
     dialogClassName?: string;
@@ -62,7 +67,7 @@ export default function DialogComponent({
                                         className="absolute top-0 right-0 px-4 py-3"
                                         onClick={onClose}
                                     >
-                                        <IconComponent icon="x" />
+                                        <XMarkIcon className="w-6 h-6" />
                                     </Button>
                                 )}
 

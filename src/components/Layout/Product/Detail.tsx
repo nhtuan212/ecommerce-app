@@ -4,7 +4,6 @@ import Prose from "@/components/Prose";
 import Price from "@/components/Price";
 import Button from "@/components/Button";
 import { ButtonColors } from "@/components/Button/enum";
-import IconComponent from "@/components/Icons";
 import SwiperComponent, { SwiperType } from "@/components/Swiper";
 import Related from "./Related";
 import Variant from "./Variant";
@@ -12,6 +11,7 @@ import { TEXT } from "@/constants/text";
 import { useRouterCustomHook } from "@/lib/customHooks";
 import { ProductProps } from "@/lib/saleor/types";
 import { isEmpty } from "lodash";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
 export default function Detail({ data }: { data: ProductProps }) {
     //** Custom hooks */
@@ -56,7 +56,7 @@ export default function Detail({ data }: { data: ProductProps }) {
                         color={ButtonColors.Primary}
                         onClick={handleAddToCart}
                     >
-                        <IconComponent className="mr-1" icon={"cart-plus"} />
+                        <PlusIcon className="w-5 h-5 mr-2" />
                         {TEXT.ADD_TO_CART}
                     </Button>
                 </div>

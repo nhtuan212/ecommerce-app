@@ -1,14 +1,9 @@
 "use client";
-
 import React from "react";
-
-//** Components */
 import Button from "@/components/Button";
-import IconComponent from "@/components/Icons";
-
-//** Constants */
-import { TEXT } from "@/constants/text";
 import { ButtonColors } from "@/components/Button/enum";
+import { TEXT } from "@/constants/text";
+import { TrashIcon } from "@heroicons/react/20/solid";
 
 export default function ButtonModules() {
     //** Functions */
@@ -31,13 +26,13 @@ export default function ButtonModules() {
             </Button>
 
             <Button className="mx-2" color={ButtonColors.Error}>
-                <IconComponent className="mr-2" icon={"trash"} />
+                <TrashIcon className="w-4 h-4 mr-2" />
                 {TEXT.BUTTON.CLICK_ME}
             </Button>
 
             <Button className="mx-2" color={ButtonColors.Success} disabled>
                 {TEXT.BUTTON.CLICK_ME}
-                <IconComponent className="ml-2" icon={"share-from-square"} />
+                <TrashIcon className="w-4 h-4 ml-2" />
             </Button>
 
             <Button
@@ -47,7 +42,7 @@ export default function ButtonModules() {
                 value={TEXT.BUTTON.CLICK_ME}
             >
                 {TEXT.BUTTON.CLICK_ME}
-                <IconComponent className="ml-2" icon={"share-from-square"} />
+                <TrashIcon className="w-4 h-4 ml-2" />
             </Button>
         </section>
     );
