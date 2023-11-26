@@ -26,7 +26,7 @@ export default function ProductItem({ data }: ProductItemProps) {
                     isInteractive
                 />
                 <div className="mt-4">
-                    <p>{name}</p>
+                    <h3>{name}</h3>
                     <Price price={price} />
                 </div>
             </Link>

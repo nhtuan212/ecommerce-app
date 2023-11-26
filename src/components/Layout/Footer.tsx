@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="flex justify-center items-center flex-wrap p-4 text-center shadow-inner">
             <article>
                 <p>Something here to give the footer a purpose!</p>
-                <p>Copyright © Binayu 2023.</p>
+                <p>Copyright © Nguyen Hoang Tuan 2023.</p>
             </article>
         </footer>
     );
