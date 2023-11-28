@@ -9,7 +9,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
 export default function Search() {
     //** Custom Hooks */
-    const { ...router } = useRouterCustomHook();
+    const { router } = useRouterCustomHook();
 
     //** States */
     const [searchValue, setSearchValue] = useState("");

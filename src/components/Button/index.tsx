@@ -21,7 +21,7 @@ const Button = ({
     ...props
 }: ButtonProps) => {
     //** Custom Hooks */
-    const router = useRouterCustomHook();
+    const { router } = useRouterCustomHook();
 
     //** Variables */
     const buttonClassName = twMerge(

@@ -1,4 +1,6 @@
 import {
+    CheckoutFragment,
+    CheckoutLinesAdd,
     GetCategoriesQuery,
     GetCollectionBySlugQuery,
     GetProductBySlugQuery,
@@ -22,6 +24,13 @@ export type VercelCommerceCollection = Exclude<
     null | undefined
 >;
 
+export type VercelCommerceCheckout = CheckoutFragment;
+
+export type VercelCommerceCheckoutLinesAdd = Exclude<
+    CheckoutLinesAdd["checkout"],
+    null | undefined
+>;
+
 //** Type output */
 
 export type PricingProduct = {
@@ -37,6 +46,8 @@ export type PricingProduct = {
     discount?: {
         gross: { amount: number; currency: string };
     } | null;
+
+    gross: { amount: number; currency: string };
 };
 
 export type VariantProduct = {
@@ -74,9 +85,11 @@ export type ProductProps = Omit<
     };
     thumbnail: string;
     variants?: {
+        // id: string;
         name: string;
         values: string[];
         availableValues: {
+            id: string;
             name: string;
             pricing?: ProductProps["price"];
         }[];
@@ -91,10 +104,38 @@ export type ProductProps = Omit<
     }[];
 };
 
+export type ProductCheckoutProps = {
+    id: string;
+    quantity: number;
+    name: string;
+    slug: string;
+    price: {
+        amount: number;
+        currency: string;
+    };
+    thumbnail?: string;
+    attributeName?: string | null;
+    attribute: string;
+};
+
 export type CategoryProps = Omit<VercelCommerceCategory, "products"> & {
     products?: ProductProps[];
 };
 
 export type CollectionProps = Omit<VercelCommerceCollection, "products"> & {
     products?: ProductProps[];
+};
+
+export type CheckoutProps = Omit<
+    VercelCommerceCheckout,
+    "quantity" | "totalPrice" | "lines"
+> & {
+    id: string;
+    token: string;
+    totalQuantity: number;
+    totalPrice: {
+        amount: number;
+        currency: string;
+    };
+    products: ProductCheckoutProps[];
 };
