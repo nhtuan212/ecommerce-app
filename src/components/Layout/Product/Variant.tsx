@@ -64,15 +64,15 @@ export default function Variant({
                         </Link>
                     );
                 })}
+            </div>
 
-                <div className="mt-5">
-                    <p className="mb-2">{TEXT.QUANTITY}</p>
-                    <CartQuantity
-                        quantity={quantity}
-                        onDecrement={() => decrease(1)}
-                        onIncrement={() => increase(1)}
-                    />
-                </div>
+            <div className="mt-5">
+                <p className="mb-2">{TEXT.QUANTITY}</p>
+                <CartQuantity
+                    quantity={quantity}
+                    onDecrement={() => decrease(1)}
+                    onIncrement={() => increase(1)}
+                />
             </div>
         </section>
     );
