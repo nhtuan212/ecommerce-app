@@ -47,7 +47,7 @@ export type PricingProduct = {
         gross: { amount: number; currency: string };
     } | null;
 
-    gross: { amount: number; currency: string };
+    gross?: { amount: number; currency: string };
 };
 
 export type VariantProduct = {
