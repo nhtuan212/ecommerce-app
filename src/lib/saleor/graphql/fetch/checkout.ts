@@ -47,7 +47,7 @@ export async function checkoutCreate(): Promise<CheckoutProps> {
         return notFound();
     }
 
-    return saleorCheckoutCreate.checkoutCreate?.checkout;
+    return checkoutModel(saleorCheckoutCreate.checkoutCreate?.checkout);
 }
 
 export async function checkoutLinesAdd({
@@ -76,5 +76,5 @@ export async function checkoutLinesAdd({
 
     console.log("result", saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout);
 
-    return saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout;
+    return checkoutModel(saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout);
 }
