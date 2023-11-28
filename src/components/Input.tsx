@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { useRouterCustomHook } from "@/lib/customHooks";
+import { twMerge } from "tailwind-merge";
 
 //** Interfaces */
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -25,14 +26,14 @@ export default function Input({
 
     //** Variables */
     const disabledClassName = "bg-transparent text-black/50 opacity-50";
-    const formInputClassName = clsx(
+    const formInputClassName = twMerge(
         "flex items-center px-2 py-1.5 border border-gray rounded-md shadow-sm shadow-gray-200",
         props.disabled && disabledClassName,
+        className,
     );
     const inputClassName = clsx(
-        "flex-1 focus:outline-none",
+        "flex-1 w-full focus:outline-none",
         props.disabled && disabledClassName,
-        className,
     );
 
     //** States */

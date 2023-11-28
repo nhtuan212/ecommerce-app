@@ -5,12 +5,14 @@ import clsx from "clsx";
 import { TEXT } from "@/constants/text";
 
 //** Interfaces */
-interface ImageProps extends React.ComponentProps<typeof Image> {
+interface ImageProps extends Omit<React.ComponentProps<typeof Image>, "src"> {
+    src?: string;
     isInteractive?: boolean;
 }
 
 export default function ImageComponent({
     className,
+    src = "/assets/no-image.svg",
     alt = TEXT.IMAGE.ALT,
     isInteractive = false,
     ...props
@@ -29,6 +31,7 @@ export default function ImageComponent({
         <div className={imageClassName}>
             <Image
                 fill
+                src={src}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt={alt}
                 priority={true}

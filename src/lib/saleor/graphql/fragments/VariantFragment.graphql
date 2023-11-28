@@ -1,4 +1,5 @@
 fragment Variant on ProductVariant {
+    id
     name
     attributes {
         attribute {

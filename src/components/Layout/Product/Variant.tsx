@@ -1,15 +1,28 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import CartQuantity from "@/components/Cart/CartQuantity";
 import clsx from "clsx";
 import { useRouterCustomHook } from "@/lib/customHooks";
 import { ProductProps } from "@/lib/saleor/types";
+import { TEXT } from "@/constants/text";
+import { useCartStore } from "@/store/useCartStore";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Variant({
     variants,
 }: {
     variants: ProductProps["variants"];
 }) {
+    //** Zustand */
+    const { quantity, decrease, increase } = useCartStore(
+        useShallow(state => ({
+            quantity: state.quantity,
+            decrease: state.decrease,
+            increase: state.increase,
+        })),
+    );
+
     //** Custom Hooks */
     const { searchParams, createQueryString } = useRouterCustomHook();
 
@@ -51,6 +64,15 @@ export default function Variant({
                         </Link>
                     );
                 })}
+
+                <div className="mt-5">
+                    <p className="mb-2">{TEXT.QUANTITY}</p>
+                    <CartQuantity
+                        quantity={quantity}
+                        onDecrement={() => decrease(1)}
+                        onIncrement={() => increase(1)}
+                    />
+                </div>
             </div>
         </section>
     );

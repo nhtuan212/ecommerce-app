@@ -1,9 +1,13 @@
 import { PricingProduct } from "../types";
 
 export const priceFormat = (price?: PricingProduct | null) => {
-    const amount = price?.priceRange?.start?.gross.amount || 0;
+    const amount =
+        price?.priceRange?.start?.gross.amount || price?.gross?.amount || 0;
     const discount = price?.discount?.gross.amount || 0;
-    const currency = price?.priceRange?.start?.gross.currency || "";
+    const currency =
+        price?.priceRange?.start?.gross.currency ||
+        price?.gross?.currency ||
+        "";
 
     return {
         amount,

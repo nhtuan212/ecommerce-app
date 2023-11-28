@@ -1,0 +1,22 @@
+fragment Checkout on Checkout {
+    id
+    token
+    email
+    quantity
+    totalPrice {
+        gross {
+            amount
+            currency
+        }
+    }
+    lines {
+        id
+        quantity
+        variant {
+            ...Variant
+            product {
+                ...ProductDetail
+            }
+        }
+    }
+}

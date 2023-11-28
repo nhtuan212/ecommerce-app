@@ -1,31 +1,51 @@
 "use client";
-import React from "react";
+import React, { useState, useTransition } from "react";
 import Prose from "@/components/Prose";
 import Price from "@/components/Price";
 import Button from "@/components/Button";
 import { ButtonColors } from "@/components/Button/enum";
 import SwiperComponent, { SwiperType } from "@/components/Swiper";
+import { addToCart } from "@/components/Cart/actions";
+import LoadingDots from "@/components/Icons/LoadingDots";
 import Related from "./Related";
 import Variant from "./Variant";
+import clsx from "clsx";
 import { TEXT } from "@/constants/text";
 import { useRouterCustomHook } from "@/lib/customHooks";
 import { ProductProps } from "@/lib/saleor/types";
 import { isEmpty } from "lodash";
 import { PlusIcon } from "@heroicons/react/20/solid";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function Detail({ data }: { data: ProductProps }) {
+    //** Zustand */
+    const quantity = useCartStore(state => state.quantity);
+
     //** Custom hooks */
-    const { searchParams } = useRouterCustomHook();
+    const { router, searchParams } = useRouterCustomHook();
+    const [isPending, startTransition] = useTransition();
 
     //** Variables */
-    const { name, description, price, media, variants } = data;
-    const priceSize = variants?.availableValues.find(
+    const { name, description, price, media, variants, related } = data;
+    const variantParams = variants?.availableValues.find(
         item => item.name === searchParams.get(variants.name.toLowerCase()),
     );
 
+    //** State */
+    const [error, setError] = useState<string>("");
+
     //** Functions */
     const handleAddToCart = () => {
-        console.log("handleAddToCart");
+        if (!variantParams) {
+            return setError(`!! Please select ${variants?.name}`);
+        }
+
+        startTransition(async () => {
+            await addToCart({ productId: variantParams.id, quantity }).then(
+                () => setError(""),
+            );
+            router.refresh();
+        });
     };
 
     return (
@@ -43,26 +63,31 @@ export default function Detail({ data }: { data: ProductProps }) {
                     <h1>{name}</h1>
                     <Price
                         className="justify-start py-3 text-2xl"
-                        price={priceSize?.pricing || price}
+                        price={variantParams?.pricing || price}
                     />
-                    <div className="py-3">
+                    <div className={clsx("p-3 -ml-3", error && "bg-gray-100")}>
                         <Variant variants={variants} />
+                        {error && (
+                            <p className="mt-3 text-sm text-error">{error}</p>
+                        )}
                     </div>
                     <div className="py-3">
                         <Prose html={description} />
                     </div>
                     <Button
-                        className="w-full p-3"
+                        className="relative w-full p-3"
                         color={ButtonColors.Primary}
                         onClick={handleAddToCart}
+                        disabled={isPending}
                     >
                         <PlusIcon className="w-5 h-5 mr-2" />
                         {TEXT.ADD_TO_CART}
+                        {isPending && <LoadingDots className="bg-white" />}
                     </Button>
                 </div>
             </div>
 
-            {data?.related && <Related relatedData={data?.related} />}
+            {related && <Related relatedData={related} />}
         </article>
     );
 }

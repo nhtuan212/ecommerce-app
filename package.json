@@ -29,7 +29,8 @@
         "react": "^18",
         "react-dom": "^18",
         "sass": "^1.69.5",
-        "swiper": "^11.0.3"
+        "swiper": "^11.0.3",
+        "zustand": "^4.4.7"
     },
     "devDependencies": {
         "@graphql-codegen/cli": "5.0.0",

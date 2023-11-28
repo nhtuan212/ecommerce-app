@@ -42,6 +42,7 @@ const variantModel = (
                         ) || [],
 
                     availableValues: variants?.map(variant => ({
+                        id: variant.id,
                         name: variant.name,
                         pricing: variant.pricing?.price?.gross,
                     })),

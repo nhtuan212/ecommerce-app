@@ -19,7 +19,8 @@
         "saleor",
         "Swiper",
         "tailwindcss",
-        "Trang"
+        "Trang",
+        "zustand"
     ],
     "css.customData": [".vscode/tailwind.json"],
     "editor.fontSize": 16,

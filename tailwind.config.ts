@@ -63,6 +63,7 @@ const config: Config = {
             });
             // Alias children element
             addVariant("img", "& > img");
+            addVariant("input", "& > input");
         }),
     ],
 };

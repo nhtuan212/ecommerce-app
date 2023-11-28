@@ -25,5 +25,5 @@ export const useRouterCustomHook = () => {
         return `${pathname}?${queryString}`;
     };
 
-    return { ...router, pathname, params, searchParams, createQueryString };
+    return { router, pathname, params, searchParams, createQueryString };
 };
