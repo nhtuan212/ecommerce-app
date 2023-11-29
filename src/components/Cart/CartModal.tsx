@@ -30,7 +30,7 @@ export default function Cart({ checkout }: { checkout: CheckoutProps }) {
             <Button className="relative ml-2 text-primary" onClick={openModal}>
                 <ShoppingCartIcon className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 bg-primary px-1.5 text-xs text-white rounded-full">
-                    {quantityRef.current}
+                    {totalQuantity}
                 </span>
             </Button>
 

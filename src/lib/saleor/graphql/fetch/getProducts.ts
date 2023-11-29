@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { GetProductsDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { productModel } from "@/lib/saleor/model/productModel";
@@ -20,8 +19,7 @@ export async function getProducts({
     });
 
     if (!saleorProduct.products) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return (

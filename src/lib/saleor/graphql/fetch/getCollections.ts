@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { GetCollectionsDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { TAGS } from "@/lib/saleor/constants";
@@ -13,8 +12,7 @@ export async function getCollections(): Promise<CollectionProps[]> {
     });
 
     if (!saleorCollections.collections) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return (

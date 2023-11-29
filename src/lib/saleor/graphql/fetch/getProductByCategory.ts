@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { GetProductByCategoryDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { TAGS } from "@/lib/saleor/constants";
@@ -18,8 +17,7 @@ export async function getProductByCategory({
     });
 
     if (!saleorProductByCategory?.category) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return productByCategoryModel(saleorProductByCategory?.category);

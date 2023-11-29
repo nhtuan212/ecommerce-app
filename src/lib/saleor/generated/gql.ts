@@ -16,7 +16,7 @@ const documents = {
         types.CheckoutFragmentDoc,
     "fragment ProductDetail on Product {\n  id\n  slug\n  name\n  pricing {\n    priceRange {\n      start {\n        gross {\n          currency\n          amount\n        }\n      }\n      stop {\n        gross {\n          currency\n          amount\n        }\n      }\n    }\n    discount {\n      gross {\n        currency\n        amount\n      }\n    }\n  }\n  description\n  thumbnail(size: 300) {\n    url\n  }\n  media {\n    url(size: 1080)\n  }\n}":
         types.ProductDetailFragmentDoc,
-    "fragment Variant on ProductVariant {\n  id\n  name\n  attributes {\n    attribute {\n      name\n      choices(first: 100) {\n        edges {\n          node {\n            name\n          }\n        }\n      }\n    }\n    values {\n      name\n    }\n  }\n  pricing {\n    price {\n      gross {\n        currency\n        amount\n      }\n    }\n  }\n}":
+    "fragment Variant on ProductVariant {\n  id\n  name\n  attributes {\n    attribute {\n      name\n      slug\n      choices(first: 100) {\n        edges {\n          node {\n            name\n          }\n        }\n      }\n    }\n    values {\n      name\n    }\n  }\n  pricing {\n    price {\n      gross {\n        currency\n        amount\n      }\n    }\n  }\n}":
         types.VariantFragmentDoc,
     "mutation checkoutCreate($input: CheckoutCreateInput!) {\n  checkoutCreate(input: $input) {\n    checkout {\n      ...Checkout\n    }\n    errors {\n      code\n      message\n      field\n    }\n  }\n}":
         types.CheckoutCreateDocument,
@@ -54,7 +54,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-    source: "fragment Variant on ProductVariant {\n  id\n  name\n  attributes {\n    attribute {\n      name\n      choices(first: 100) {\n        edges {\n          node {\n            name\n          }\n        }\n      }\n    }\n    values {\n      name\n    }\n  }\n  pricing {\n    price {\n      gross {\n        currency\n        amount\n      }\n    }\n  }\n}",
+    source: "fragment Variant on ProductVariant {\n  id\n  name\n  attributes {\n    attribute {\n      name\n      slug\n      choices(first: 100) {\n        edges {\n          node {\n            name\n          }\n        }\n      }\n    }\n    values {\n      name\n    }\n  }\n  pricing {\n    price {\n      gross {\n        currency\n        amount\n      }\n    }\n  }\n}",
 ): typeof import("./graphql").VariantFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
