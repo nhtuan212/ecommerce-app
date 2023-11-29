@@ -28,23 +28,24 @@ export default function Detail({ data }: { data: ProductProps }) {
     //** Variables */
     const { name, description, price, media, variants, related } = data;
 
-    const variantParams =
-        variants?.availableValues.find(
-            item => item.name === searchParams.get(variants.name.toLowerCase()),
-        ) || variants;
+    const variantParams = variants?.availableValues.find(
+        item => item.name === searchParams.get(variants.name.toLowerCase()),
+    );
+
+    const productId = variantParams?.id || variants?.id;
 
     //** State */
     const [error, setError] = useState<string>("");
 
     //** Functions */
     const handleAddToCart = () => {
-        if (!variantParams) {
-            // return setError(`!! Please select ${variants?.name}`);
+        if (!isEmpty(variants?.availableValues) && !variantParams) {
+            return setError(`!! Please select ${variants?.name}`);
         }
 
         startTransition(async () => {
             await addToCart({
-                productId: variantParams?.id,
+                productId,
                 quantity,
             }).then(() => setError(""));
             router.refresh();
