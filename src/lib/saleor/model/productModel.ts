@@ -16,7 +16,7 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
         discount: discountFormat(item.pricing),
         thumbnail: item.thumbnail?.url || "",
         media: item.media || [],
-        variants: variantModel(item?.variants),
+        variants: variantModel(item?.variants) as ProductProps["variants"],
         // Related products
         related:
             item?.category?.products?.edges?.map(relatedItem => ({
@@ -31,12 +31,12 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
 
 const variantModel = (
     variants: VariantFragment[] | null | undefined,
-): ProductProps["variants"] => {
+): ProductProps["variants"] | undefined => {
     return variants?.flatMap(variant => {
         if (!isEmpty(variant?.attributes)) {
             return variant?.attributes.flatMap(attributes => {
                 return {
-                    id: attributes.attribute?.slug,
+                    id: attributes.attribute.slug || "",
                     name: attributes.attribute.name as string,
                     values:
                         attributes.attribute.choices?.edges.map(
@@ -52,7 +52,7 @@ const variantModel = (
             });
         }
         return {
-            id: variant?.id,
+            id: variant.id,
             name: variant.name,
             values: [],
             availableValues: [],

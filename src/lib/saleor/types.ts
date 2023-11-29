@@ -84,10 +84,11 @@ export type ProductProps = Omit<
         percent: string;
     };
     thumbnail: string;
-    variants?: {
-        id?: string | null;
+    variants: {
+        id: string;
         name: string;
         values: string[];
+        pricing?: ProductProps["price"];
         availableValues: {
             id: string;
             name: string;

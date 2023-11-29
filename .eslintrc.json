@@ -56,6 +56,7 @@
         ],
         // Resolved no-unused-vars Typescript such as declare enum type ...
         "@typescript-eslint/no-unused-vars": "error"
+        // "no-console": "error" // Uncomment this line if you want to disallow console.log
     },
 
     "settings": {
