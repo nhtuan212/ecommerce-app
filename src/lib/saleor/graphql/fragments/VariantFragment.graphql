@@ -4,6 +4,7 @@ fragment Variant on ProductVariant {
     attributes {
         attribute {
             name
+            slug
             choices(first: 100) {
                 edges {
                     node {

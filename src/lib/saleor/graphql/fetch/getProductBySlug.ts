@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { GetProductBySlugDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { TAGS } from "@/lib/saleor/constants";
@@ -20,8 +19,7 @@ export async function getProductBySlug({
     });
 
     if (!saleorProductBySlug?.product) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return productModel(saleorProductBySlug?.product);

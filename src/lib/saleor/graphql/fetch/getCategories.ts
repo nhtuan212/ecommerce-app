@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { GetCategoriesDocument } from "../../generated/graphql";
 import { saleorFetch } from ".";
 import { categoryModel } from "../../model/categoryModel";
@@ -13,8 +12,7 @@ export async function getCategories(): Promise<CategoryProps[]> {
     });
 
     if (!saleorCategory.categories) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return (

@@ -27,9 +27,11 @@ export default function Detail({ data }: { data: ProductProps }) {
 
     //** Variables */
     const { name, description, price, media, variants, related } = data;
-    const variantParams = variants?.availableValues.find(
-        item => item.name === searchParams.get(variants.name.toLowerCase()),
-    );
+
+    const variantParams =
+        variants?.availableValues.find(
+            item => item.name === searchParams.get(variants.name.toLowerCase()),
+        ) || variants;
 
     //** State */
     const [error, setError] = useState<string>("");
@@ -37,13 +39,14 @@ export default function Detail({ data }: { data: ProductProps }) {
     //** Functions */
     const handleAddToCart = () => {
         if (!variantParams) {
-            return setError(`!! Please select ${variants?.name}`);
+            // return setError(`!! Please select ${variants?.name}`);
         }
 
         startTransition(async () => {
-            await addToCart({ productId: variantParams.id, quantity }).then(
-                () => setError(""),
-            );
+            await addToCart({
+                productId: variantParams?.id,
+                quantity,
+            }).then(() => setError(""));
             router.refresh();
         });
     };

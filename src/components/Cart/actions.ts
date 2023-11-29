@@ -10,7 +10,7 @@ export const addToCart = async ({
     productId,
     quantity = 1,
 }: {
-    productId: string;
+    productId?: string | null;
     quantity: number;
 }) => {
     let checkoutId: string;

@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import {
     CheckoutCreateDocument,
     CheckoutLinesAddDocument,
@@ -23,8 +22,7 @@ export async function getCheckoutById({
     });
 
     if (!saleorGetCheckout?.checkout) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return checkoutModel(saleorGetCheckout?.checkout);
@@ -43,8 +41,7 @@ export async function checkoutCreate(): Promise<CheckoutProps> {
     });
 
     if (!saleorCheckoutCreate.checkoutCreate?.checkout) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     return checkoutModel(saleorCheckoutCreate.checkoutCreate?.checkout);
@@ -70,8 +67,7 @@ export async function checkoutLinesAdd({
     });
 
     if (!saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout) {
-        console.error(TEXT.EMPTY_FETCH);
-        return notFound();
+        throw new Error(TEXT.EMPTY_FETCH);
     }
 
     console.log("result", saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout);

@@ -31177,6 +31177,7 @@ export type CheckoutFragment = {
             attributes: Array<{
                 attribute: {
                     name?: string | null;
+                    slug?: string | null;
                     choices?: {
                         edges: Array<{ node: { name?: string | null } }>;
                     } | null;
@@ -31212,6 +31213,7 @@ export type VariantFragment = {
     attributes: Array<{
         attribute: {
             name?: string | null;
+            slug?: string | null;
             choices?: {
                 edges: Array<{ node: { name?: string | null } }>;
             } | null;
@@ -31265,6 +31267,7 @@ export type CheckoutCreateMutation = {
                     attributes: Array<{
                         attribute: {
                             name?: string | null;
+                            slug?: string | null;
                             choices?: {
                                 edges: Array<{
                                     node: { name?: string | null };
@@ -31332,6 +31335,7 @@ export type CheckoutLinesAddMutation = {
                     attributes: Array<{
                         attribute: {
                             name?: string | null;
+                            slug?: string | null;
                             choices?: {
                                 edges: Array<{
                                     node: { name?: string | null };
@@ -31397,6 +31401,7 @@ export type GetCheckoutByIdQuery = {
                 attributes: Array<{
                     attribute: {
                         name?: string | null;
+                        slug?: string | null;
                         choices?: {
                             edges: Array<{ node: { name?: string | null } }>;
                         } | null;
@@ -31566,6 +31571,7 @@ export type GetProductBySlugQuery = {
             attributes: Array<{
                 attribute: {
                     name?: string | null;
+                    slug?: string | null;
                     choices?: {
                         edges: Array<{ node: { name?: string | null } }>;
                     } | null;
@@ -31674,6 +31680,7 @@ export const VariantFragmentDoc = new TypedDocumentString(
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {
@@ -31801,6 +31808,7 @@ fragment Variant on ProductVariant {
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {
@@ -31899,6 +31907,7 @@ fragment Variant on ProductVariant {
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {
@@ -31998,6 +32007,7 @@ fragment Variant on ProductVariant {
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {
@@ -32090,6 +32100,7 @@ fragment Variant on ProductVariant {
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {
@@ -32356,6 +32367,7 @@ fragment Variant on ProductVariant {
   attributes {
     attribute {
       name
+      slug
       choices(first: 100) {
         edges {
           node {

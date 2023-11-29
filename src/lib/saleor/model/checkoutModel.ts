@@ -22,7 +22,7 @@ export const checkoutModel = (item: VercelCommerceCheckout): CheckoutProps => {
                 thumbnail: lineItem.variant.product.thumbnail?.url,
 
                 // Product attributes
-                attributeName: lineItem.variant.attributes[0].attribute.name,
+                attributeName: lineItem.variant.attributes[0]?.attribute.name,
                 attribute: lineItem.variant.name,
             };
         }),

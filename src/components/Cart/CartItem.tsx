@@ -25,10 +25,14 @@ export default function CartItem({ data }: { data: ProductCheckoutProps }) {
                     </div>
                     <div>
                         <h3 className="text-base">{name}</h3>
-                        <p className="text-sm">
-                            <span className="text-gray">{attributeName}:</span>{" "}
-                            {attribute}
-                        </p>
+                        {attributeName && attribute && (
+                            <p className="text-sm">
+                                <span className="text-gray">
+                                    {attributeName}:
+                                </span>{" "}
+                                {attribute}
+                            </p>
+                        )}
                     </div>
                 </Link>
 

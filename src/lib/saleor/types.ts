@@ -85,7 +85,7 @@ export type ProductProps = Omit<
     };
     thumbnail: string;
     variants?: {
-        // id: string;
+        id?: string | null;
         name: string;
         values: string[];
         availableValues: {

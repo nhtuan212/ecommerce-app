@@ -2,6 +2,7 @@ import { parseEditorJsToHtml } from "../editor";
 import { VariantFragment } from "../generated/graphql";
 import { ProductProps, VercelCommerceProduct } from "../types";
 import { discountFormat, priceFormat } from "./priceFormat";
+import { isEmpty } from "lodash";
 
 export const productModel = (item: VercelCommerceProduct): ProductProps => {
     return {
@@ -31,10 +32,11 @@ export const productModel = (item: VercelCommerceProduct): ProductProps => {
 const variantModel = (
     variants: VariantFragment[] | null | undefined,
 ): ProductProps["variants"] => {
-    return variants?.flatMap(
-        variant =>
-            variant?.attributes.flatMap(attributes => {
+    return variants?.flatMap(variant => {
+        if (!isEmpty(variant?.attributes)) {
+            return variant?.attributes.flatMap(attributes => {
                 return {
+                    id: attributes.attribute?.slug,
                     name: attributes.attribute.name as string,
                     values:
                         attributes.attribute.choices?.edges.map(
@@ -47,12 +49,19 @@ const variantModel = (
                         pricing: variant.pricing?.price?.gross,
                     })),
                 };
-            }),
-    )[0];
+            });
+        }
+        return {
+            id: variant?.id,
+            name: variant.name,
+            values: [],
+            availableValues: [],
+            pricing: variant.pricing?.price?.gross,
+        };
+    })[0];
     // .filter(
     //     (value1, idx, arr) =>
     //         // filter unique
-    //         arr.findIndex(value2 => value1.name === value2.name) ===
-    //         idx,
+    //         arr.findIndex(value2 => value1.id === value2.id) === idx,
     // ) || []
 };
