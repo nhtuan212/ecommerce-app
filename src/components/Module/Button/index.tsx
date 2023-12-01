@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import Button from "@/components/Button";
-import { ButtonColors } from "@/components/Button/enum";
+import Button, { ButtonColors } from "@/components/Button";
 import { TEXT } from "@/constants/text";
 import { TrashIcon } from "@heroicons/react/20/solid";
 

@@ -2,8 +2,7 @@
 import React, { useState, useTransition } from "react";
 import Prose from "@/components/Prose";
 import Price from "@/components/Price";
-import Button from "@/components/Button";
-import { ButtonColors } from "@/components/Button/enum";
+import Button, { ButtonColors } from "@/components/Button";
 import SwiperComponent, { SwiperType } from "@/components/Swiper";
 import { addToCart } from "@/components/Cart/actions";
 import LoadingDots from "@/components/Icons/LoadingDots";

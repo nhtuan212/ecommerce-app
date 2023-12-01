@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import ProductItem from "../Layout/Product/ProductItem";
-import ImageComponent from "../Image";
+import ProductItem from "./Layout/Product/ProductItem";
+import ImageComponent from "./Image";
 import { ProductProps } from "@/lib/saleor/types";
 import { ROUTER } from "@/configs/router";
 import { slideType } from "@/apis/slide";

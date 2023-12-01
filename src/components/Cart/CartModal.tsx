@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../Button";
+import Button, { ButtonColors } from "../Button";
 import CartItem from "./CartItem";
+import Price from "../Price";
 import DialogComponent, { DialogTransition } from "../Dialog";
 import { TEXT } from "@/constants/text";
 import { isEmpty } from "lodash";
@@ -10,7 +11,7 @@ import { CheckoutProps, ProductCheckoutProps } from "@/lib/saleor/types";
 
 export default function Cart({ checkout }: { checkout: CheckoutProps }) {
     //** Variables */
-    const { totalQuantity, products } = checkout;
+    const { products, totalQuantity, totalPrice } = checkout;
     const quantityRef = useRef<number | undefined>(totalQuantity);
 
     //** State */
@@ -43,12 +44,26 @@ export default function Cart({ checkout }: { checkout: CheckoutProps }) {
                 onClose={closeModal}
             >
                 {!isEmpty(products) ? (
-                    <div className="mt-5">
+                    <div className="flex flex-col h-full justify-between py-5">
                         {products.map(
                             (item: ProductCheckoutProps, index: number) => (
                                 <CartItem key={index} data={item} />
                             ),
                         )}
+                        <div>
+                            <div className="flex justify-between py-2">
+                                <p>Total</p>
+                                <p className="font-bold">
+                                    <Price price={totalPrice} />
+                                </p>
+                            </div>
+                            <Button
+                                className="w-full"
+                                color={ButtonColors.Primary}
+                            >
+                                {TEXT.CHECK_OUT}
+                            </Button>
+                        </div>
                     </div>
                 ) : (
                     <div className="flex justify-center items-center min-w-sm h-full mt-2">
