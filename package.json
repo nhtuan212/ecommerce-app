@@ -8,8 +8,7 @@
         "start": "next start",
         "lint": "next lint",
         "prettier": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
-        "eslint": "eslint --quiet \"src/**/*.{ts,tsx,json}\"",
-        "check-types": "tsc --noEmit && eslint --fix src/",
+        "eslint": "tsc --noEmit && eslint --quiet \"src/**/*.{ts,tsx,json}\"",
         "lint-staged": "lint-staged",
         "prepare": "husky install",
         "codegen": "graphql-codegen --config .graphqlrc.ts"
@@ -17,7 +16,6 @@
     "lint-staged": {
         "src/**/*.{ts,tsx,json,scss}": [
             "yarn prettier",
-            "yarn check-types",
             "yarn eslint",
             "git add ."
         ]
