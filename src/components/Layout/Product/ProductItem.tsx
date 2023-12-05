@@ -27,7 +27,7 @@ export default function ProductItem({ data }: ProductItemProps) {
                 />
                 <div className="mt-4">
                     <h3>{name}</h3>
-                    <Price price={price} />
+                    <Price className="justify-center" price={price} />
                 </div>
             </Link>
         </Grid.Item>

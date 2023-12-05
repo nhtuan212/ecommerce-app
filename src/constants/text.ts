@@ -22,6 +22,7 @@ export const TEXT = {
     MY_CART: "My cart",
     CART_EMPTY: "Your cart is empty !!",
     ADD_TO_CART: "Add to cart",
+    TOTAL: "Total",
     QUANTITY: "Quantity",
     CHECK_OUT: "Check out",
     EMPTY_PAGE: "!! Content is being update...",

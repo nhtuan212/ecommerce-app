@@ -28,10 +28,7 @@ export default function Price({ className, price }: PriceProps) {
     return (
         !isEmpty(price) && (
             <div
-                className={twMerge(
-                    "flex justify-center items-center gap-2",
-                    className,
-                )}
+                className={twMerge("flex items-center gap-2", className)}
                 suppressHydrationWarning={true}
             >
                 {price?.prevAmount && price?.prevAmount > price.amount && (

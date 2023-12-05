@@ -5,9 +5,9 @@ import CartItem from "./CartItem";
 import Price from "../Price";
 import DialogComponent, { DialogTransition } from "../Dialog";
 import { TEXT } from "@/constants/text";
-import { isEmpty } from "lodash";
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 import { CheckoutProps, ProductCheckoutProps } from "@/lib/saleor/types";
+import { isEmpty } from "lodash";
 
 export default function Cart({ checkout }: { checkout: CheckoutProps }) {
     //** Variables */
@@ -45,17 +45,23 @@ export default function Cart({ checkout }: { checkout: CheckoutProps }) {
             >
                 {!isEmpty(products) ? (
                     <div className="flex flex-col h-full justify-between py-5">
-                        {products.map(
-                            (item: ProductCheckoutProps, index: number) => (
-                                <CartItem key={index} data={item} />
-                            ),
-                        )}
+                        <div>
+                            {products.map(
+                                (item: ProductCheckoutProps, index: number) => (
+                                    <CartItem key={index} data={item} />
+                                ),
+                            )}
+                        </div>
                         <div>
                             <div className="flex justify-between py-2">
-                                <p>Total</p>
-                                <p className="font-bold">
+                                <p>{TEXT.QUANTITY}</p>
+                                <p className="font-bold">{totalQuantity}</p>
+                            </div>
+                            <div className="flex justify-between py-2">
+                                <p>{TEXT.TOTAL}</p>
+                                <div className="font-bold">
                                     <Price price={totalPrice} />
-                                </p>
+                                </div>
                             </div>
                             <Button
                                 className="w-full"

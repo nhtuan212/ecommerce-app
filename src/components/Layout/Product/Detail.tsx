@@ -65,7 +65,7 @@ export default function Detail({ data }: { data: ProductProps }) {
                 <div className="w-full sm:w-1/2 md:w-2/5 px-0 sm:px-2">
                     <h1>{name}</h1>
                     <Price
-                        className="justify-start py-3 text-2xl"
+                        className="py-3 text-2xl"
                         price={variantParams?.pricing || price}
                     />
                     <div className={clsx("p-3 -ml-3", error && "bg-gray-100")}>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import ImageComponent from "../Image";
 import Price from "../Price";
@@ -10,6 +10,21 @@ export default function CartItem({ data }: { data: ProductCheckoutProps }) {
     //** Variables */
     const { name, slug, thumbnail, price, quantity, attributeName, attribute } =
         data;
+
+    //** States */
+    const [quantityUpdate, setQuantityUpdate] = useState<number>(quantity);
+
+    const priceByQuantity = useMemo(() => {
+        return {
+            ...price,
+            amount: price.amount * quantityUpdate,
+        };
+    }, [price, quantityUpdate]);
+
+    //** Functions */
+    const handleQuantity = (value: number) => {
+        setQuantityUpdate(value);
+    };
 
     return (
         <div className="py-2 border-b">
@@ -27,18 +42,26 @@ export default function CartItem({ data }: { data: ProductCheckoutProps }) {
                         <h3 className="text-base">{name}</h3>
                         {attributeName && attribute && (
                             <p className="text-sm">
-                                <span className="text-gray">
+                                <span className="text-gray mr-1">
                                     {attributeName}:
-                                </span>{" "}
+                                </span>
                                 {attribute}
                             </p>
                         )}
+                        <Price className="text-sm" price={price} />
                     </div>
                 </Link>
 
                 <div>
-                    <Price className="justify-end mb-2 text-sm" price={price} />
-                    <CartQuantity quantity={quantity} />
+                    <Price
+                        className="justify-end mb-2 text-sm"
+                        price={priceByQuantity}
+                    />
+                    <CartQuantity
+                        quantity={quantity}
+                        onIncrement={handleQuantity}
+                        onDecrement={handleQuantity}
+                    />
                 </div>
             </div>
         </div>

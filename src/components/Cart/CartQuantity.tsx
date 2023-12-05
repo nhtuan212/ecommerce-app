@@ -7,8 +7,8 @@ import clsx from "clsx";
 //** Interfaces */
 interface CartQuantityProps {
     quantity: number;
-    onDecrement?: () => void | {};
-    onIncrement?: () => void | {};
+    onDecrement?: (value: number) => void | {};
+    onIncrement?: (value: number) => void | {};
 }
 
 export default function CartQuantity({
@@ -24,12 +24,12 @@ export default function CartQuantity({
 
     //** Functions */
     const handleDecrement = () => {
-        typeof onDecrement === "function" && onDecrement();
+        typeof onDecrement === "function" && onDecrement(value - 1);
         value > 1 && setValue(value - 1);
     };
 
     const handleIncrement = () => {
-        typeof onIncrement === "function" && onIncrement();
+        typeof onIncrement === "function" && onIncrement(value + 1);
         setValue(value + 1);
     };
 
