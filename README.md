@@ -19,8 +19,11 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Provider
 
-- [Saleor](https://github.com/saleor/nextjs-commerce)
-- [GraphQL](https://graphql.org/)
+- CMS: [Saleor](https://github.com/saleor/nextjs-commerce)
+- Call Api with [GraphQL](https://graphql.org/)
+- Manager States with [Zustand](https://github.com/pmndrs/zustand)
+- Typescript
+- Tailwind
 
 ## Learn More
 
