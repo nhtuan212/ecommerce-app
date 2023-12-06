@@ -107,6 +107,7 @@ export type ProductProps = Omit<
 
 export type ProductCheckoutProps = {
     id: string;
+    lineId: string;
     quantity: number;
     name: string;
     slug: string;

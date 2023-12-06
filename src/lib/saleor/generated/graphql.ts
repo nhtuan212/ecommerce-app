@@ -31360,6 +31360,142 @@ export type CheckoutLinesAddMutation = {
     } | null;
 };
 
+export type CheckoutLinesDeleteMutationVariables = Exact<{
+    id?: InputMaybe<Scalars["ID"]["input"]>;
+    linesIds: Array<Scalars["ID"]["input"]> | Scalars["ID"]["input"];
+}>;
+
+export type CheckoutLinesDeleteMutation = {
+    checkoutLinesDelete?: {
+        errors: Array<{
+            code: CheckoutErrorCode;
+            message?: string | null;
+            field?: string | null;
+        }>;
+        checkout?: {
+            id: string;
+            token: string;
+            email?: string | null;
+            quantity: number;
+            totalPrice: { gross: { amount: number; currency: string } };
+            lines: Array<{
+                id: string;
+                quantity: number;
+                variant: {
+                    id: string;
+                    name: string;
+                    product: {
+                        id: string;
+                        slug: string;
+                        name: string;
+                        description?: string | null;
+                        pricing?: {
+                            priceRange?: {
+                                start?: {
+                                    gross: { currency: string; amount: number };
+                                } | null;
+                                stop?: {
+                                    gross: { currency: string; amount: number };
+                                } | null;
+                            } | null;
+                            discount?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                        } | null;
+                        thumbnail?: { url: string } | null;
+                        media?: Array<{ url: string }> | null;
+                    };
+                    attributes: Array<{
+                        attribute: {
+                            name?: string | null;
+                            slug?: string | null;
+                            choices?: {
+                                edges: Array<{
+                                    node: { name?: string | null };
+                                }>;
+                            } | null;
+                        };
+                        values: Array<{ name?: string | null }>;
+                    }>;
+                    pricing?: {
+                        price?: {
+                            gross: { currency: string; amount: number };
+                        } | null;
+                    } | null;
+                };
+            }>;
+        } | null;
+    } | null;
+};
+
+export type CheckoutLinesUpdateMutationVariables = Exact<{
+    checkoutId?: InputMaybe<Scalars["ID"]["input"]>;
+    lines: Array<CheckoutLineUpdateInput> | CheckoutLineUpdateInput;
+}>;
+
+export type CheckoutLinesUpdateMutation = {
+    checkoutLinesUpdate?: {
+        errors: Array<{
+            code: CheckoutErrorCode;
+            message?: string | null;
+            field?: string | null;
+        }>;
+        checkout?: {
+            id: string;
+            token: string;
+            email?: string | null;
+            quantity: number;
+            totalPrice: { gross: { amount: number; currency: string } };
+            lines: Array<{
+                id: string;
+                quantity: number;
+                variant: {
+                    id: string;
+                    name: string;
+                    product: {
+                        id: string;
+                        slug: string;
+                        name: string;
+                        description?: string | null;
+                        pricing?: {
+                            priceRange?: {
+                                start?: {
+                                    gross: { currency: string; amount: number };
+                                } | null;
+                                stop?: {
+                                    gross: { currency: string; amount: number };
+                                } | null;
+                            } | null;
+                            discount?: {
+                                gross: { currency: string; amount: number };
+                            } | null;
+                        } | null;
+                        thumbnail?: { url: string } | null;
+                        media?: Array<{ url: string }> | null;
+                    };
+                    attributes: Array<{
+                        attribute: {
+                            name?: string | null;
+                            slug?: string | null;
+                            choices?: {
+                                edges: Array<{
+                                    node: { name?: string | null };
+                                }>;
+                            } | null;
+                        };
+                        values: Array<{ name?: string | null }>;
+                    }>;
+                    pricing?: {
+                        price?: {
+                            gross: { currency: string; amount: number };
+                        } | null;
+                    } | null;
+                };
+            }>;
+        } | null;
+    } | null;
+};
+
 export type GetCheckoutByIdQueryVariables = Exact<{
     id?: InputMaybe<Scalars["ID"]["input"]>;
 }>;
@@ -32031,6 +32167,206 @@ fragment Variant on ProductVariant {
 }`) as unknown as TypedDocumentString<
     CheckoutLinesAddMutation,
     CheckoutLinesAddMutationVariables
+>;
+export const CheckoutLinesDeleteDocument = new TypedDocumentString(`
+    mutation checkoutLinesDelete($id: ID, $linesIds: [ID!]!) {
+  checkoutLinesDelete(id: $id, linesIds: $linesIds) {
+    errors {
+      code
+      message
+      field
+    }
+    checkout {
+      ...Checkout
+    }
+  }
+}
+    fragment Checkout on Checkout {
+  id
+  token
+  email
+  quantity
+  totalPrice {
+    gross {
+      amount
+      currency
+    }
+  }
+  lines {
+    id
+    quantity
+    variant {
+      ...Variant
+      product {
+        ...ProductDetail
+      }
+    }
+  }
+}
+fragment ProductDetail on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+  media {
+    url(size: 1080)
+  }
+}
+fragment Variant on ProductVariant {
+  id
+  name
+  attributes {
+    attribute {
+      name
+      slug
+      choices(first: 100) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    values {
+      name
+    }
+  }
+  pricing {
+    price {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+}`) as unknown as TypedDocumentString<
+    CheckoutLinesDeleteMutation,
+    CheckoutLinesDeleteMutationVariables
+>;
+export const CheckoutLinesUpdateDocument = new TypedDocumentString(`
+    mutation checkoutLinesUpdate($checkoutId: ID, $lines: [CheckoutLineUpdateInput!]!) {
+  checkoutLinesUpdate(checkoutId: $checkoutId, lines: $lines) {
+    errors {
+      code
+      message
+      field
+    }
+    checkout {
+      ...Checkout
+    }
+  }
+}
+    fragment Checkout on Checkout {
+  id
+  token
+  email
+  quantity
+  totalPrice {
+    gross {
+      amount
+      currency
+    }
+  }
+  lines {
+    id
+    quantity
+    variant {
+      ...Variant
+      product {
+        ...ProductDetail
+      }
+    }
+  }
+}
+fragment ProductDetail on Product {
+  id
+  slug
+  name
+  pricing {
+    priceRange {
+      start {
+        gross {
+          currency
+          amount
+        }
+      }
+      stop {
+        gross {
+          currency
+          amount
+        }
+      }
+    }
+    discount {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+  description
+  thumbnail(size: 300) {
+    url
+  }
+  media {
+    url(size: 1080)
+  }
+}
+fragment Variant on ProductVariant {
+  id
+  name
+  attributes {
+    attribute {
+      name
+      slug
+      choices(first: 100) {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    values {
+      name
+    }
+  }
+  pricing {
+    price {
+      gross {
+        currency
+        amount
+      }
+    }
+  }
+}`) as unknown as TypedDocumentString<
+    CheckoutLinesUpdateMutation,
+    CheckoutLinesUpdateMutationVariables
 >;
 export const GetCheckoutByIdDocument = new TypedDocumentString(`
     query GetCheckoutById($id: ID) {

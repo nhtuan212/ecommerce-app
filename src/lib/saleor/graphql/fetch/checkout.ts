@@ -1,6 +1,8 @@
 import {
     CheckoutCreateDocument,
     CheckoutLinesAddDocument,
+    CheckoutLinesDeleteDocument,
+    CheckoutLinesUpdateDocument,
     GetCheckoutByIdDocument,
 } from "../../generated/graphql";
 import { saleorFetch } from ".";
@@ -70,7 +72,58 @@ export async function checkoutLinesAdd({
         throw new Error(TEXT.EMPTY_FETCH);
     }
 
-    console.log("result", saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout);
-
     return checkoutModel(saleorCheckoutLinesAdd.checkoutLinesAdd?.checkout);
+}
+
+export async function checkoutLinesUpdate({
+    checkoutId,
+    lines,
+}: {
+    checkoutId: string;
+    lines: { lineId: string; variantId: string; quantity: number }[];
+}): Promise<CheckoutProps> {
+    const saleorCheckoutLinesUpdate = await saleorFetch({
+        query: CheckoutLinesUpdateDocument,
+        variables: {
+            checkoutId,
+            lines: lines.map(({ lineId, quantity }) => ({
+                lineId,
+                quantity,
+            })),
+        },
+        cache: "no-store",
+    });
+
+    if (!saleorCheckoutLinesUpdate.checkoutLinesUpdate?.checkout) {
+        console.error(saleorCheckoutLinesUpdate.checkoutLinesUpdate?.errors);
+        throw new Error(TEXT.EMPTY_FETCH);
+    }
+
+    return checkoutModel(
+        saleorCheckoutLinesUpdate.checkoutLinesUpdate?.checkout,
+    );
+}
+
+export async function checkoutLinesDelete({
+    checkoutId,
+    linesIds,
+}: {
+    checkoutId: string;
+    linesIds: string;
+}): Promise<CheckoutProps> {
+    const checkoutLinesDelete = await saleorFetch({
+        query: CheckoutLinesDeleteDocument,
+        variables: {
+            id: checkoutId,
+            linesIds,
+        },
+        cache: "no-store",
+    });
+
+    if (!checkoutLinesDelete.checkoutLinesDelete?.checkout) {
+        console.error(checkoutLinesDelete.checkoutLinesDelete?.errors);
+        throw new Error(TEXT.EMPTY_FETCH);
+    }
+
+    return checkoutModel(checkoutLinesDelete.checkoutLinesDelete?.checkout);
 }
