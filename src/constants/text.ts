@@ -26,4 +26,6 @@ export const TEXT = {
     QUANTITY: "Quantity",
     CHECK_OUT: "Check out",
     EMPTY_PAGE: "!! Content is being update...",
+
+    DELETE: "Xoá",
 };

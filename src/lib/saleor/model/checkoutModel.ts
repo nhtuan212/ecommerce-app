@@ -12,7 +12,8 @@ export const checkoutModel = (item: VercelCommerceCheckout): CheckoutProps => {
         },
         products: item.lines.map(lineItem => {
             return {
-                id: lineItem.variant.product.id,
+                id: lineItem.variant.id,
+                lineId: lineItem.id,
                 quantity: lineItem.quantity,
                 name: lineItem.variant.product.name,
                 slug: lineItem.variant.product.slug,

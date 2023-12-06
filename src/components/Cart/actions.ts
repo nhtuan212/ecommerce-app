@@ -2,6 +2,8 @@
 import {
     checkoutCreate,
     checkoutLinesAdd,
+    checkoutLinesDelete,
+    checkoutLinesUpdate,
     getCheckoutById,
 } from "@/lib/saleor/graphql/fetch/checkout";
 import { cookies } from "next/headers";
@@ -31,6 +33,40 @@ export const addToCart = async ({
         await checkoutLinesAdd({
             checkoutId,
             lines: [{ productId, quantity }],
+        });
+    } catch (e) {
+        return "Error adding item to cart";
+    }
+};
+
+export const UpdateCart = async ({
+    lineId,
+    variantId,
+    quantity,
+}: {
+    lineId: string;
+    variantId: string;
+    quantity: number;
+}) => {
+    const checkoutId: string = cookies().get("checkoutId")?.value || "";
+
+    try {
+        await checkoutLinesUpdate({
+            checkoutId,
+            lines: [{ lineId, variantId, quantity }],
+        });
+    } catch (e) {
+        return "Error adding item to cart";
+    }
+};
+
+export const RemoveCart = async ({ linesIds }: { linesIds: string }) => {
+    const checkoutId: string = cookies().get("checkoutId")?.value || "";
+
+    try {
+        await checkoutLinesDelete({
+            checkoutId,
+            linesIds,
         });
     } catch (e) {
         return "Error adding item to cart";

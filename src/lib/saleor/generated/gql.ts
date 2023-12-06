@@ -22,6 +22,10 @@ const documents = {
         types.CheckoutCreateDocument,
     "mutation checkoutLinesAdd($checkoutId: ID, $lines: [CheckoutLineInput!]!) {\n  checkoutLinesAdd(checkoutId: $checkoutId, lines: $lines) {\n    checkout {\n      ...Checkout\n    }\n    errors {\n      code\n      message\n      field\n    }\n  }\n}":
         types.CheckoutLinesAddDocument,
+    "mutation checkoutLinesDelete($id: ID, $linesIds: [ID!]!) {\n  checkoutLinesDelete(id: $id, linesIds: $linesIds) {\n    errors {\n      code\n      message\n      field\n    }\n    checkout {\n      ...Checkout\n    }\n  }\n}":
+        types.CheckoutLinesDeleteDocument,
+    "mutation checkoutLinesUpdate($checkoutId: ID, $lines: [CheckoutLineUpdateInput!]!) {\n  checkoutLinesUpdate(checkoutId: $checkoutId, lines: $lines) {\n    errors {\n      code\n      message\n      field\n    }\n    checkout {\n      ...Checkout\n    }\n  }\n}":
+        types.CheckoutLinesUpdateDocument,
     "query GetCheckoutById($id: ID) {\n  checkout(id: $id) {\n    ...Checkout\n  }\n}":
         types.GetCheckoutByIdDocument,
     'query GetCollectionBySlug($slug: String!) {\n  collection(channel: "default-channel", slug: $slug) {\n    id\n    slug\n    name\n    products(first: 10) {\n      edges {\n        node {\n          id\n          slug\n          name\n          pricing {\n            priceRange {\n              start {\n                gross {\n                  currency\n                  amount\n                }\n              }\n              stop {\n                gross {\n                  currency\n                  amount\n                }\n              }\n            }\n            discount {\n              gross {\n                currency\n                amount\n              }\n            }\n          }\n          description\n          thumbnail(size: 500) {\n            url\n          }\n          media {\n            url(size: 1080)\n            type\n            alt\n          }\n        }\n      }\n    }\n  }\n}':
@@ -68,6 +72,18 @@ export function graphql(
 export function graphql(
     source: "mutation checkoutLinesAdd($checkoutId: ID, $lines: [CheckoutLineInput!]!) {\n  checkoutLinesAdd(checkoutId: $checkoutId, lines: $lines) {\n    checkout {\n      ...Checkout\n    }\n    errors {\n      code\n      message\n      field\n    }\n  }\n}",
 ): typeof import("./graphql").CheckoutLinesAddDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+    source: "mutation checkoutLinesDelete($id: ID, $linesIds: [ID!]!) {\n  checkoutLinesDelete(id: $id, linesIds: $linesIds) {\n    errors {\n      code\n      message\n      field\n    }\n    checkout {\n      ...Checkout\n    }\n  }\n}",
+): typeof import("./graphql").CheckoutLinesDeleteDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+    source: "mutation checkoutLinesUpdate($checkoutId: ID, $lines: [CheckoutLineUpdateInput!]!) {\n  checkoutLinesUpdate(checkoutId: $checkoutId, lines: $lines) {\n    errors {\n      code\n      message\n      field\n    }\n    checkout {\n      ...Checkout\n    }\n  }\n}",
+): typeof import("./graphql").CheckoutLinesUpdateDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
